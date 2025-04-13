@@ -64,7 +64,7 @@ function App() {
         </section>
 
         <section>
-          <Tooltip content="优化简历需要花费几秒时间，请耐心等待">
+          <Tooltip content={isOptimizing ? "优化简历需要花费几秒时间，请耐心等待" : ""}>
             <button
               onClick={handleAnalyze}
               className="w-full py-3 text-white font-medium rounded-md"
