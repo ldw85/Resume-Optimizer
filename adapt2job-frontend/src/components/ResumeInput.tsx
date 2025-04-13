@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaFileAlt, FaLock, FaFileUpload, FaPaste, FaInfoCircle } from 'react-icons/fa';
+import { FaLock, FaFileUpload, FaPaste } from 'react-icons/fa';
 
 interface ResumeInputProps {
   value: string;

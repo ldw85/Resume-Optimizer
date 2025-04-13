@@ -15,7 +15,7 @@ function App() {
     modifiedResume: '',
   });
 
-  const { analyzeResume, loading, error } = useGemini();
+  const { analyzeResume } = useGemini();
   const [isOptimizing, setIsOptimizing] = useState(false);
 
   const handleAnalyze = async () => {
