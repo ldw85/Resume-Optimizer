@@ -4,7 +4,6 @@ import AnalysisOutput from './components/AnalysisOutput';
 import JobInput from './components/JobInput';
 import ResumeInput from './components/ResumeInput';
 import useGemini from './hooks/useGemini';
-import { Tooltip } from '@material-tailwind/react';
 import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -52,7 +51,7 @@ function App() {
     // 设置正在优化状态为true
     setIsOptimizing(true);
     toast(
-      (t) => (
+      () => (
         <span>
           优化简历需要花费几秒时间，请耐心等待
         </span>

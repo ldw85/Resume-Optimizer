@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { FaLock, FaFileUpload, FaPaste } from 'react-icons/fa';
 
 interface ResumeInputProps {
