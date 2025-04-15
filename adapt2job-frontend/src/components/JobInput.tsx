@@ -7,7 +7,7 @@ interface JobInputProps {
   required: boolean;
 }
 
-const JobInput: React.FC<JobInputProps> = ({ value, onChange, required }) => {
+const JobInput: React.FC<JobInputProps> = ({ value, onChange }) => {
   const [activeMethod, setActiveMethod] = useState<'url' | 'paste'>('paste');
 
   const handleMethodChange = (method: 'url' | 'paste') => {
@@ -57,7 +57,7 @@ const JobInput: React.FC<JobInputProps> = ({ value, onChange, required }) => {
             placeholder="Paste the full job description here..."
             value={value}
             onChange={onChange}
-            required={required}
+            required={true}
             className="w-full h-[250px] border border-gray-300 rounded-md p-3 resize-none"
           />
         </div>

@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FaLock, FaFileUpload, FaPaste } from 'react-icons/fa';
 
 interface ResumeInputProps {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   required: boolean;
+  resumeInputRef: React.Ref<HTMLTextAreaElement>;
 }
 
-const ResumeInput: React.FC<ResumeInputProps> = ({ value, onChange, required }) => {
+const ResumeInput: React.FC<ResumeInputProps> = ({ value, onChange, resumeInputRef }) => {
   const [activeMethod, setActiveMethod] = useState<'upload' | 'paste'>('paste');
 
   const handleMethodChange = (method: 'upload' | 'paste') => {
@@ -54,8 +55,9 @@ const ResumeInput: React.FC<ResumeInputProps> = ({ value, onChange, required }) 
             placeholder="Paste your CV content here..."
             value={value}
             onChange={onChange}
-            required={required}
-            className="w-full h-[250px] border border-gray-300 rounded-md p-3 resize-none" /* Set height explicitly to 960px */
+            required={true}
+            className="w-full h-[250px] border border-gray-300 rounded-md p-3 resize-none"
+            ref={resumeInputRef}
           />
         </div>
       )}
