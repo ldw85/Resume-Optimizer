@@ -126,7 +126,7 @@ function App() {
           <div className="flex items-center">
             {/* <img src="/resume-icon.svg" alt="Logo" className="h-4 w-4" /> */}
             {/* <span className="ml-2 text-3xl font-bold font-serif"></span> */}
-            <h1 className="text-3xl font-bold mb-2"> ResumeOptimizer </h1>
+            <h1 className="text-3xl font-bold mb-2"> {t('ResumeOptimizer')} </h1>
           </div>
 
           {/* Language Switcher */}
