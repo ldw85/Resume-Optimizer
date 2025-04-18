@@ -183,7 +183,7 @@ const geminiPrompt = `你是一位资深的简历优化专家，拥有丰富的�
 * 'modification_reasons'中清晰说明进行优化思路和结构调整的原因。以HTML+CSS结构化形式输出修改后的简历内容，
 * 'modifications'清晰地标注出修改的章节和内容。以HTML+CSS结构化形式输出。 如果需要添加新的技能或项目经验，请提供完整的段落，并明确指出添加的位置。
 * 'modified_resume'的内容是修改后的完整简历。
-*  'modified_resume'、'modification_reasons'、'modifications' 3个部分请使用美观的HTML+CSS进行输出，核心优势加粗突出，style采用常见的经典简历风格，外部边框使用阴影效果，宽度95%，不同区域添加浅灰色分隔线，样式必须非常美观。  
+*  'modified_resume'、'modification_reasons'、'modifications' 3个部分请使用美观的HTML+CSS进行输出(不允许用Markdown格式)。，核心优势加粗突出，style采用常见的经典简历风格，外部边框使用阴影效果，宽度95%，不同区域添加浅灰色分隔线，样式必须非常美观。  
 *   避免超出职位描述范围的内容，保持简历的针对性。
 *   确保修改后的简历内容真实、准确、且符合职业道德。
 
@@ -191,9 +191,9 @@ const geminiPrompt = `你是一位资深的简历优化专家，拥有丰富的�
 请严格按照以下JSON格式组织输出：
 '''json
 {
-  "modified_resume": "<string>", // 字符串: 包含优化后的完整简历内容，必须是HTML+CSS的方式，核心优势加粗突出，样式必须非常美观
-  "modification_reasons": "<string>", // 字符串: 概括性的修改原因列表，解释整体优化策略和方向。必须是HTML+CSS的方式
-  "modifications": "<string>" // 字符串：逐条列出具体的文本修改细节。必须是HTML+CSS的方式，核心要点加粗突出 
+  "modified_resume": "<string>", // 字符串: 包含优化后的完整简历内容，必须是HTML+CSS的方式(不允许用Markdown格式)，核心优势加粗突出，样式必须非常美观
+  "modification_reasons": "<string>", // 字符串: 概括性的修改原因列表，解释整体优化策略和方向。必须是HTML+CSS的方式(不允许用Markdown格式)
+  "modifications": "<string>" // 字符串：逐条列出具体的文本修改细节。必须是HTML+CSS的方式(不允许用Markdown格式)，核心要点加粗突出 
 }
 
 **输入：**

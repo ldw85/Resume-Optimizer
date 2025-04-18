@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaBriefcase, FaLink, FaPaste } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 interface JobInputProps {
   value: string;
@@ -9,6 +10,7 @@ interface JobInputProps {
 
 const JobInput: React.FC<JobInputProps> = ({ value, onChange }) => {
   const [activeMethod, setActiveMethod] = useState<'url' | 'paste'>('paste');
+  const { t } = useTranslation();
 
   const handleMethodChange = (method: 'url' | 'paste') => {
     setActiveMethod(method);
@@ -19,10 +21,11 @@ const JobInput: React.FC<JobInputProps> = ({ value, onChange }) => {
       <div className="mb-4">
         <div className="flex items-center gap-2 mb-1">
           <FaBriefcase className="text-slate-800" />
-          <h2 className="text-xl font-semibold text-slate-800">职位描述</h2>
+          <h2 className="text-xl font-semibold text-slate-800">{t('职位描述')}</h2>
         </div>
-        <p className="text-sm text-slate-600">
-          输入职位发布网址或粘贴完整描述
+        <p className="text-sm text-slate-600 flex items-center">
+          <FaPaste className="mr-1" />
+          {t('输入职位发布网址或粘贴完整描述')}
         </p>
       </div>
 
@@ -36,7 +39,7 @@ const JobInput: React.FC<JobInputProps> = ({ value, onChange }) => {
           }`}
         >
           <FaPaste />
-          <span>粘贴文本</span>
+          <span>{t('粘贴文本')}</span>
         </button>
         <button
           onClick={() => handleMethodChange('url')}
@@ -47,7 +50,7 @@ const JobInput: React.FC<JobInputProps> = ({ value, onChange }) => {
           }`}
         >
           <FaLink />
-          <span>输入网址</span>
+          <span>{t('输入网址')}</span>
         </button>
       </div>
 
@@ -66,7 +69,7 @@ const JobInput: React.FC<JobInputProps> = ({ value, onChange }) => {
       {activeMethod === 'url' && (
         <div className="border-2 border-dashed border-gray-300 rounded-md p-8 text-center text-gray-500">
           <FaLink className="mx-auto text-2xl mb-2" />
-          <p>通过 URL 输入职位描述的功能即将推出</p>
+          <p>{t('通过 URL 输入职位描述的功能即将推出')}</p>
         </div>
       )}
     </div>

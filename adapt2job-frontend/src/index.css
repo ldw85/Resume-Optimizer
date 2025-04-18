@@ -10,6 +10,9 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
+  background-image: url('./assets/resume.svg'); /* 简历图标 */
+  background-repeat: repeat; /* 平铺 */
+  background-size: 30px; /* 图标大小 - 缩小 */
   background-color: #242424;
 
   font-synthesis: none;

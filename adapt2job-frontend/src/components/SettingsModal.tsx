@@ -1,6 +1,6 @@
 // src/components/SettingsModal.tsx
-import React, { useState, useEffect } from 'react';
-import useApiKeyStorage from '../hooks/useApiKeyStorage';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -8,20 +8,11 @@ interface SettingsModalProps {
 }
 
 const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose }) => {
-  const { apiKeys, updateApiKey } = useApiKeyStorage();
-  const [localGeminiApiKey, setLocalGeminiApiKey] = useState(apiKeys.gemini || '');
-  const [localTavilyApiKey, setLocalTavilyApiKey] = useState(apiKeys.tavily || '');
-
-
-  useEffect(() => {
-    setLocalGeminiApiKey(apiKeys.gemini || '');
-    setLocalTavilyApiKey(apiKeys.tavily || '');
-  }, [apiKeys]);
-
+  const [localGeminiApiKey, setLocalGeminiApiKey] = useState('');
+  const [localTavilyApiKey, setLocalTavilyApiKey] = useState('');
+  const { t } = useTranslation();
 
   const handleSave = () => {
-    updateApiKey('gemini', localGeminiApiKey);
-    updateApiKey('tavily', localTavilyApiKey);
     onClose();
   };
 
@@ -42,31 +33,31 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose }) => {
             <div className="sm:flex sm:items-start">
               <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                 <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                  设置
+                  {t('设置')}
                 </h3>
                 <div className="mt-2">
                   <div className="mb-4">
                     <label htmlFor="gemini-api-key" className="block text-gray-700 text-sm font-bold mb-2">
-                      Gemini API 密钥
+                      {t('Gemini API 密钥')}
                     </label>
                     <input
                       type="password"
                       id="gemini-api-key"
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      placeholder="请输入 Gemini API 密钥"
+                      placeholder={t('请输入 Gemini API 密钥')}
                       value={localGeminiApiKey}
                       onChange={(e) => setLocalGeminiApiKey(e.target.value)}
                     />
                   </div>
                   <div className="mb-4">
                     <label htmlFor="tavily-api-key" className="block text-gray-700 text-sm font-bold mb-2">
-                      Tavily API 密钥
+                      {t('Tavily API 密钥')}
                     </label>
                     <input
                       type="password"
                       id="tavily-api-key"
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      placeholder="请输入 Tavily API 密钥"
+                      placeholder={t('请输入 Tavily API 密钥')}
                       value={localTavilyApiKey}
                       onChange={(e) => setLocalTavilyApiKey(e.target.value)}
                     />
@@ -81,14 +72,14 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose }) => {
               className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
               onClick={handleSave}
             >
-              保存
+              {t('保存')}
             </button>
             <button
               type="button"
               className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
               onClick={handleCancel}
             >
-              取消
+              {t('取消')}
             </button>
           </div>
         </div>

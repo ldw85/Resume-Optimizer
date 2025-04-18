@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaLock, FaFileUpload, FaPaste } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 interface ResumeInputProps {
   value: string;
@@ -10,6 +11,7 @@ interface ResumeInputProps {
 
 const ResumeInput: React.FC<ResumeInputProps> = ({ value, onChange, resumeInputRef }) => {
   const [activeMethod, setActiveMethod] = useState<'upload' | 'paste'>('paste');
+  const { t } = useTranslation();
 
   const handleMethodChange = (method: 'upload' | 'paste') => {
     setActiveMethod(method);
@@ -19,7 +21,7 @@ const ResumeInput: React.FC<ResumeInputProps> = ({ value, onChange, resumeInputR
     <div>
       <div className="mb-2">
         <p className="text-sm text-slate-600 flex items-center">
-          <FaLock className="mr-1 text-xs" /> 您的简历将不会被网站保存，绝不会与第三方共享
+          <FaLock className="mr-1 text-xs" /> {t('您的简历将不会被网站保存，绝不会与第三方共享')}
         </p>
       </div>
 
@@ -33,7 +35,7 @@ const ResumeInput: React.FC<ResumeInputProps> = ({ value, onChange, resumeInputR
           }`}
         >
           <FaPaste />
-          <span>粘贴简历</span>
+          <span>{t('粘贴简历')}</span>
         </button>
         <button
           onClick={() => handleMethodChange('upload')}
@@ -44,7 +46,7 @@ const ResumeInput: React.FC<ResumeInputProps> = ({ value, onChange, resumeInputR
           }`}
         >
           <FaFileUpload />
-          <span>上传文件</span>
+          <span>{t('上传文件')}</span>
         </button>
         
       </div>
@@ -65,7 +67,7 @@ const ResumeInput: React.FC<ResumeInputProps> = ({ value, onChange, resumeInputR
       {activeMethod === 'upload' && (
         <div className="border-2 border-dashed border-gray-300 rounded-md p-8 text-center text-gray-500">
           <FaFileUpload className="mx-auto text-2xl mb-2" />
-          <p>文件上传功能即将推出</p>
+          <p>{t('文件上传功能即将推出')}</p>
         </div>
       )}
     </div>
