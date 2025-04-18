@@ -37,5 +37,16 @@
   "Tavily API 密钥": "Tavily API Key",
   "请输入 Tavily API 密钥": "Please enter Tavily API Key",
   "保存": "Save",
-  "取消": "Cancel"
+  "取消": "Cancel",
+  "ResumeOptimizer 如何工作": "How ResumeOptimizer Works",
+  "ResumeOptimizer 是一款免费在线工具，旨在帮助求职者更有效地优化他们的简历，使其与目标职位要求相匹配。\n        通过简单的步骤，您可以快速提升简历的质量，增加获得面试的机会。": "ResumeOptimizer is a free online tool designed to help job seekers optimize their resumes more effectively to match target job requirements. With simple steps, you can quickly improve the quality of your resume and increase your chances of getting an interview.",
+  "输入您的简历：": "Enter Your Resume:",
+  "复制粘贴您的简历内容到 ResumeOptimizer 的简历输入框。": "Copy and paste your resume content into the ResumeOptimizer resume input box.",
+  "输入职位要求：": "Enter Job Requirements:",
+  "复制粘贴您感兴趣的职位要求到 ResumeOptimizer 的职位要求输入框。": "Copy and paste the job requirements you are interested in into the ResumeOptimizer job requirements input box.",
+  "获取优化建议：": "Get Optimization Suggestions:",
+  "ResumeOptimizer 将分析您的简历和职位要求，并提供针对性的优化建议。": "ResumeOptimizer will analyze your resume and job requirements and provide targeted optimization suggestions.",
+  "优化您的简历：": "Optimize Your Resume:",
+  "根据 ResumeOptimizer 的建议，修改和完善您的简历。": "Modify and improve your resume based on ResumeOptimizer's suggestions.",
+  "ResumeOptimizer 承诺不保留任何用户信息，保障您的隐私安全。": "ResumeOptimizer promises not to retain any user information to protect your privacy and security."
 }

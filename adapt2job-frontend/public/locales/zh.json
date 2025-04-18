@@ -37,5 +37,16 @@
   "Tavily API 密钥": "Tavily API 密钥",
   "请输入 Tavily API 密钥": "请输入 Tavily API 密钥",
   "保存": "保存",
-  "取消": "取消"
+  "取消": "取消",
+  "ResumeOptimizer 如何工作": "ResumeOptimizer 如何工作",
+  "ResumeOptimizer 是一款免费在线工具，旨在帮助求职者更有效地优化他们的简历，使其与目标职位要求相匹配。\n        通过简单的步骤，您可以快速提升简历的质量，增加获得面试的机会。": "ResumeOptimizer 是一款免费在线工具，旨在帮助求职者更有效地优化他们的简历，使其与目标职位要求相匹配。\n        通过简单的步骤，您可以快速提升简历的质量，增加获得面试的机会。",
+  "输入您的简历：": "输入您的简历：",
+  "复制粘贴您的简历内容到 ResumeOptimizer 的简历输入框。": "复制粘贴您的简历内容到 ResumeOptimizer 的简历输入框。",
+  "输入职位要求：": "输入职位要求：",
+  "复制粘贴您感兴趣的职位要求到 ResumeOptimizer 的职位要求输入框。": "复制粘贴您感兴趣的职位要求到 ResumeOptimizer 的职位要求输入框。",
+  "获取优化建议：": "获取优化建议：",
+  "ResumeOptimizer 将分析您的简历和职位要求，并提供针对性的优化建议。": "ResumeOptimizer 将分析您的简历和职位要求，并提供针对性的优化建议。",
+  "优化您的简历：": "优化您的简历：",
+  "根据 ResumeOptimizer 的建议，修改和完善您的简历。": "根据 ResumeOptimizer 的建议，修改和完善您的简历。",
+  "ResumeOptimizer 承诺不保留任何用户信息，保障您的隐私安全。": "ResumeOptimizer 承诺不保留任何用户信息，保障您的隐私安全。"
 }

@@ -43,11 +43,12 @@ const analyzeResumeWithGemini = async (resumeText: string, jobDescriptionText: s
       const text = candidates[0].content.parts[0].text;
       const origjsonString = text.substring(text.indexOf('```json') + 7, text.lastIndexOf('```'));
       const jsonString = origjsonString.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
+      
       try {
         const jsonData = JSON.parse(jsonString);
         return {
-          modificationIdeas: jsonData?.modification_reasons ? JSON.stringify(jsonData.modification_reasons) : '',
-          contentExplanation: jsonData?.modifications ? JSON.stringify(jsonData.modifications) : '',
+          modificationIdeas: jsonData?.modification_reasons ? JSON.stringify(jsonData.modification_reasons).replace(/\\n/g, '') : '',
+          contentExplanation: jsonData?.modifications ? JSON.stringify(jsonData.modifications).replace(/\\n/g, '') : '',
           modifiedResume: jsonData?.modified_resume || '',
         };
       } catch (error) {

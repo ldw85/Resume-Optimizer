@@ -49,11 +49,11 @@ const AnalysisOutput: React.FC<AnalysisOutputProps> = ({ analysisResult }) => {
     <section className="card rounded-lg shadow-md bg-white">
       <h2 className="text-2xl font-bold mb-4 text-center">{t('分析结果')}</h2>
       <div className="mb-4 text-left bg-gray-50 p-4 rounded-md">
-        <h3 className="text-xl font-semibold mb-2">{t('修改思路')}</h3>
+        {/* <h3 className="text-xl font-semibold mb-2">{t('修改思路')}</h3> */}
         <div className="text-gray-800" dangerouslySetInnerHTML={{ __html: modificationIdeas }} />
       </div>
       <div className="mb-4 text-left bg-gray-100 p-4 rounded-md">
-        <h3 className="text-xl font-semibold mb-2">{t('修改内容说明')}</h3>
+        {/* <h3 className="text-xl font-semibold mb-2">{t('修改内容说明')}</h3> */}
         
           <div className="text-gray-800" dangerouslySetInnerHTML={{ __html: contentExplanation }} />
       
