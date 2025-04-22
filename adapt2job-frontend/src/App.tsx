@@ -43,21 +43,18 @@ function App() {
   const selectedLanguageOption = languageOptions.find(option => option.value === language);
 
   useEffect(() => {
-    // 只在组件首次加载时设置默认语言
-    const savedLanguage = localStorage.getItem('i18nextLng'); // 获取已保存的语言选择
-    if (!savedLanguage) {
-      // 只有在没有保存的语言选择时，才使用浏览器语言
-      const browserLang = navigator.language.split('-')[0];
-      i18n.changeLanguage(browserLang);
-      setLanguage(browserLang);
-    } else {
-      // 使用保存的语言选择
+    // 初始化语言状态
+    const savedLanguage = localStorage.getItem('i18nextLng');
+    if (savedLanguage) {
       setLanguage(savedLanguage);
+      i18n.changeLanguage(savedLanguage);
+    } else {
+      setLanguage(i18n.language);
     }
-    
+
     // 更新 HTML 语言标签
     document.documentElement.lang = language;
-  }, []); // 移除 language 和 navigator.language 依赖
+  }, [language]);
 
   const changeLanguage = (selectedOption: LanguageOption | null) => {
     if (selectedOption) {
