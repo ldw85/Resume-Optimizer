@@ -8,13 +8,13 @@ Adapt2Job 是一个根据目标职位要求来优化个人简历的前端应用�
 
 ## 技术栈
 
-*   **框架:** React (v19)
-*   **语言:** TypeScript
-*   **构建工具:** Vite
-*   **样式:** Tailwind CSS
-*   **国际化:** i18next, react-i18next
-*   **UI 组件:** Radix UI, Lucide Icons
-*   **其他:** react-hot-toast (通知), clsx/tailwind-merge (样式合并)
+*   **框架:** React (v19.0.0)
+*   **语言:** TypeScript (~5.7.2)
+*   **构建工具:** Vite (6.2.0)
+*   **样式:** Tailwind CSS (4.1.3)
+*   **国际化:** i18next (25.0.0), react-i18next (15.4.1)
+*   **UI 组件:** Radix UI (@radix-ui/react-accordion: 1.2.4), Lucide Icons (0.487.0)
+*   **其他:** react-hot-toast (2.5.2), clsx (2.1.1)/tailwind-merge (3.2.0)
 
 ## 项目结构
 
@@ -59,7 +59,7 @@ adapt2job-frontend/
     *   `handleAnalyze` 函数会进行输入校验，然后调用 `useResumeAnalyzer` Hook 中的 `analyzeResume` 方法。
     *   `analyzeResume` (在 `src/hooks/useResumeAnalyzer.ts` 中) 负责调用后端服务 (如 `src/services/geminiService.ts` 中的 `analyzeResumeWithGemini`) 来处理简历和职位描述，并返回分析结果。
     *   获取到结果后，更新 `analysisResult` 状态，并通过 `AnalysisOutput` 组件展示给用户。
-    *   `HowItWorks` 组件提供使用说明。
+    *   `HowItWorks` 组件 (位于 `src/components/HowItWorks.tsx`) 提供使用说明，展示简历优化的步骤。
 
 ## 如何运行
 

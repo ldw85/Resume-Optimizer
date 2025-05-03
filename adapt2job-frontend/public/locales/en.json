@@ -49,5 +49,11 @@
   "优化您的简历：": "Optimize Your Resume:",
   "根据 ResumeOptimizer 的建议，修改和完善您的简历。": "Modify and improve your resume based on ResumeOptimizer's suggestions.",
   "ResumeOptimizer 承诺不保留任何用户信息，保障您的隐私安全。": "ResumeOptimizer promises not to retain any user information to protect your privacy and security.",
-  "ResumeOptimizer": "ResumeOptimizer"
+  "ResumeOptimizer": "ResumeOptimizer",
+  "粘贴简历内容": "Paste resume content",
+  "复制你当前的简历内容，粘贴到输入框中": "Copy your current resume content and paste it into the input box",
+  "输入职位要求": "Enter job requirements",
+  "粘贴目标职位的要求描述，让AI更好地匹配": "Paste the description of the target position requirements to allow AI to better match",
+  "一键生成优化": "One-click generate optimization",
+  "系统快速分析并生成优化后的专业简历": "The system quickly analyzes and generates an optimized professional resume"
 }
