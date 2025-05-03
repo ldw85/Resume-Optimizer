@@ -7,18 +7,18 @@ const HowItWorks: React.FC = () => {
   const steps = [
     {
         number: "01",
-        title: "粘贴简历内容",
-        description: "复制你当前的简历内容，粘贴到输入框中"
+        title: t('粘贴简历内容'),
+        description: t('复制你当前的简历内容，粘贴到输入框中')
     },
     {
         number: "02",
-        title: "输入职位要求",
-        description: "粘贴目标职位的要求描述，让AI更好地匹配"
+        title: t('输入职位要求'),
+        description: t('粘贴目标职位的要求描述，让AI更好地匹配')
     },
     {
         number: "03",
-        title: "一键生成优化",
-        description: "系统快速分析并生成优化后的专业简历"
+        title: t('一键生成优化'),
+        description: t('系统快速分析并生成优化后的专业简历')
     }
 ];
 
@@ -30,7 +30,7 @@ const HowItWorks: React.FC = () => {
           '        通过简单的步骤，您可以快速提升简历的质量，增加获得面试的机会。')}
       </p>
       {/* Steps Container */}
-      <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div className="mt-20 grid gap-8 md:grid-cols-3">
                         {steps.map((step, index) => (
                             <div key={index} className="step-card p-6 rounded-xl">
                                 <div className="text-4xl font-bold text-indigo-600 mb-4">

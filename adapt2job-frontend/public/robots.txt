@@ -1,6 +1,5 @@
 User-agent: *
 Disallow: /src/
 Disallow: /node_modules/
-Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://www.resumeoptimizer.click/sitemap.xml
