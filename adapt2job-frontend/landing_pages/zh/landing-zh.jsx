@@ -1,7 +1,8 @@
+import './styles/main.css'; 
 // 确保 React 和 ReactDOM 已通过 npm/yarn 安装
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles/main.css'; 
+
 // 导入此页面需要的组件 (假设它们在同级 components 目录且已是 .jsx)
 import Navbar from './components/Navbar.jsx'; 
 import Hero from './components/Hero.jsx';
