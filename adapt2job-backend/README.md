@@ -77,7 +77,9 @@ graph LR
 ```
 ResumeOptimizer-backend/
 ├── src/
-│   ├── index.ts          # 后端应用入口，Express 初始化和中间件配置
+│   ├── app.ts            # 后端应用入口，Express 初始化和中间件配置
+│   ├── api/
+│   │   └── index.ts      # Vercel Serverless Function 入口
 │   ├── routes/
 │   │   ├── resume.ts     # 简历相关的 API 路由 (/api/parse-resume)
 │   │   └── llm.ts        # LLM 和 Tavily 相关的 API 路由 (/api/analyze-resume, /api/fetch-url-content)
@@ -95,19 +97,32 @@ ResumeOptimizer-backend/
 
 ## 7. 启动方式
 
+### 本地开发
+
 1.  安装依赖: `npm install`
-2.  编译代码: `npm run build`
-3.  启动服务: `npm run start`
+2.  启动服务: `npm run dev`
+
+### Vercel 部署
+
+1.  确保项目根目录存在 `vercel.json` 文件，并配置正确。
+2.  在 Vercel 平台导入 Git 仓库，Vercel 将自动检测 `vercel.json` 并进行部署。
+3.  环境变量 (如 `GEMINI_API_KEY`, `TAVILY_API_KEY`) 需要在 Vercel 项目设置中配置。
 
 ## 8. 代码结构说明
 
-### 8.1 src/index.ts
+### 8.1 src/app.ts
 
 *   使用 `express` 创建后端应用。
 *   使用 `cors` 中间件处理跨域请求。
 *   使用 `body-parser` 中间件解析 JSON 请求体。
 *   配置路由，将 `/api/resume` 路由到 `resumeRoutes`，将 `/api/llm` 路由到 `llmRoutes`。
 *   使用 `dotenv` 从 `.env` 文件中读取环境变量。
+*   导出 Express 应用实例，以便作为 Serverless Function 使用。
+
+### 8.2 api/index.ts
+
+*   Vercel Serverless Function 的入口文件。
+*   导入 `src/app.ts` 中导出的 Express 应用实例，并将其作为默认导出。
 
 ### 8.2 src/routes/llm.ts
 

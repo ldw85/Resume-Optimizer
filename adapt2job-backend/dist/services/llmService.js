@@ -49,8 +49,10 @@ const callGeminiAPI = (apiKey, resumeText, jobDescriptionText) => __awaiter(void
             const candidates = responseData.candidates;
             if (candidates && candidates.length > 0) {
                 const text = candidates[0].content.parts[0].text;
+                console.log('Gemini API response candidates:', text);
                 const jsonString = text.substring(text.indexOf('```json') + 7, text.lastIndexOf('```'));
                 try {
+                    //console.log('Gemini API response:', jsonString);
                     const jsonData = JSON.parse(jsonString);
                     return jsonData;
                 }

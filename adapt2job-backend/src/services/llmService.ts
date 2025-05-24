@@ -38,13 +38,16 @@ const callGeminiAPI = async (apiKey: string, resumeText: string, jobDescriptionT
     }
 
     try {
+      
       const responseData = await response.json();
       const candidates = responseData.candidates;
-
+      
       if (candidates && candidates.length > 0) {
         const text = candidates[0].content.parts[0].text;
+        console.log('Gemini API response candidates:', text);
         const jsonString = text.substring(text.indexOf('```json') + 7, text.lastIndexOf('```'));
         try {
+          //console.log('Gemini API response:', jsonString);
           const jsonData: AnalysisResponse = JSON.parse(jsonString);
           return jsonData;
         } catch (parseError: unknown) {

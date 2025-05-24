@@ -23,6 +23,4 @@ app.get('/', (req: Request, res: Response) => {
   res.send('ResumeOptimizer Backend is running!');
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+export default app;
