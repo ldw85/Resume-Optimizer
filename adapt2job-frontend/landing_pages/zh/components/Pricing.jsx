@@ -65,7 +65,8 @@ export default function Pricing() {
                                 <button className={`mt-8 w-full py-3 px-4 rounded-md font-medium
                                     ${plan.popular 
                                         ? 'bg-indigo-600 text-white hover:bg-indigo-700' 
-                                        : 'bg-gray-100 text-gray-900 hover:bg-gray-200'}`}>
+                                        : 'bg-gray-100 text-gray-900 hover:bg-gray-200'}`}
+                                        onClick={() => window.location.href='/optimizer?lang=zh'}>
                                     Get Started
                                 </button>
                             </div>

@@ -1,8 +1,8 @@
-# Adapt2Job 项目总结
+# ResumeOptimizer 项目总结
 
 ## 项目简介
 
-Adapt2Job 是一个根据职位要求优化简历的工具。
+ResumeOptimizer 是一个根据职位要求优化简历的工具。
 
 ## 核心功能开发过程
 

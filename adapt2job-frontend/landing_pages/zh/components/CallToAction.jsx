@@ -13,10 +13,10 @@ export default function CallToAction() {
                                 立即尝试AI简历优化，让你的简历脱颖而出
                             </p>
                             <div className="mt-10">
-                                <a href="/" className="bg-white text-indigo-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-50 transition-colors">
+                                <Link to="/optimizer?lang=zh" className="bg-white text-indigo-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-50 transition-colors">
                                     免费开始使用
                                     <i className="fas fa-arrow-right ml-2"></i>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

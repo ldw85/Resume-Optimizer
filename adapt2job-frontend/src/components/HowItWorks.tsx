@@ -30,7 +30,7 @@ const HowItWorks: React.FC = () => {
           '        通过简单的步骤，您可以快速提升简历的质量，增加获得面试的机会。')}
       </p>
       {/* Steps Container */}
-      <div className="mt-20 grid gap-8 md:grid-cols-3">
+      <div className="mt-20 grid gap-8 grid-cols-3">
                         {steps.map((step, index) => (
                             <div key={index} className="step-card p-6 rounded-xl">
                                 <div className="text-4xl font-bold text-indigo-600 mb-4">

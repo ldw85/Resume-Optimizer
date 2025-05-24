@@ -1,4 +1,4 @@
-export default function Hero() {
+export default function Hero({ onNavigateToOptimizer }) { // 接受 onNavigateToOptimizer prop
     try {
         return (
             <div data-name="hero" className="hero-gradient pt-24">
@@ -16,11 +16,11 @@ export default function Hero() {
                             让你的简历脱颖而出
                         </p>
                         <div className="mt-10">
-                            {/* 将 button 标签改为 a 标签，并添加 href="#" */}
-                            <a href="/" className="btn-primary text-xl px-8 py-4 rounded-lg text-white font-medium">
-                                立即优化简历
+                             <a href="/optimizer?lang=zh" className="btn-primary text-xl px-8 py-4 rounded-lg text-white font-medium">
+                             立即优化简历
                                 <i className="fas fa-arrow-right ml-2"></i>
                             </a>
+                            
                             <p className="mt-3 text-indigo-200 text-sm">
                                 <i className="fas fa-clock mr-1"></i>
                                 仅需1分钟，快速完成优化
@@ -39,7 +39,7 @@ export default function Hero() {
         );
     } catch (error) {
         console.error('Hero component error:', error);
-        reportError(error);
+        // reportError(error); // 注释掉，因为它可能未定义
         return null;
     }
 }

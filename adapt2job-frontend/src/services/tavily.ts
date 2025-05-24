@@ -1,30 +1,34 @@
-// src/services/tavily.ts
-
-const TAVILY_API_KEY = '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'; // 默认 Tavily API 密钥 (存在安全风险)
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const callTavilyAPI = async (url: string) => {
-  const apiUrl = 'https://api.tavily.com/search'; // 假设的 Tavily API 端点
-
   try {
-    const response = await fetch(apiUrl, {
-      method: 'POST', // Tavily API 可能是 POST 请求
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${TAVILY_API_KEY}`, // 使用 API 密钥进行身份验证
-      },
-      body: JSON.stringify({
-        q: `抓取并总结网页内容: ${url}` //  构造 Tavily API 请求体
-      }),
-    });
+    const response = await fetch(`${BACKEND_URL}/api/fetch-url-content?url=${url}`);
 
     if (!response.ok) {
-      throw new Error(`Tavily API request failed with status ${response.status}`);
+      throw new Error(`后端 API 请求失败，状态码: ${response.status}`);
     }
 
-    const data = await response.json();
-    return data; // 返回 Tavily API 响应数据
-  } catch (error: any) {
+    const datastr = await response.json();
+    //解析data  、提取raw_content 
+    const data = JSON.parse(datastr);
+    //console.log('Tavily API call successful', data.results.length, data.results[0].raw_content); // Log the whole data object for debugging
+    if (data && data.results && data.results.length > 0) {
+     // console.log('data.results[0].raw_content:', data.results[0].raw_content); // Log the raw_content for debugging
+      if (typeof data.results[0].raw_content === 'string') { // Check if raw_content is a string
+        return data.results[0].raw_content;
+      } else {
+        // If raw_content is missing or not a string, throw an error
+        throw new Error('后端 API 返回的职位信息格式不正确或为空。raw_content 不是字符串。');
+      }
+    } else {
+      throw new Error('后端 API 返回的职位信息格式不正确或为空。缺少 results 数组或其内容。');
+    }
+  } catch (error: unknown) {
     console.error('Tavily API call error:', error);
-    throw error; // 抛出错误以便组件处理
+    if (error instanceof Error) {
+      throw error;
+    } else {
+      throw new Error('An unknown error occurred during Tavily API call.');
+    }
   }
 };

@@ -1,8 +1,8 @@
 #root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  max-width: 100%; /* Can be kept if all pages should be constrained, or removed for full-width by default */
+  margin: 0 auto; /* Can be kept for centering #root, or removed */
+  /* padding: 2rem; /* Moved to .optimizer-page-container */
+  /* text-align: center; /* Moved to .optimizer-page-container */
 }
 
 .logo {
@@ -39,4 +39,95 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Styles moved from index.css and scoped for OptimizerPage */
+.optimizer-page-container {
+  /* Specific :root color overrides for OptimizerPage if needed, can be done via inline styles or more specific selectors if necessary */
+  /* background-color: #f1f5f9; /* Example: OptimizerPage specific background */
+  /* color: #1e293b; */ /* Example: OptimizerPage specific text color */
+}
+
+/* Body-like styles, but applied to the container to avoid global body override */
+/* If display:flex and place-items:center are crucial for OptimizerPage layout, they should be applied here or within its direct children. */
+/* For example:
+.optimizer-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; // If it's meant to take full viewport height
+}
+*/
+
+.optimizer-page-container {
+  width: 85%; /* Or max-width as originally intended */
+  min-width: 320px;
+  margin: 0 auto; /* This will center the optimizer page content */
+  padding: 2rem; /* Added from original #root style */
+  text-align: center; /* Added from original #root style */
+}
+
+.optimizer-page-container textarea {
+  font-family: inherit;
+  width: 100%;
+  border: 1px solid var(--border, #e2e8f0); /* Fallback if CSS var not defined */
+  border-radius: var(--radius, 0.375rem);
+  padding: 0.75rem;
+  resize: none;
+  background-color: var(--card, #ffffff); /* Using card background as an example */
+}
+
+.optimizer-page-container button {
+  border-radius: var(--radius-md, 8px); /* Using a theme variable with fallback */
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--primary, #1e293b);
+  color: var(--primary-foreground, white);
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.optimizer-page-container button:hover {
+  /* Consider a slightly darker shade of primary, or define a hover variable */
+  filter: brightness(90%);
+}
+
+.optimizer-page-container button:focus,
+.optimizer-page-container button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring, rgba(30, 41, 59, 0.4));
+}
+
+/* Scoped card style for OptimizerPage */
+.optimizer-page-container .card { /* Overrides the general .card style in this file if needed for OptimizerPage */
+  background-color: var(--card, #ffffff);
+  border-radius: var(--radius-lg, 0.5rem); /* More specific radius */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem; /* More specific padding */
+  margin-bottom: 1.5rem;
+}
+
+/* Scoped tab button styles for OptimizerPage */
+.optimizer-page-container .tab-button {
+  background-color: var(--muted-foreground); /* 使用更深的颜色变量以增加对比度 */
+}
+
+.optimizer-page-container .tab-button.active {
+  background-color: var(--card, #ffffff);
+}
+
+/* Scoped secondary button style for OptimizerPage, if used */
+/*
+.optimizer-page-container button.secondary {
+  background-color: var(--secondary, #e2e8f0);
+  color: var(--secondary-foreground, #1e293b);
+}
+*/
+
+.optimizer-page-container .step-card {
+  background: linear-gradient(to right bottom, var(--card, #ffffff), #f9fafb); /* Using theme variable */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }

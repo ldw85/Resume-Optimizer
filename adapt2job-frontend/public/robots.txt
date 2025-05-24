@@ -3,3 +3,4 @@ Disallow: /src/
 Disallow: /node_modules/
 
 Sitemap: https://www.resumeoptimizer.click/sitemap.xml
+Allow: /

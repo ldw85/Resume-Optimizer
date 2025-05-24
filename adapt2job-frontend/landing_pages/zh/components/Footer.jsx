@@ -16,16 +16,16 @@ export default function Footer() {
                         <div>
                             <h4 className="text-lg font-semibold mb-4">快速链接</h4>
                             <ul className="space-y-2">
-                                <li><a href="#" className="text-gray-400 hover:text-white">使用说明</a></li>
-                                <li><a href="#" className="text-gray-400 hover:text-white">常见问题</a></li>
-                                <li><a href="#" className="text-gray-400 hover:text-white">联系我们</a></li>
+                                <li><a href="/zh/usage-instructions" className="text-gray-400 hover:text-white">使用说明</a></li>
+                                <li><a href="/zh/faq" className="text-gray-400 hover:text-white">常见问题</a></li>
+                                <li><a href="/zh/contact-us" className="text-gray-400 hover:text-white">联系我们</a></li>
                             </ul>
                         </div>
                         <div>
                             <h4 className="text-lg font-semibold mb-4">隐私与条款</h4>
                             <ul className="space-y-2">
-                                <li><a href="#" className="text-gray-400 hover:text-white">隐私政策</a></li>
-                                <li><a href="#" className="text-gray-400 hover:text-white">服务条款</a></li>
+                                <li><a href="/zh/privacy-policy" className="text-gray-400 hover:text-white">隐私政策</a></li>
+                                <li><a href="/zh/terms-of-service" className="text-gray-400 hover:text-white">服务条款</a></li>
                             </ul>
                         </div>
                     </div>
