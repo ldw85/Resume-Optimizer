@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "adapt2job-frontend/index.html",
+      "src": "adapt2job-frontend",
       "use": "@vercel/static-build",
       "config": { "distDir": "adapt2job-frontend/dist" }
     },
