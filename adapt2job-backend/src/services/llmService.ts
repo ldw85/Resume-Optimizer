@@ -3,7 +3,7 @@ import geminiPrompt from '../prompts/gemini.prompt';
 
 // TODO: Implement analyze resume with Gemini
 const callGeminiAPI = async (apiKey: string, resumeText: string, jobDescriptionText: string): Promise<AnalysisResponse> => {
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent?key=${apiKey}`; // 假设的 Gemini API 端点
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`; // 假设的 Gemini API 端点
 
   try {
     let prompt = geminiPrompt;
@@ -44,24 +44,69 @@ const callGeminiAPI = async (apiKey: string, resumeText: string, jobDescriptionT
       
       if (candidates && candidates.length > 0) {
         const text = candidates[0].content.parts[0].text;
-        console.log('Gemini API response candidates:', text);
-        const jsonString = text.substring(text.indexOf('```json') + 7, text.lastIndexOf('```'));
-        try {
-          //console.log('Gemini API response:', jsonString);
-          const jsonData: AnalysisResponse = JSON.parse(jsonString);
-          return jsonData;
-        } catch (parseError: unknown) {
-          console.error('JSON parse error:', parseError);
-          // 返回一个符合 AnalysisResponse 结构的默认对象
-          return {
-            modificationIdeas: 'Error parsing Gemini response.',
-            contentExplanation: '',
-            modifiedResume: '',
-          };
+        console.log('Gemini API raw response text:', text);
+
+        let jsonString = '';
+        const jsonMatch = text.match(/\$\$\$json([\s\S]*?)\$\$\$/);
+
+        if (jsonMatch && jsonMatch[1]) {
+          jsonString = jsonMatch[1].trim();
+          console.log('Extracted JSON using $$$json markers:', jsonString);
+        } else {
+          // Fallback to common markdown code block if $$$json markers are not found
+          const markdownMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+          if (markdownMatch && markdownMatch[1]) {
+            jsonString = markdownMatch[1].trim();
+            console.log('Extracted JSON using markdown code block:', jsonString);
+          } else {
+             // Fallback to looking for '''json markers
+            const tripleQuoteMatch = text.match(/'''(?:json)?\s*([\s\S]*?)'''/);
+            if (tripleQuoteMatch && tripleQuoteMatch[1]) {
+              jsonString = tripleQuoteMatch[1].trim();
+              console.log('Extracted JSON using triple quote code block:', jsonString);
+            } else {
+               // As a last resort, try to find the first and last curly braces
+              const firstBrace = text.indexOf('{');
+              const lastBrace = text.lastIndexOf('}');
+              if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+                jsonString = text.substring(firstBrace, lastBrace + 1);
+                console.log('Extracted JSON using curly braces fallback:', jsonString);
+              } else {
+                 console.warn('Could not find any recognizable JSON markers or curly braces.');
+              }
+            }
+          }
+        }
+
+        if (jsonString) {
+          try {
+            // Remove control characters before parsing
+            // eslint-disable-next-line no-control-regex
+            const cleanedJsonString = jsonString.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
+            const jsonData: AnalysisResponse = JSON.parse(cleanedJsonString);
+            console.log('Parsed JSON data:', jsonData);
+            return jsonData;
+          } catch (parseError: unknown) {
+            console.error('JSON parse error:', parseError);
+            // Return a default object conforming to AnalysisResponse structure
+            return {
+              modificationIdeas: 'Error parsing Gemini response JSON.',
+              contentExplanation: '',
+              modifiedResume: '',
+            };
+          }
+        } else {
+           console.warn('No parsable JSON string extracted from Gemini response.');
+           // Return a default object conforming to AnalysisResponse structure
+           return {
+             modificationIdeas: 'No analysis result from Gemini.',
+             contentExplanation: '',
+             modifiedResume: '',
+           };
         }
       } else {
         console.warn('No candidates found in Gemini response.');
-        // 返回一个符合 AnalysisResponse 结构的默认对象
+        // Return a default object conforming to AnalysisResponse structure
         return {
           modificationIdeas: 'No analysis result from Gemini.',
           contentExplanation: '',
@@ -69,7 +114,7 @@ const callGeminiAPI = async (apiKey: string, resumeText: string, jobDescriptionT
         };
       }
     } catch (jsonError: any) {
-      console.error('Error parsing JSON response from Gemini API:', jsonError);
+      console.error('Error processing Gemini API response:', jsonError);
       const errorText = await response.text();
       console.error('Gemini API raw response:', errorText);
       throw jsonError; // Re-throw the error to be caught by the outer catch block
@@ -134,7 +179,7 @@ const analyzeResumeWithDeepSeek = async (resumeText: string, jobDescriptionText:
 
     if (contentString) {
       try {
-        const jsonString = contentString.substring(contentString.indexOf('```json') + 7, contentString.lastIndexOf('```'));
+        const jsonString = contentString.substring(contentString.indexOf('$$$json') + 7, contentString.lastIndexOf('$$$'));
         // 移除控制字符
         // eslint-disable-next-line no-control-regex
         const cleanedContentString = jsonString.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
