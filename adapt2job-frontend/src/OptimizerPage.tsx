@@ -7,7 +7,7 @@ import ResumeInput from './components/ResumeInput';
 import useResumeAnalyzer from './hooks/useResumeAnalyzer';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next'; // 引入 useTranslation
-import i18n from './i18n';
+
 import Select from 'react-select'; // 导入 react-select
 import { callTavilyAPI } from './services/tavily'; // Import callTavilyAPI
 // import HowItWorks from './components/HowItWorks'; // 将被懒加载

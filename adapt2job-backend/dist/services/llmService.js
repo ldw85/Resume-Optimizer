@@ -16,7 +16,7 @@ exports.analyzeResumeWithLLM = void 0;
 const gemini_prompt_1 = __importDefault(require("../prompts/gemini.prompt"));
 // TODO: Implement analyze resume with Gemini
 const callGeminiAPI = (apiKey, resumeText, jobDescriptionText) => __awaiter(void 0, void 0, void 0, function* () {
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${apiKey}`; // 假设的 Gemini API 端点
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`; // 假设的 Gemini API 端点
     try {
         let prompt = gemini_prompt_1.default;
         prompt = prompt.replace('{{resumeText}}', resumeText);

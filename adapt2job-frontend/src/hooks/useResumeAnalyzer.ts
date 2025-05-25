@@ -11,7 +11,7 @@ const useResumeAnalyzer = (language: string) => {
     setError(null);
 
     try {
-      const llmType = 'gemini'; // 如果是中文，则使用 deepseek，否则使用 gemini
+      const llmType = language === 'zh' ? 'deepseek' : 'gemini'; 
 
       const analysisResult: AnalysisResponse = await analyzeResumeWithLLM(llmType, resumeText, jobDescriptionText);
       return analysisResult;
