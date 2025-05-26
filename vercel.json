@@ -24,5 +24,6 @@
     }
   ],
   "installCommand": "npm install --prefix adapt2job-frontend && npm install --prefix adapt2job-backend",
-  "buildCommand": "npm run build --prefix adapt2job-frontend --verbose && npm run build --prefix adapt2job-backend --verbose"
+  "buildCommand": "npm run build --prefix adapt2job-frontend --verbose && npm run build --prefix adapt2job-backend --verbose",
+  "devCommand": "npm run dev --prefix adapt2job-frontend"
 }
