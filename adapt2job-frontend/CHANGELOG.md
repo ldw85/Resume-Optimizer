@@ -4,6 +4,8 @@ This document records the significant changes made to the ResumeOptimizer fronte
 
 ## Changes Made
 
+*   **2025-05-25:** Modified frontend build configuration in `vercel.json` to set `distDir` to `"dist"` instead of `"adapt2job-frontend/dist"`.
+*   **2025-05-25:** Modified frontend route in `vercel.json` to explicitly map all paths to the `adapt2job-frontend/dist` directory (`"dest": "adapt2job-frontend/dist/$1"`).
 *   **2025-05-25:** Added verbose build logs for frontend and backend in `vercel.json` to provide more detailed information during the Vercel build process.
 *   将 `src/LandingZhPage.jsx` 的内容迁移到 `ResumeOptimizer-frontend/landing_pages/zh/landing-zh.jsx`。
 *   更新了 `src/main.jsx` 文件，使用 `react-router-dom` 进行路由配置，并修复了导入路径错误。
