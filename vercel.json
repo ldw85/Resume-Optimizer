@@ -19,12 +19,16 @@
       "dest": "adapt2job-backend/api/index.ts"
     },
     {
-      "src": "/",
+      "src": "/adapt2job-frontend",
       "dest": "adapt2job-frontend/dist/index.html"
     },
     {
-      "src": "/(.*)",
+      "src": "/(.*\\.(?:html|css|js|png|jpg|jpeg|gif|svg|xml|json|txt))$",
       "dest": "adapt2job-frontend/dist/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "adapt2job-frontend/dist/index.html"
     }
   ],
   "installCommand": "npm install --prefix adapt2job-frontend && npm install --prefix adapt2job-backend",
