@@ -3,9 +3,9 @@
   "version": 2,
   "builds": [
     {
-      "src": "adapt2job-frontend",
+      "src": "adapt2job-frontend/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "adapt2job-frontend/dist" }
+      "config": { "distDir": "dist" }
     },
     {
       "src": "adapt2job-backend/api/index.ts",
@@ -17,6 +17,10 @@
     {
       "src": "/api/(.*)",
       "dest": "adapt2job-backend/api/index.ts"
+    },
+    {
+      "src": "/",
+      "dest": "adapt2job-frontend/dist/index.html"
     },
     {
       "src": "/(.*)",
