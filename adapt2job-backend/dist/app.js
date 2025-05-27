@@ -19,6 +19,7 @@ app.use((0, cors_1.default)(corsOptions));
 app.use(body_parser_1.default.json());
 app.use('/api', resume_1.default);
 app.use('/api', llm_1.default);
+//console.log('Express app configured and routes applied.');
 app.get('/', (req, res) => {
     res.send('ResumeOptimizer Backend is running!');
 });

@@ -77,9 +77,10 @@ graph LR
 ```
 ResumeOptimizer-backend/
 ├── src/
-│   ├── app.ts            # 后端应用入口，Express 初始化和中间件配置
+│   ├── index.ts          # Express 服务启动文件
+│   ├── app.ts            # Express 应用配置，中间件和路由
 │   ├── api/
-│   │   └── index.ts      # Vercel Serverless Function 入口
+│   │   └── index.ts      # Vercel Serverless Function 入口 (导入 src/app.ts)
 │   ├── routes/
 │   │   ├── resume.ts     # 简历相关的 API 路由 (/api/parse-resume)
 │   │   └── llm.ts        # LLM 和 Tavily 相关的 API 路由 (/api/analyze-resume, /api/fetch-url-content)
@@ -100,7 +101,7 @@ ResumeOptimizer-backend/
 ### 本地开发
 
 1.  安装依赖: `npm install`
-2.  启动服务: `npm run dev`
+2.  启动服务: ``npm run start` (或者 `npm run dev` 如果 `package.json` 中 `dev` 脚本指向 `ts-node src/index.ts`)
 
 ### Vercel 部署
 
@@ -110,16 +111,23 @@ ResumeOptimizer-backend/
 
 ## 8. 代码结构说明
 
-### 8.1 src/app.ts
+### 8.1 src/index.ts
 
-*   使用 `express` 创建后端应用。
-*   使用 `cors` 中间件处理跨域请求。
-*   使用 `body-parser` 中间件解析 JSON 请求体。
-*   配置路由，将 `/api/resume` 路由到 `resumeRoutes`，将 `/api/llm` 路由到 `llmRoutes`。
-*   使用 `dotenv` 从 `.env` 文件中读取环境变量。
-*   导出 Express 应用实例，以便作为 Serverless Function 使用。
+*   导入 `src/app.ts` 中配置的 Express 应用实例。
+*   监听配置的端口（默认为 3000），启动 Express 服务器。
+*   输出服务器启动信息到控制台。
 
-### 8.2 api/index.ts
+### 8.2 src/app.ts
+
+*   使用 `express` 创建后端应用实例。
+*   配置 `cors` 中间件处理跨域请求。
+*   配置 `body-parser` 中间件解析 JSON 请求体。
+*   加载环境变量 (`dotenv`)。
+*   应用所有 API 路由 (`resumeRoutes`, `llmRoutes`)。
+*   定义根路径 (`/`) 的响应。
+*   导出 Express 应用实例，供 `src/index.ts` (本地启动) 和 `api/index.ts` (Vercel Serverless Function) 使用。
+
+### 8.3 api/index.ts
 
 *   Vercel Serverless Function 的入口文件。
 *   导入 `src/app.ts` 中导出的 Express 应用实例，并将其作为默认导出。
@@ -143,27 +151,29 @@ ResumeOptimizer-backend/
 
 ## 9. 执行顺序
 
-1.  前端应用发送请求到后端 API。
-2.  后端 API 根据请求类型调用相应的服务函数。
-3.  服务函数调用 LLM 或 Tavily Extract API。
-4.  LLM 或 Tavily Extract API 返回结果。
-5.  后端 API 将结果返回给前端应用。
+1.  **本地开发:** `src/index.ts` 启动 Express 服务器，并导入 `src/app.ts` 进行应用配置和路由加载。
+2.  **Vercel 部署:** Vercel Serverless Function 入口 `api/index.ts` 导入并导出 `src/app.ts` 中的 Express 应用实例。
+3.  前端应用发送请求到后端 API。
+4.  Express 应用根据请求类型调用相应的路由处理函数。
+5.  路由处理函数调用相应的服务函数。
+6.  服务函数调用 LLM 或 Tavily Extract API。
+7.  LLM 或 Tavily Extract API 返回结果。
+8.  后端 API 将结果返回给前端应用。
 
 ## 10. 运行逻辑
 
-1.  后端应用启动时，从 `.env` 文件中读取 API Key。
-2.  前端应用发送简历文本和职位描述文本到 `/api/analyze-resume` 接口。
-3.  后端应用调用 `llmService.analyzeResumeWithLLM` 函数，根据 LLM 类型调用 Gemini API 或 DeepSeek API，传递简历文本和职位描述文本和 llm类型。如果前端没有传递 `llmType` 参数，则默认使用 Gemini API。
-4.  Gemini API 或 DeepSeek API 返回分析结果。
-5.  后端应用将分析结果返回给前端应用, 传递简历文本、职位描述文本和 llm类型。
-6.  前端应用发送 URL 到 `/api/fetch-url-content` 接口，传递 URL。
-7.  后端应用调用 `llmService.callTavilyAPI` 函数，调用 Tavily Extract API 获取网页内容, 传递URL。
-8.  Tavily Extract API 返回网页内容。
-9.  后端应用将网页内容返回给前端应用，传递URL。
-10. 前端应用发送 URL 到 `/api/fetch-url-content` 接口，传递 URL。
-11. 后端应用调用 `llmService.callTavilyAPI` 函数，调用 Tavily Extract API 获取网页内容, 传递URL。
-12. Tavily Extract API 返回网页内容。
-13. 后端应用将网页内容返回给前端应用，传递URL。
+1.  **服务器启动:**
+    *   **本地开发:** 运行 `src/index.ts`，它会导入 `src/app.ts` 并启动 Express 服务器，监听指定端口。
+    *   **Vercel 部署:** Vercel 平台通过 `api/index.ts` 启动 `src/app.ts` 作为 Serverless Function。
+2.  后端应用启动时，从 `.env` 文件中读取 API Key。
+3.  前端应用发送简历文本和职位描述文本到 `/api/analyze-resume` 接口。
+4.  后端应用调用 `llmService.analyzeResumeWithLLM` 函数，根据 LLM 类型调用 Gemini API 或 DeepSeek API，传递简历文本和职位描述文本和 llm类型。如果前端没有传递 `llmType` 参数，则默认使用 Gemini API。
+5.  Gemini API 或 DeepSeek API 返回分析结果。
+6.  后端应用将分析结果返回给前端应用, 传递简历文本、职位描述文本和 llm类型。
+7.  前端应用发送 URL 到 `/api/fetch-url-content` 接口，传递 URL。
+8.  后端应用调用 `llmService.callTavilyAPI` 函数，调用 Tavily Extract API 获取网页内容, 传递URL。
+9.  Tavily Extract API 返回网页内容。
+10. 后端应用将网页内容返回给前端应用，传递URL。
 
 ## 11. 详细注释
 

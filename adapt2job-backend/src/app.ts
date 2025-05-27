@@ -19,6 +19,8 @@ app.use(bodyParser.json());
 app.use('/api', resumeRoutes);
 app.use('/api', llmRoutes);
 
+//console.log('Express app configured and routes applied.');
+
 app.get('/', (req: Request, res: Response) => {
   res.send('ResumeOptimizer Backend is running!');
 });

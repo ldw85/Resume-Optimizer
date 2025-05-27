@@ -4,6 +4,8 @@ This document records the significant changes made to the ResumeOptimizer fronte
 
 ## Changes Made
 
+*   **2025-05-27:** Refactored backend server startup: Introduced `adapt2job-backend/src/index.ts` as the main entry point for local Express server execution, importing the Express app from `adapt2job-backend/src/app.ts`. This clarifies the separation of concerns between app configuration and server bootstrapping.
+
 *   **2025-05-27:** Updated `vercel.json` to replace the deprecated `routes` property with `rewrites` for API and SPA fallback routing, and added `headers` configuration for caching static assets.
 
 *   **2025-05-26:** Added a specific rewrite rule in `vercel.json` to handle the unexpected `/adapt2job-frontend` path, redirecting it to the correct `index.html`, as part of ongoing efforts to resolve 404 errors and output file issues.

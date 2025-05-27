@@ -3,7 +3,7 @@ import geminiPrompt from '../prompts/gemini.prompt';
 
 // TODO: Implement analyze resume with Gemini
 const callGeminiAPI = async (apiKey: string, resumeText: string, jobDescriptionText: string): Promise<AnalysisResponse> => {
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`; // 假设的 Gemini API 端点
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`; // 假设的 Gemini API 端点
 
   try {
     let prompt = geminiPrompt;
@@ -44,33 +44,33 @@ const callGeminiAPI = async (apiKey: string, resumeText: string, jobDescriptionT
       
       if (candidates && candidates.length > 0) {
         const text = candidates[0].content.parts[0].text;
-        console.log('Gemini API raw response text:', text);
+        //console.log('Gemini API raw response text:', text);
 
         let jsonString = '';
         const jsonMatch = text.match(/\$\$\$json([\s\S]*?)\$\$\$/);
 
         if (jsonMatch && jsonMatch[1]) {
           jsonString = jsonMatch[1].trim();
-          console.log('Extracted JSON using $$$json markers:', jsonString);
+          //console.log('Extracted JSON using $$$json markers:', jsonString);
         } else {
           // Fallback to common markdown code block if $$$json markers are not found
           const markdownMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
           if (markdownMatch && markdownMatch[1]) {
             jsonString = markdownMatch[1].trim();
-            console.log('Extracted JSON using markdown code block:', jsonString);
+            //console.log('Extracted JSON using markdown code block:', jsonString);
           } else {
              // Fallback to looking for '''json markers
             const tripleQuoteMatch = text.match(/'''(?:json)?\s*([\s\S]*?)'''/);
             if (tripleQuoteMatch && tripleQuoteMatch[1]) {
               jsonString = tripleQuoteMatch[1].trim();
-              console.log('Extracted JSON using triple quote code block:', jsonString);
+              //console.log('Extracted JSON using triple quote code block:', jsonString);
             } else {
                // As a last resort, try to find the first and last curly braces
               const firstBrace = text.indexOf('{');
               const lastBrace = text.lastIndexOf('}');
               if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
                 jsonString = text.substring(firstBrace, lastBrace + 1);
-                console.log('Extracted JSON using curly braces fallback:', jsonString);
+                //console.log('Extracted JSON using curly braces fallback:', jsonString);
               } else {
                  console.warn('Could not find any recognizable JSON markers or curly braces.');
               }
@@ -84,7 +84,7 @@ const callGeminiAPI = async (apiKey: string, resumeText: string, jobDescriptionT
             // eslint-disable-next-line no-control-regex
             const cleanedJsonString = jsonString.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
             const jsonData: AnalysisResponse = JSON.parse(cleanedJsonString);
-            console.log('Parsed JSON data:', jsonData);
+            //console.log('Parsed JSON data:', jsonData);
             return jsonData;
           } catch (parseError: unknown) {
             console.error('JSON parse error:', parseError);
