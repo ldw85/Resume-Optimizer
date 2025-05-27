@@ -276,7 +276,7 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
             onMethodChange={handleMethodChange}
             jobLink={jobLink}
             onLinkChange={handleLinkChange}
-            isLoading={isLoadingJobFetch}
+            //isLoading={isLoadingJobFetch}
             error={jobFetchError}
             required={true}
           />

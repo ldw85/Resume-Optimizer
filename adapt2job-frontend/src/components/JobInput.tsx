@@ -10,7 +10,7 @@ interface JobInputProps {
   jobLink: string; // For link method
   onLinkChange: (event: React.ChangeEvent<HTMLInputElement>) => void; // For link method
   required: boolean;
-  isLoading?: boolean; // Optional: to show loading state from parent
+  //isLoading?: boolean; // Optional: to show loading state from parent
   error?: string | null; // Optional: to show error message from parent
 }
 
@@ -21,7 +21,7 @@ const JobInput: React.FC<JobInputProps> = ({
   onMethodChange,
   jobLink,
   onLinkChange,
-  isLoading,
+  //isLoading,
   error,
 }) => {
   const { t } = useTranslation();
