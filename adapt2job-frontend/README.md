@@ -146,7 +146,8 @@ This project is configured for deployment on Vercel as a monorepo with a static 
 1.  **Vercel Configuration (`vercel.json`):**
     *   A `vercel.json` file is located at the root of the monorepo. This file defines how Vercel should build and serve both the frontend and backend.
     *   It specifies the build commands for both sub-projects and routing rules to direct API requests to the backend Serverless Functions.
-    *   Specifically, the route rule `{"src": "/(.*)", "dest": "adapt2job-frontend/dist/index.html"}` ensures that all frontend requests are served by the `index.html` file in the build output directory, enabling client-side routing.
+    *   It specifies the build commands for both sub-projects and uses `rewrites` to handle routing, directing API requests to the backend Serverless Functions and providing SPA fallback for the frontend.
+    *   The `headers` property is used to configure caching for static assets served from the frontend build output.
 
 2.  **Deployment Steps:**
     *   Push your changes to a Git repository (e.g., GitHub, GitLab, Bitbucket).

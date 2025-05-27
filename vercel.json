@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "version": 2,
+  "trailingSlash": false,
   "builds": [
     {
       "src": "adapt2job-frontend/package.json",
@@ -13,25 +13,39 @@
       "config": { "includeFiles": ["adapt2job-backend/dist/**"] }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "adapt2job-backend/api/index.ts"
+      "source": "/api/(.*)",
+      "destination": "adapt2job-backend/api/index.ts"
     },
     {
-      "src": "/adapt2job-frontend",
-      "dest": "adapt2job-frontend/dist/index.html"
+      "source": "/assets/(.*)",
+      "destination": "/adapt2job-frontend/assets/$1"
     },
     {
-      "src": "/(.*\\.(?:html|css|js|png|jpg|jpeg|gif|svg|xml|json|txt))$",
-      "dest": "adapt2job-frontend/dist/$1"
+      "source": "/locales/(.*)",
+      "destination": "/adapt2job-frontend/locales/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "adapt2job-frontend/dist/index.html"
+      "source": "/(.*\\.(?:html|css|js|png|jpg|jpeg|gif|svg|xml|json|txt))$",
+      "destination": "/adapt2job-frontend/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/adapt2job-frontend/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*\\.(?:html|css|js|png|jpg|jpeg|gif|svg|xml|json|txt))$",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ],
   "installCommand": "npm install --prefix adapt2job-frontend && npm install --prefix adapt2job-backend",
-  "buildCommand": "npm run build --prefix adapt2job-frontend --verbose && npm run build --prefix adapt2job-backend --verbose",
-  "devCommand": "npm run dev --prefix adapt2job-frontend"
+  "buildCommand": "npm run build --prefix adapt2job-frontend --verbose && npm run build --prefix adapt2job-backend --verbose"
 }

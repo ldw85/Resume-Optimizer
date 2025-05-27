@@ -4,6 +4,12 @@ This document records the significant changes made to the ResumeOptimizer fronte
 
 ## Changes Made
 
+*   **2025-05-27:** Updated `vercel.json` to replace the deprecated `routes` property with `rewrites` for API and SPA fallback routing, and added `headers` configuration for caching static assets.
+
+*   **2025-05-26:** Added a specific rewrite rule in `vercel.json` to handle the unexpected `/adapt2job-frontend` path, redirecting it to the correct `index.html`, as part of ongoing efforts to resolve 404 errors and output file issues.
+*   **2025-05-26:** Further refined `vercel.json` routing rules to explicitly handle static assets and fallback to `index.html` for all other paths, aiming to resolve persistent 404 errors and the unexpected `adapt2job-frontend` file in the output.
+*   **2025-05-26:** Refined `vercel.json` routing rules to explicitly handle the root path (`/`) and other paths (`/(.*)`) for the frontend, addressing the issue of an unexpected `adapt2job-frontend` file in the output.
+*   **2025-05-26:** Updated `vercel.json` to correctly configure frontend build source and output directory for Vercel deployment, resolving potential 404 issues.
 *   **2025-05-25:** Modified frontend build configuration in `vercel.json` to set `distDir` to `"dist"` instead of `"adapt2job-frontend/dist"`.
 *   **2025-05-25:** Modified frontend route in `vercel.json` to explicitly map all paths to the `adapt2job-frontend/dist` directory (`"dest": "adapt2job-frontend/dist/$1"`).
 *   **2025-05-25:** Added verbose build logs for frontend and backend in `vercel.json` to provide more detailed information during the Vercel build process.

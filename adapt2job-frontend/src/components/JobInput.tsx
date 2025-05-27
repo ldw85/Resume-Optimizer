@@ -97,7 +97,7 @@ const JobInput: React.FC<JobInputProps> = ({
             aria-label={t('jobInput.linkAriaLabel')}
           />
            {/* Loading and error states are now handled by the parent (OptimizerPage) */}
-           {isLoading && <p className="text-blue-500 text-sm mt-2">{t('jobInput.fetchingButton')}</p>}
+           {/* {isLoading && <p className="text-blue-500 text-sm mt-2">{t('jobInput.fetchingButton')}</p>} */}
            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
         </div>
       )}
