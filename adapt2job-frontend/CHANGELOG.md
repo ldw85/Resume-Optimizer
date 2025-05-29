@@ -1,8 +1,21 @@
 # Changelog
 
+- Added "返回首页" button translation to Optimizer Page.\n
+This document records the significant changes made to the ResumeOptimizer frontend application.
+
 This document records the significant changes made to the ResumeOptimizer frontend application.
 
 ## Changes Made
+
+*   **2025-05-29:** Added German language support:
+    *   Created `adapt2job-frontend/landing_pages/de/` directory and all related landing pages and components with German translations.
+    *   Updated `adapt2job-frontend/src/main.jsx` to include routes for the German landing page.
+    *   Updated `adapt2job-frontend/FUNCTIONALITY.md` to reflect the new language support.
+
+*   **2025-05-29:** Added German language support:
+    *   Created `adapt2job-frontend/public/locales/de.json` with German translations.
+    *   Added 'de' option to the language dropdown in `adapt2job-frontend/src/OptimizerPage.tsx`.
+    *   Updated `adapt2job-frontend/README.md` and `adapt2job-frontend/FUNCTIONALITY.md` to reflect the new language support.
 
 *   **2025-05-27:** Refactored backend server startup: Introduced `adapt2job-backend/src/index.ts` as the main entry point for local Express server execution, importing the Express app from `adapt2job-backend/src/app.ts`. This clarifies the separation of concerns between app configuration and server bootstrapping.
 

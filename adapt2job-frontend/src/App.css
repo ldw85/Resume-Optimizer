@@ -60,7 +60,7 @@
 */
 
 .optimizer-page-container {
-  width: 85%; /* Or max-width as originally intended */
+  width: 95%; /* Or max-width as originally intended */
   min-width: 320px;
   margin: 0 auto; /* This will center the optimizer page content */
   padding: 2rem; /* Added from original #root style */

@@ -48,6 +48,8 @@ This separation allows the frontend to focus on user interface and experience, w
 
 ## Multi-language Landing Pages and Additional Content
 
+- Added "返回首页" button translation to Optimizer Page.
+
 The application provides landing pages in multiple languages to cater to a global audience. These pages introduce the ResumeOptimizer tool and guide users to the main optimization page.
 
 ### Supported Languages
@@ -56,6 +58,7 @@ The application provides landing pages in multiple languages to cater to a globa
 - Spanish (`/es`)
 - Japanese (`/ja`)
 - Chinese (`/zh`)
+- German (`/de`)
 
 ### Additional Pages per Language
 

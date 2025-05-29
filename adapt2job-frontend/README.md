@@ -21,7 +21,7 @@ For a history of changes made to the project, please see [CHANGELOG.md](CHANGELO
 .
 ├── adapt2job-frontend/ # Frontend application
 │   ├── public/             # Static assets (accessible at root)
-│   │   ├── locales/        # Internationalization files (en.json, zh.json, etc.)
+│   │   ├── locales/        # Internationalization files (en.json, zh.json, es.json, ja.json, de.json, etc.)
 │   │   └── ...             # Other static assets (images, favicon.ico, manifest.json)
 │   ├── src/
 │   │   ├── assets/         # Images and other assets used by OptimizerPage
@@ -157,7 +157,7 @@ This project is configured for deployment on Vercel as a monorepo with a static 
 ## Notes
 
 *   Ensure necessary environment variables are configured in Vercel for the backend services.
-*   Internationalization files are located in the `adapt2job-frontend/public/locales/` directory.
+*   Internationalization files are located in the `adapt2job-frontend/public/locales/` directory. German language support has been added.
 *   修改了 `adapt2job-frontend/src/services/llmService.ts` 文件，将 fetch 请求的超时时间设置为 5 分钟 (300000 毫秒)，以避免请求超时问题。
 *   已更新 [FUNCTIONALITY.md](FUNCTIONALITY.md) 文件，增加了 Job Input 功能的详细描述。
 *   Added verbose build logs for frontend and backend in `vercel.json` to provide more detailed information during the Vercel build process.

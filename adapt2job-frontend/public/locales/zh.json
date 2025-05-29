@@ -63,5 +63,6 @@
   "jobInput.linkDescription": "输入职位链接",
   "jobInput.linkPlaceholder": "在此输入职位链接...",
   "jobInput.fetchButton": "获取职位描述",
-  "jobInput.fetchingButton": "正在获取职位描述..."
+  "jobInput.fetchingButton": "正在获取职位描述...",
+  "返回首页": "返回首页"
 }

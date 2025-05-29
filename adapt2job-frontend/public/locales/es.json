@@ -83,5 +83,6 @@
   "jobInput.linkDescription": "Introducir enlace del puesto",
   "jobInput.linkPlaceholder": "Introduzca aquí el enlace del puesto...",
   "jobInput.fetchButton": "Obtener descripción del puesto",
-  "jobInput.fetchingButton": "Obteniendo descripción del puesto..."
+  "jobInput.fetchingButton": "Obteniendo descripción del puesto...",
+  "返回首页": "Volver a la página de inicio"
 }

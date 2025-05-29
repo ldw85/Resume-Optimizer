@@ -83,5 +83,6 @@
   "jobInput.linkDescription": "求人リンクを入力",
   "jobInput.linkPlaceholder": "ここに求人リンクを入力してください...",
   "jobInput.fetchButton": "職務内容を取得",
-  "jobInput.fetchingButton": "職務内容を取得中..."
+  "jobInput.fetchingButton": "職務内容を取得中...",
+  "返回首页": "ホームページに戻る"
 }

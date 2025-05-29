@@ -10,7 +10,8 @@ import { I18nextProvider } from 'react-i18next';
 import LandingEn from '../landing_pages/en/landing-en.jsx';
 import LandingEs from '../landing_pages/es/landing-es.jsx';
 import LandingJa from '../landing_pages/ja/landing-ja.jsx';
-import LandingZh from '../landing_pages/zh/landing-zh.jsx'; // Use the new path
+import LandingZh from '../landing_pages/zh/landing-zh.jsx';
+import LandingDe from '../landing_pages/de/landing-de.jsx';
 import UsageInstructionsEn from '../landing_pages/en/usage-instructions.jsx';
 import FAQEn from '../landing_pages/en/faq.jsx';
 import ContactUsEn from '../landing_pages/en/contact-us.jsx';
@@ -31,6 +32,11 @@ import FAQZh from '../landing_pages/zh/faq.jsx';
 import ContactUsZh from '../landing_pages/zh/contact-us.jsx';
 import PrivacyPolicyZh from '../landing_pages/zh/privacy-policy.jsx';
 import TermsOfServiceZh from '../landing_pages/zh/terms-of-service.jsx';
+import UsageInstructionsDe from '../landing_pages/de/usage-instructions.jsx';
+import FAQDe from '../landing_pages/de/faq.jsx';
+import ContactUsDe from '../landing_pages/de/contact-us.jsx';
+import PrivacyPolicyDe from '../landing_pages/de/privacy-policy.jsx';
+import TermsOfServiceDe from '../landing_pages/de/terms-of-service.jsx';
 
 // i18n 初始化逻辑保持不变
 i18n.on('initialized', () => {
@@ -54,6 +60,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/es" element={<LandingEs />} />
           <Route path="/ja" element={<LandingJa />} />
           <Route path="/zh" element={<LandingZh />} />
+          <Route path="/de" element={<LandingDe />} />
           {/* New routes for English pages */}
           <Route path="/en/usage-instructions" element={<UsageInstructionsEn />} />
           <Route path="/en/faq" element={<FAQEn />} />
@@ -78,6 +85,12 @@ createRoot(document.getElementById('root')).render(
           <Route path="/zh/contact-us" element={<ContactUsZh />} />
           <Route path="/zh/privacy-policy" element={<PrivacyPolicyZh />} />
           <Route path="/zh/terms-of-service" element={<TermsOfServiceZh />} />
+          {/* New routes for German pages */}
+          <Route path="/de/usage-instructions" element={<UsageInstructionsDe />} />
+          <Route path="/de/faq" element={<FAQDe />} />
+          <Route path="/de/contact-us" element={<ContactUsDe />} />
+          <Route path="/de/privacy-policy" element={<PrivacyPolicyDe />} />
+          <Route path="/de/terms-of-service" element={<TermsOfServiceDe />} />
           {/* Optimizer page */}
           <Route path="/optimizer" element={<OptimizerPage />} />
           {/* Optional: Add a catch-all route for 404 */}

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'react-router-dom'; // Import useSearchParams
+import { useSearchParams, useNavigate } from 'react-router-dom'; // Import useSearchParams and useNavigate
 import './App.css';
 // import AnalysisOutput from './components/AnalysisOutput'; // 将被懒加载
 import JobInput from './components/JobInput';
@@ -26,6 +26,7 @@ interface LanguageOption {
 
 const OptimizerPage: React.FC = () => { // Use const and specify type
   const [searchParams] = useSearchParams(); // Get search params
+  const navigate = useNavigate(); // Get navigate function
   const { t, i18n } = useTranslation(); // Use useTranslation and get i18n instance
 
   const [resumeText, setResumeText] = useState<string>('');
@@ -54,6 +55,7 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
     { value: 'zh', label: t('中文') },
     { value: 'ja', label: t('日本語') }, // 添加日语选项
     { value: 'es', label: t('Español') }, // 添加西班牙语选项
+    { value: 'de', label: t('Deutsch') }, // 添加德语选项
   ];
 
   // 获取当前选中的语言选项
@@ -222,10 +224,19 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
             <h1 className="text-3xl font-bold mb-2"> {t('ResumeOptimizer')} </h1>
           </div>
 
-          {/* Language Switcher */}
-          <div className="w-32"> {/* 控制下拉框宽度 */}
-            <Select<LanguageOption>
-              value={selectedLanguageOption}
+          {/* Right side: Back Button and Language Switcher */}
+          <div className="flex items-center"> {/* New wrapper div */}
+            {/* Back Button */}
+            <button
+              onClick={() => navigate('/')} // Navigate to home page
+              className="px-4 py-2 bg-white text-black text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" // Removed mr-4, added text-sm
+            >
+              {t('返回首页')} {/* Localize the button text */}
+            </button>
+            {/* Language Switcher */}
+            <div className="w-32 ml-4"> {/* Added ml-4 */}
+              <Select<LanguageOption>
+                value={selectedLanguageOption}
               onChange={changeLanguage}
               options={languageOptions}
               classNamePrefix="react-select" // 用于自定义样式
@@ -253,6 +264,7 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
                 }),
               }}
             />
+            </div> {/* Closing tag for w-32 ml-4 div */}
           </div>
         </div>
       </header>
