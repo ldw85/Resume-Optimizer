@@ -43,7 +43,7 @@
       "destination": "/adapt2job-frontend/locales/$1"
     },
     {
-      "source": "/(.*\\.(html|css|js|png|jpg|jpeg|gif|svg|xml|json|txt))$",
+      "source": "/(.*\\.(?:html|css|js|png|jpg|jpeg|gif|svg|xml|json|txt))$",
       "destination": "/adapt2job-frontend/$1"
     },
     {

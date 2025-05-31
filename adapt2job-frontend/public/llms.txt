@@ -17,3 +17,4 @@ ResumeOptimizer
 ## Recent Updates
 - Enhanced Multi-language Button on Optimizer Page: 2025/05/31
 - Improved Language Navigation in Footer on Landing Pages: 2025/05/31
+
