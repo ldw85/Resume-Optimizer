@@ -55,3 +55,6 @@ This document records the significant changes made to the ResumeOptimizer fronte
         *   配置 `installCommand` 和 `buildCommand` 以支持 Monorepo 的依赖安装和构建。
     *   更新 `adapt2job-backend/README.md` 和 `adapt2job-frontend/README.md`，反映 Monorepo 结构、Vercel 部署方式以及后端代码结构的变化。
     *   更新 `adapt2job-frontend/FUNCTIONALITY.md`，增加后端交互的说明。
+
+*   **2025-05-31:** Added multi-language landing page links to the footer of the English landing page:
+    *   Updated `adapt2job-frontend/landing_pages/en/components/Footer.jsx` to include links to the Spanish, Chinese, Japanese, and German landing pages.

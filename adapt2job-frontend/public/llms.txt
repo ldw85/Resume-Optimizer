@@ -1,0 +1,19 @@
+# Website Identifier
+ResumeOptimizer
+
+> Value Proposition: Helps job seekers quickly and effectively tailor their resume content to better match specific job requirements, thereby increasing their job application success rate.
+
+## Content Structure
+- Resume Upload & Parsing (https://www.resumeoptimizer.click/optimizer): Supports users in uploading PDF and DOCX resumes for text extraction.
+- Job Information Input (https://www.resumeoptimizer.click/optimizer): Allows users to paste job descriptions or provide job links for automatic content fetching.
+- Resume Optimization & Revision (https://www.resumeoptimizer.click/optimizer): Provides optimization suggestions and generates a revised resume based on the resume and job description, with PDF download support.
+- Multi-language Landing Pages (https://www.resumeoptimizer.click/en): Introduces the tool and guides users, with multi-language switching support.
+- Information Pages (https://www.resumeoptimizer.click/en/usage-instructions): Offers usage instructions, FAQs, contact information, privacy policy, and terms of service.
+
+## Key Pages
+- Main Optimizer Page (https://www.resumeoptimizer.click/optimizer): The core functionality entry point.
+- English Landing Page (https://www.resumeoptimizer.click/en): Website introduction and navigation.
+
+## Recent Updates
+- Enhanced Multi-language Button on Optimizer Page: 2025/05/31
+- Improved Language Navigation in Footer on Landing Pages: 2025/05/31

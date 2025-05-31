@@ -19,6 +19,22 @@
       "destination": "adapt2job-backend/api/index.ts"
     },
     {
+      "source": "/sitemap.xml",
+      "destination": "/adapt2job-frontend/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/adapt2job-frontend/robots.txt"
+    },
+    {
+      "source": "/llms.txt",
+      "destination": "/adapt2job-frontend/public/llms.txt"
+    },
+    {
+      "source": "/llm-full.txt",
+      "destination": "/adapt2job-frontend/public/llm-full.txt"
+    },
+    {
       "source": "/assets/(.*)",
       "destination": "/adapt2job-frontend/assets/$1"
     },
@@ -27,7 +43,7 @@
       "destination": "/adapt2job-frontend/locales/$1"
     },
     {
-      "source": "/(.*\\.(?:html|css|js|png|jpg|jpeg|gif|svg|xml|json|txt))$",
+      "source": "/(.*\\.(html|css|js|png|jpg|jpeg|gif|svg|xml|json|txt))$",
       "destination": "/adapt2job-frontend/$1"
     },
     {

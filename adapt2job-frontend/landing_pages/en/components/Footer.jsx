@@ -3,7 +3,7 @@ export default function Footer() {
         return (
             <footer data-name="footer" className="bg-gray-900 text-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-4 md-8">
                         <div>
                             <h3 className="text-xl font-bold mb-4">
                                 <i className="fas fa-file-alt mr-2"></i>
@@ -28,10 +28,20 @@ export default function Footer() {
                                 <li><a href="/en/terms-of-service" className="text-gray-400 hover:text-white">Terms of Service</a></li>
                             </ul>
                         </div>
+                        <div className="">
+                            <h4 className="text-lg font-semibold mb-4">Other Languages</h4>
+                            <ul className="space-y-2">
+                                <li><a href="/es" className="text-gray-400 hover:text-white">Español</a></li>
+                                <li><a href="/zh" className="text-gray-400 hover:text-white">中文</a></li>
+                                <li><a href="/ja" className="text-gray-400 hover:text-white">日本語</a></li>
+                                <li><a href="/de" className="text-gray-400 hover:text-white">Deutsch</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
                         <p>&copy; 2024 AI Resume Optimization. All rights reserved</p>
                     </div>
+                    
                 </div>
             </footer>
         );

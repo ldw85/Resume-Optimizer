@@ -6,6 +6,7 @@ This document describes the core functionality of the ResumeOptimizer frontend a
 
 This tool aims to help job seekers quickly and effectively adjust their resume content to better match the requirements of specific positions, thereby increasing their job application success rate. Users can input their resume and the description of the target position, and the application will analyze both and provide optimization suggestions and a revised resume version. The application also includes multi-language landing pages.
 
+
 ## Job Input Functionality
 
 The application provides a dedicated section for users to input the target job description. This section offers flexibility by supporting two primary methods for providing job details:
@@ -71,3 +72,7 @@ For each supported language, the following informational pages are available:
 - Terms of Service (`/:lang/terms-of-service`)
 
 These pages provide detailed information and support for users in their preferred language.
+
+### Multi-Language Landing Page Links in Footer
+
+The English landing page now includes links in the footer to the landing pages of other supported languages. This allows users to easily navigate to the content in their preferred language.

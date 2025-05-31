@@ -2,5 +2,24 @@ User-agent: *
 Disallow: /src/
 Disallow: /node_modules/
 
+# AI爬虫特殊处理
+User-Agent: GPTBot
+Allow: /llms.txt
+Disallow: /
+
+User-Agent: anthropic-ai
+Allow: /llms.txt
+Disallow: /
+
+# 搜索引擎爬虫
+User-Agent: Googlebot
+Allow: /
+
+
+# AI内容引导
+LLM-Content: https://www.resumeoptimizer.click/llms.txt
+LLM-Full-Content: https://www.resumeoptimizer.click/llms-full.txt
+
 Sitemap: https://www.resumeoptimizer.click/sitemap.xml
+LLM-Access: https://www.resumeoptimizer.click/llms.txt
 Allow: /
