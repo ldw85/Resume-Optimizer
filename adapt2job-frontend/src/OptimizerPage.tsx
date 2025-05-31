@@ -55,7 +55,6 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
     { value: 'zh', label: t('中文') },
     { value: 'ja', label: t('日本語') }, // 添加日语选项
     { value: 'es', label: t('Español') }, // 添加西班牙语选项
-    { value: 'de', label: t('Deutsch') }, // 添加德语选项
   ];
 
   // 获取当前选中的语言选项

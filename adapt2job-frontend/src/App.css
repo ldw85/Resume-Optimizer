@@ -42,11 +42,11 @@
 }
 
 /* Styles moved from index.css and scoped for OptimizerPage */
-.optimizer-page-container {
+/*.optimizer-page-container {
   /* Specific :root color overrides for OptimizerPage if needed, can be done via inline styles or more specific selectors if necessary */
   /* background-color: #f1f5f9; /* Example: OptimizerPage specific background */
   /* color: #1e293b; */ /* Example: OptimizerPage specific text color */
-}
+/*}*/
 
 /* Body-like styles, but applied to the container to avoid global body override */
 /* If display:flex and place-items:center are crucial for OptimizerPage layout, they should be applied here or within its direct children. */
@@ -60,10 +60,10 @@
 */
 
 .optimizer-page-container {
-  width: 95%; /* Or max-width as originally intended */
+  width: 100%; /* Or max-width as originally intended */
   min-width: 320px;
   margin: 0 auto; /* This will center the optimizer page content */
-  padding: 2rem; /* Added from original #root style */
+  /* padding: 2rem; /* Added from original #root style */
   text-align: center; /* Added from original #root style */
 }
 
