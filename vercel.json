@@ -28,11 +28,15 @@
     },
     {
       "source": "/llms.txt",
-      "destination": "/adapt2job-frontend/public/llms.txt"
+      "destination": "/adapt2job-frontend/llms.txt"
     },
     {
       "source": "/llm-full.txt",
-      "destination": "/adapt2job-frontend/public/llm-full.txt"
+      "destination": "/adapt2job-frontend/llm-full.txt"
+    },
+    {
+      "source": "/resume-icon.svg",
+      "destination": "/adapt2job-frontend/resume-icon.svg"
     },
     {
       "source": "/assets/(.*)",
