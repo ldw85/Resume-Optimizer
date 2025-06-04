@@ -20,6 +20,7 @@ For a history of changes made to the project, please see [CHANGELOG.md](CHANGELO
 ```
 .
 ├── adapt2job-frontend/ # Frontend application
+│   ├── .env.local          # Local environment variables for Clerk
 │   ├── public/             # Static assets (accessible at root)
 │   │   ├── locales/        # Internationalization files (en.json, zh.json, es.json, ja.json, de.json, etc.)
 │   │   └── ...             # Other static assets (images, favicon.ico, manifest.json)
@@ -45,6 +46,7 @@ For a history of changes made to the project, please see [CHANGELOG.md](CHANGELO
 │   │   ├── lib/            # Utility functions (utils.ts)
 │   │   ├── services/       # API call related (gemini.ts, llmService.ts, tavily.ts)
 │   │   ├── OptimizerPage.tsx # Main component for the resume optimization tool
+│   │   └── ...             # Other core application files
 │   │   ├── App.css         # Styles for OptimizerPage
 │   │   ├── index.css       # Global styles, Tailwind base
 │   │   ├── main.jsx        # Main application entry point, handles routing using react-router-dom
@@ -92,20 +94,24 @@ This is a monorepo containing both a React frontend application (`adapt2job-fron
     *   Language-specific landing pages are routed using the `/:lang` format (e.g., `/es`, `/ja`, `/zh`), pointing to their respective components in `ResumeOptimizer-frontend/landing_pages/:lang/`.
     *   New routes for usage instructions, FAQ, contact us, privacy policy, and terms of service are added for each language using the `/:lang/:page-name` format (e.g., `/en/usage-instructions`, `/es/faq`, `/ja/contact-us`, `/zh/privacy-policy`, `/en/terms-of-service`).
     *   The Optimizer Page is routed to `/optimizer`.
-3.  **Landing Pages (`ResumeOptimizer-frontend/landing_pages/:lang/landing-:lang.jsx`):**
+3.  **Clerk Authentication:**
+    *   Clerk is integrated for user authentication. `ClerkProvider` is imported from `@clerk/clerk-react` in `src/main.jsx`. The application is wrapped with `<ClerkProvider>` in `src/main.jsx`, which provides authentication context to all components.
+    *   Environment variable `VITE_CLERK_PUBLISHABLE_KEY` is used to configure Clerk.
+    *   Prebuilt Clerk components like `<SignedIn>`, `<SignedOut>`, `<SignInButton>`, `<SignUpButton>`, and `<UserButton>` are utilized in `src/OptimizerPage.tsx` and `landing_pages/en/components/Navbar.jsx` to manage user sign-in, sign-up, and user profile interactions.
+4.  **Landing Pages (`ResumeOptimizer-frontend/landing_pages/:lang/landing-:lang.jsx`):**
     *   Each language has its own landing page component within the `ResumeOptimizer-frontend/landing_pages/` directory.
     *   Call-to-action buttons on these landing pages now link directly to the `/optimizer` path, passing the language code as a URL parameter (e.g., `/optimizer?lang=en`).
-4.  **Resume Optimizer Tool (`src/OptimizerPage.tsx`):**
+5.  **Resume Optimizer Tool (`src/OptimizerPage.tsx`):**
     *   This is the core application page where users interact with the resume optimization features.
     *   It includes components like `ResumeInput`, `JobInput`, and `AnalysisOutput` (found in `src/components/`).
     *   Upon loading, `OptimizerPage.tsx` checks the URL for a `lang` query parameter. If found, it uses that language. Otherwise, it falls back to detecting the browser's language.
     *   State management for resume text, job description, and analysis results is handled within this component and its hooks (e.g., `useResumeAnalyzer`).
     *   Analysis is triggered by user action, making API calls to the backend services.
-5.  **Internationalization:**
+6.  **Internationalization:**
     *   i18next is configured in `src/i18n.ts`.
     *   Language files are located in `public/locales/`.
     *   The `I18nextProvider` in `src/main.jsx` makes translations available throughout the application. All pages can use the `useTranslation` hook.
-6.  **API Interaction:**
+7.  **API Interaction:**
     *   The frontend interacts with the backend API (e.g., `/api/parse-resume`, `/api/analyze-resume`, `/api/fetch-url-content`) to process resumes, analyze content, and fetch external data.
 
 ### Backend (`adapt2job-backend`)
@@ -118,9 +124,11 @@ The backend is an Express.js application designed to run as Vercel Serverless Fu
 2.  **API Routes (`src/routes/`):**
     *   `resume.ts`: Handles resume-related API endpoints (e.g., `/api/parse-resume` for file parsing).
     *   `llm.ts`: Handles LLM and Tavily related API endpoints (e.g., `/api/analyze-resume` for AI analysis, `/api/fetch-url-content` for web content extraction).
+    *   `download.ts`: Handles file download related API endpoints (e.g., `/api/download/docx` for DOCX generation).
 3.  **Services (`src/services/`):**
     *   `fileParser.ts`: Contains logic for parsing different resume file formats (PDF, DOCX).
     *   `llmService.ts`: Encapsulates logic for interacting with LLM (Gemini) and Tavily APIs.
+    *   `docxGeneratorService.ts`: Contains logic for converting HTML content to DOCX format.
 4.  **Environment Variables:**
     *   API keys for external services (e.g., `GEMINI_API_KEY`, `TAVILY_API_KEY`) are loaded from environment variables. For Vercel deployment, these should be configured in the Vercel project settings.
 
@@ -136,6 +144,7 @@ The backend is an Express.js application designed to run as Vercel Serverless Fu
 
 2.  **Start Development Servers:**
     *   **Frontend:** Navigate to `adapt2job-frontend` and run `npm run dev`.
+        *   *Note: The Vite development server is configured to proxy `/api` requests to the backend server running on `http://localhost:3000`.*
     *   **Backend:** Navigate to `adapt2job-backend` and run `npm run dev`.
     *   Ensure your frontend is configured to call the local backend API (e.g., `http://localhost:3000/api`).
 
@@ -168,18 +177,22 @@ This project is configured for deployment on Vercel as a monorepo with a static 
 
 ### 代码结构说明
 
-`AnalysisOutput.tsx` 组件负责展示简历分析结果，包括修改思路、修改内容说明和修改后的完整简历。
+`AnalysisOutput.tsx` 组件负责展示简历分析结果，包括修改思路、修改内容说明和修改后的完整简历。现在，它还提供了下载 PDF 和 DOCX 文件的功能。
 
 ### 执行顺序
 
 1.  接收 `analysisResult` prop，该 prop 包含 `modificationIdeas`、`contentExplanation` 和 `modifiedResume` 属性。
 2.  使用 `dangerouslySetInnerHTML` 渲染 HTML 内容。
+3.  用户点击“下载PDF”按钮时，动态导入 `html2canvas` 和 `jspdf`，将简历内容转换为 PDF 并下载。
+4.  用户点击“下载DOCX”按钮时，将简历的 HTML 内容发送到后端 `/api/download/docx` 接口，后端生成 DOCX 文件后，前端触发下载。
 
 ### 运行逻辑
 
-如果 `analysisResult` 为空，则显示 "No analysis result to display."。否则，显示修改思路、修改内容说明和修改后的完整简历。
+如果 `analysisResult` 为空，则显示 "No analysis result to display."。否则，显示修改思路、修改内容说明和修改后的完整简历，并提供下载 PDF 和 DOCX 的按钮。
 
 ### 详细注释
 
 *   `dangerouslySetInnerHTML` 用于渲染 HTML 内容。
 *   如果 `analysisResult` 中的数据为空，则渲染空字符串，以防止渲染错误。
+*   PDF 下载功能通过动态导入 `html2canvas` 和 `jspdf` 实现，将 HTML 内容渲染为 Canvas，再转换为 PDF。
+*   DOCX 下载功能通过向后端发送 HTML 内容，由后端服务 (`docxGeneratorService.ts`) 转换为 DOCX 文件并返回。

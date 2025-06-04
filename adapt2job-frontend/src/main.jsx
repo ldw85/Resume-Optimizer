@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Import routing components
+import { ClerkProvider } from '@clerk/clerk-react';
 import './index.css';
 import OptimizerPage from './OptimizerPage'; // Import OptimizerPage
 import i18n from './i18n';
@@ -37,6 +38,13 @@ import FAQDe from '../landing_pages/de/faq.jsx';
 import ContactUsDe from '../landing_pages/de/contact-us.jsx';
 import PrivacyPolicyDe from '../landing_pages/de/privacy-policy.jsx';
 import TermsOfServiceDe from '../landing_pages/de/terms-of-service.jsx';
+// Import your Publishable Key
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error('Missing Clerk Publishable Key')
+}
+
 
 // i18n 初始化逻辑保持不变
 i18n.on('initialized', () => {
@@ -50,53 +58,55 @@ i18n.on('initialized', () => {
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <I18nextProvider i18n={i18n}>
-      <BrowserRouter> {/* Use BrowserRouter for routing */}
-        <Routes> {/* Define routes */}
-          {/* Default English landing page */}
-          <Route path="/" element={<LandingEn />} />
-          {/* Other language landing pages */}
-          <Route path="/en" element={<LandingEn />} />
-          <Route path="/es" element={<LandingEs />} />
-          <Route path="/ja" element={<LandingJa />} />
-          <Route path="/zh" element={<LandingZh />} />
-          <Route path="/de" element={<LandingDe />} />
-          {/* New routes for English pages */}
-          <Route path="/en/usage-instructions" element={<UsageInstructionsEn />} />
-          <Route path="/en/faq" element={<FAQEn />} />
-          <Route path="/en/contact-us" element={<ContactUsEn />} />
-          <Route path="/en/privacy-policy" element={<PrivacyPolicyEn />} />
-          <Route path="/en/terms-of-service" element={<TermsOfServiceEn />} />
-          {/* New routes for Spanish pages */}
-          <Route path="/es/usage-instructions" element={<UsageInstructionsEs />} />
-          <Route path="/es/faq" element={<FAQEs />} />
-          <Route path="/es/contact-us" element={<ContactUsEs />} />
-          <Route path="/es/privacy-policy" element={<PrivacyPolicyEs />} />
-          <Route path="/es/terms-of-service" element={<TermsOfServiceEs />} />
-          {/* New routes for Japanese pages */}
-          <Route path="/ja/usage-instructions" element={<UsageInstructionsJa />} />
-          <Route path="/ja/faq" element={<FAQJa />} />
-          <Route path="/ja/contact-us" element={<ContactUsJa />} />
-          <Route path="/ja/privacy-policy" element={<PrivacyPolicyJa />} />
-          <Route path="/ja/terms-of-service" element={<TermsOfServiceJa />} />
-          {/* New routes for Chinese pages */}
-          <Route path="/zh/usage-instructions" element={<UsageInstructionsZh />} />
-          <Route path="/zh/faq" element={<FAQZh />} />
-          <Route path="/zh/contact-us" element={<ContactUsZh />} />
-          <Route path="/zh/privacy-policy" element={<PrivacyPolicyZh />} />
-          <Route path="/zh/terms-of-service" element={<TermsOfServiceZh />} />
-          {/* New routes for German pages */}
-          <Route path="/de/usage-instructions" element={<UsageInstructionsDe />} />
-          <Route path="/de/faq" element={<FAQDe />} />
-          <Route path="/de/contact-us" element={<ContactUsDe />} />
-          <Route path="/de/privacy-policy" element={<PrivacyPolicyDe />} />
-          <Route path="/de/terms-of-service" element={<TermsOfServiceDe />} />
-          {/* Optimizer page */}
-          <Route path="/optimizer" element={<OptimizerPage />} />
-          {/* Optional: Add a catch-all route for 404 */}
-          {/* <Route path="*" element={<NotFoundPage />} /> */}
-        </Routes>
-      </BrowserRouter>
-    </I18nextProvider>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+      <I18nextProvider i18n={i18n}>
+        <BrowserRouter> {/* Use BrowserRouter for routing */}
+          <Routes> {/* Define routes */}
+            {/* Default English landing page */}
+            <Route path="/" element={<LandingEn />} />
+            {/* Other language landing pages */}
+            <Route path="/en" element={<LandingEn />} />
+            <Route path="/es" element={<LandingEs />} />
+            <Route path="/ja" element={<LandingJa />} />
+            <Route path="/zh" element={<LandingZh />} />
+            <Route path="/de" element={<LandingDe />} />
+            {/* New routes for English pages */}
+            <Route path="/en/usage-instructions" element={<UsageInstructionsEn />} />
+            <Route path="/en/faq" element={<FAQEn />} />
+            <Route path="/en/contact-us" element={<ContactUsEn />} />
+            <Route path="/en/privacy-policy" element={<PrivacyPolicyEn />} />
+            <Route path="/en/terms-of-service" element={<TermsOfServiceEn />} />
+            {/* New routes for Spanish pages */}
+            <Route path="/es/usage-instructions" element={<UsageInstructionsEs />} />
+            <Route path="/es/faq" element={<FAQEs />} />
+            <Route path="/es/contact-us" element={<ContactUsEs />} />
+            <Route path="/es/privacy-policy" element={<PrivacyPolicyEs />} />
+            <Route path="/es/terms-of-service" element={<TermsOfServiceEs />} />
+            {/* New routes for Japanese pages */}
+            <Route path="/ja/usage-instructions" element={<UsageInstructionsJa />} />
+            <Route path="/ja/faq" element={<FAQJa />} />
+            <Route path="/ja/contact-us" element={<ContactUsJa />} />
+            <Route path="/ja/privacy-policy" element={<PrivacyPolicyJa />} />
+            <Route path="/ja/terms-of-service" element={<TermsOfServiceJa />} />
+            {/* New routes for Chinese pages */}
+            <Route path="/zh/usage-instructions" element={<UsageInstructionsZh />} />
+            <Route path="/zh/faq" element={<FAQZh />} />
+            <Route path="/zh/contact-us" element={<ContactUsZh />} />
+            <Route path="/zh/privacy-policy" element={<PrivacyPolicyZh />} />
+            <Route path="/zh/terms-of-service" element={<TermsOfServiceZh />} />
+            {/* New routes for German pages */}
+            <Route path="/de/usage-instructions" element={<UsageInstructionsDe />} />
+            <Route path="/de/faq" element={<FAQDe />} />
+            <Route path="/de/contact-us" element={<ContactUsDe />} />
+            <Route path="/de/privacy-policy" element={<PrivacyPolicyDe />} />
+            <Route path="/de/terms-of-service" element={<TermsOfServiceDe />} />
+            {/* Optimizer page */}
+            <Route path="/optimizer" element={<OptimizerPage />} />
+            {/* Optional: Add a catch-all route for 404 */}
+            {/* <Route path="*" element={<NotFoundPage />} /> */}
+          </Routes>
+        </BrowserRouter>
+      </I18nextProvider>
+    </ClerkProvider>
   </StrictMode>
 );

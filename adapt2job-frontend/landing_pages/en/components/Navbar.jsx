@@ -1,3 +1,5 @@
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react';
+
 export default function Navbar() {
     try {
         return (
@@ -11,10 +13,17 @@ export default function Navbar() {
                             </a>
                         </div>
                         
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-4">    
                             <a href="/optimizer?lang=en" className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
                                 Free Trial
                             </a>
+                            <SignedOut>
+                                <SignInButton />
+                                <SignUpButton />
+                            </SignedOut>
+                            <SignedIn>
+                                <UserButton />
+                            </SignedIn>
                         </div>
                     </div>
                 </div>
@@ -22,7 +31,8 @@ export default function Navbar() {
         );
     } catch (error) {
         console.error('Navbar component error:', error);
-        reportError(error);
+        // Assuming reportError is a global function or imported from somewhere
+        // reportError(error);
         return null;
     }
 }

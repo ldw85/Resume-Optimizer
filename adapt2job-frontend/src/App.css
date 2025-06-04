@@ -88,6 +88,7 @@
   color: var(--primary-foreground, white);
   cursor: pointer;
   transition: background-color 0.25s;
+  margin-right: 0.5rem; /* Added margin to the right of buttons */
 }
 
 .optimizer-page-container button:hover {
@@ -130,4 +131,37 @@
 .optimizer-page-container .step-card {
   background: linear-gradient(to right bottom, var(--card, #ffffff), #f9fafb); /* Using theme variable */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Clerk buttons styling */
+.clerk-buttons-container {
+  display: flex;
+  gap: 0.5rem; /* Adjust gap as needed */
+  align-items: center;
+}
+
+.clerk-buttons-container .cl-button { /* Targeting Clerk's default button class */
+  padding: 0.25rem 0.5rem; /* Smaller padding */
+  font-size: 0.875rem; /* Smaller font size */
+  height: auto; /* Allow height to adjust based on content */
+  min-height: unset; /* Override any default min-height */
+}
+
+.clerk-buttons-container .cl-userButton { /* Targeting Clerk's UserButton */
+  width: 2rem; /* Smaller width for user button */
+  height: 2rem; /* Smaller height for user button */
+}
+
+.clerk-buttons-container .cl-userButtonBox {
+  width: 2rem;
+  height: 2rem;
+}
+
+.clerk-buttons-container .cl-userButtonAvatarImage {
+  width: 2rem;
+  height: 2rem;
+}
+
+.clerk-buttons-container .cl-userButtonPopoverFooter {
+  display: none; /* Hide the footer if desired */
 }

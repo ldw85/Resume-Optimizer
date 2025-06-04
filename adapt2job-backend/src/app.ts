@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors, { CorsOptions } from 'cors';
 import resumeRoutes from './routes/resume';
 import llmRoutes from './routes/llm';
+import downloadRoutes from './routes/download'; // Import the new download route
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 
 app.use('/api', resumeRoutes);
 app.use('/api', llmRoutes);
+app.use('/api/download', downloadRoutes); // Register the new download route
 
 //console.log('Express app configured and routes applied.');
 

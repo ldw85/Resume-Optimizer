@@ -70,5 +70,10 @@
   "jobInput.linkPlaceholder": "Geben Sie hier den Job-Link ein...",
   "jobInput.fetchButton": "Stellenbeschreibung abrufen",
   "jobInput.fetchingButton": "Stellenbeschreibung wird abgerufen...",
-  "返回首页": "Zurück zur Startseite"
+  "返回首页": "Zurück zur Startseite",
+  "没有简历内容可供下载。": "Kein Lebenslauf-Inhalt zum Herunterladen verfügbar.",
+  "下载DOCX失败，请稍后再试。": "DOCX-Download fehlgeschlagen, bitte versuchen Sie es später erneut.",
+  "下载DOCX失败，请检查网络连接。": "DOCX-Download fehlgeschlagen, bitte überprüfen Sie die Netzwerkverbindung.",
+  "生成PDF失败，请稍后再试。": "PDF-Generierung fehlgeschlagen, bitte versuchen Sie es später erneut.",
+  "下载DOCX": "DOCX herunterladen"
 }

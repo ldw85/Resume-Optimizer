@@ -21,6 +21,7 @@ router.post('/analyze-resume', (req, res) => __awaiter(void 0, void 0, void 0, f
         const { resumeText, jobDescriptionText, llmType = 'gemini' } = req.body;
         const analysisResult = yield (0, llmService_1.analyzeResumeWithLLM)(llmType, resumeText, jobDescriptionText);
         res.status(200).json(analysisResult);
+        console.log('analyze-resume once');
     }
     catch (error) {
         console.error(error);
@@ -33,6 +34,7 @@ router.get('/fetch-url-content', (req, res) => __awaiter(void 0, void 0, void 0,
         const urlString = String(url);
         const tavilyResult = yield (0, tavilyService_1.callTavilyAPI)(urlString);
         res.status(200).json(tavilyResult);
+        console.log('fetch-url-content once');
     }
     catch (error) {
         console.error(error);

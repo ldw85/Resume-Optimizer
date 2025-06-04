@@ -16,6 +16,8 @@ import Footer from './components/Footer.jsx';
 // May also need to import Pricing and Testimonials? Determine based on App component content
 // import Pricing from './components/Pricing.jsx';
 import Testimonials from './components/Testimonials.jsx';
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
+import { useClerk } from '@clerk/clerk-react';
 
 // Import CSS (recommended way, ensure path is correct)
 // For example, if styles/main.css is in the project root: import '../../styles/main.css';

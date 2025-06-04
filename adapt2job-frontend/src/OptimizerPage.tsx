@@ -7,6 +7,13 @@ import ResumeInput from './components/ResumeInput';
 import useResumeAnalyzer from './hooks/useResumeAnalyzer';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next'; // 引入 useTranslation
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/clerk-react";
 
 import Select from 'react-select'; // 导入 react-select
 import { callTavilyAPI } from './services/tavily'; // Import callTavilyAPI
@@ -55,6 +62,7 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
     { value: 'zh', label: t('中文') },
     { value: 'ja', label: t('日本語') }, // 添加日语选项
     { value: 'es', label: t('Español') }, // 添加西班牙语选项
+    { value: 'de', label: t('Deutsch') }, // 添加德语选项
   ];
 
   // 获取当前选中的语言选项
@@ -225,6 +233,7 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
 
           {/* Right side: Back Button and Language Switcher */}
           <div className="flex items-center"> {/* New wrapper div */}
+            
             {/* Back Button */}
             <button
               onClick={() => navigate('/')} // Navigate to home page
@@ -264,6 +273,17 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
               }}
             />
             </div> {/* Closing tag for w-32 ml-4 div */}
+            <SignedOut>
+              <div className="clerk-buttons-container">
+                <SignInButton />
+                <SignUpButton />
+              </div>
+            </SignedOut>
+            <SignedIn>
+              <div className="clerk-buttons-container">
+                <UserButton />
+              </div>
+            </SignedIn>
           </div>
         </div>
       </header>
@@ -296,7 +316,7 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
         <section>
           <button
             onClick={handleAnalyze}
-            className="w-full py-3 text-white font-medium rounded-md"
+            className="w-full py-3 text-white font-medium rounded-md bg-gray-500 hover:bg-gray-600"
             disabled={isOptimizing || isLoadingJobFetch} // Disable button while fetching or optimizing
           >
             {isOptimizing || isLoadingJobFetch ? t('优化中...') : t('优化我的简历')}
