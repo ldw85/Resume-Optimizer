@@ -43,4 +43,4 @@
 ## [1.0.6] - 2025-06-07
 
 ### Fixed
-- Corrected image path in `adapt2job-frontend/landing_pages/en/blog/blogIndex.html` from relative to absolute (`./image/...` to `/landing_pages/en/blog/image/...`) to ensure images load correctly when HTML content is dynamically injected into the main application via `dangerouslySetInnerHTML`.
+- Moved blog image assets from `adapt2job-frontend/landing_pages/en/blog/image/` to `adapt2job-frontend/public/image/` and updated image paths in `adapt2job-frontend/landing_pages/en/blog/blogIndex.html` to `/image/...`. This ensures images are correctly served and displayed when the HTML content is dynamically injected into the main application, resolving display issues on Vercel deployment.
