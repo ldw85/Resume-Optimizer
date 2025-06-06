@@ -43,4 +43,5 @@
 ## [1.0.6] - 2025-06-07
 
 ### Fixed
-- Moved blog image assets from `adapt2job-frontend/landing_pages/en/blog/image/` to `adapt2job-frontend/public/image/` and updated image paths in `adapt2job-frontend/landing_pages/en/blog/blogIndex.html` to `/image/...`. This ensures images are correctly served and displayed when the HTML content is dynamically injected into the main application, resolving display issues on Vercel deployment.
+- Moved blog image assets from `adapt2job-frontend/landing_pages/en/blog/image/` to `adapt2job-frontend/public/image/` and updated image paths in `adapt2job-frontend/landing_pages/en/blog/blogIndex.html` to `/image/...`.
+- Added a specific rewrite rule in `vercel.json` (`"source": "/image/(.*)", "destination": "/adapt2job-frontend/image/$1"`) to ensure images from the `public` directory are correctly served on Vercel deployments, resolving persistent image display issues.
