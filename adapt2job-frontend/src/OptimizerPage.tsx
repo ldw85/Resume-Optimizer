@@ -188,15 +188,12 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
 
 
     setIsOptimizing(true);
-    toast(
+    const optimizingToastId = toast(
       () => (
         <span>
           {t('优化简历需要花费几秒时间，请耐心等待')}
         </span>
-      ),
-      {
-        duration: 3000,
-      }
+      )
     );
     try {
       const geminiResponse = await analyzeResume(resumeText, jobDescriptionToAnalyze);
@@ -214,6 +211,7 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
         });
       }
     } finally {
+      toast.dismiss(optimizingToastId);
       setIsOptimizing(false);
     }
   };
@@ -234,13 +232,6 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
           {/* Right side: Back Button and Language Switcher */}
           <div className="flex items-center"> {/* New wrapper div */}
             
-            {/* Back Button */}
-            <button
-              onClick={() => navigate('/')} // Navigate to home page
-              className="px-4 py-2 bg-white text-black text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" // Removed mr-4, added text-sm
-            >
-              {t('返回首页')} {/* Localize the button text */}
-            </button>
             {/* Language Switcher */}
             <div className="w-32 ml-4"> {/* Added ml-4 */}
               <Select<LanguageOption>
@@ -273,6 +264,14 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
               }}
             />
             </div> {/* Closing tag for w-32 ml-4 div */}
+            {/* Back Button */}
+            <button
+              onClick={() => navigate('/')} // Navigate to home page
+              className="px-4 py-2 bg-white text-black text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" // Removed mr-4, added text-sm
+            >
+              {t('返回首页')} {/* Localize the button text */}
+            </button>
+            
             <SignedOut>
               <div className="clerk-buttons-container">
                 <SignInButton />

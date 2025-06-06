@@ -140,26 +140,62 @@
   align-items: center;
 }
 
-.clerk-buttons-container .cl-button { /* Targeting Clerk's default button class */
-  padding: 0.25rem 0.5rem; /* Smaller padding */
-  font-size: 0.875rem; /* Smaller font size */
-  height: auto; /* Allow height to adjust based on content */
+.small-button {
+  padding: 0.5rem 1rem; /* Adjust padding to match Home button */
+  font-size: 0.875rem; /* Adjust font size to match Home button */
+  height: auto; /* Ensure height adjusts */
   min-height: unset; /* Override any default min-height */
+  border-radius: 0.375rem; /* Match Home button's rounded-md */
+  border: 1px solid #d1d5db; /* Match Home button's border-gray-300 */
+  background-color: #ffffff; /* Match Home button's bg-white */
+  color: #1f2937; /* Match Home button's text-black */
+  font-weight: 500; /* Match Home button's font-medium */
+  transition: background-color 0.25s;
 }
 
-.clerk-buttons-container .cl-userButton { /* Targeting Clerk's UserButton */
-  width: 2rem; /* Smaller width for user button */
-  height: 2rem; /* Smaller height for user button */
+.small-button:hover {
+  background-color: #f3f4f6; /* Match Home button's hover:bg-gray-100 */
 }
 
-.clerk-buttons-container .cl-userButtonBox {
-  width: 2rem;
-  height: 2rem;
+.small-button:focus,
+.small-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #6366f1, 0 0 0 4px rgba(99, 102, 241, 0.5); /* Match Home button's focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 */
+}
+
+.clerk-buttons-container .cl-button,
+.clerk-buttons-container .cl-userButtonBox { /* Targeting Clerk's default button class and UserButton container */
+  padding: 0.5rem 1rem !important; /* Match Home button padding */
+  font-size: 0.875rem !important; /* Match Home button font size */
+  height: auto !important; /* Allow height to adjust based on content */
+  min-height: unset !important; /* Override any default min-height */
+  border-radius: 0.375rem !important; /* Match Home button's rounded-md */
+  border: 1px solid #d1d5db !important; /* Match Home button's border-gray-300 */
+  background-color: #ffffff !important; /* Match Home button's bg-white */
+  color: #1f2937 !important; /* Match Home button's text-black */
+  font-weight: 500 !important; /* Match Home button's font-medium */
+  transition: background-color 0.25s;
+  display: flex !important; /* Ensure flex for centering content */
+  align-items: center !important; /* Center content vertically */
+  justify-content: center !important; /* Center content horizontally */
+}
+
+.clerk-buttons-container .cl-button:hover,
+.clerk-buttons-container .cl-userButtonBox:hover {
+  background-color: #f3f4f6; /* Match Home button's hover:bg-gray-100 */
+}
+
+.clerk-buttons-container .cl-button:focus,
+.clerk-buttons-container .cl-button:focus-visible,
+.clerk-buttons-container .cl-userButtonBox:focus,
+.clerk-buttons-container .cl-userButtonBox:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #6366f1, 0 0 0 4px rgba(99, 102, 241, 0.5); /* Match Home button's focus styles */
 }
 
 .clerk-buttons-container .cl-userButtonAvatarImage {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem; /* Adjust avatar size if needed to fit smaller button */
+  height: 1.5rem; /* Adjust avatar size if needed to fit smaller button */
 }
 
 .clerk-buttons-container .cl-userButtonPopoverFooter {

@@ -37,6 +37,20 @@ ResumeOptimizer 后端服务旨在提供简历解析、分析以及 LLM 和 Tavi
     *   从环境变量读取 API Key。
     *   设置接口请求超时时间为 10 分钟，使用 AbortController 实现。
 
+### 2.3 DOCX 文件生成
+
+*   **功能描述:** 根据 HTML 内容生成 DOCX 文件，支持样式、分割线和边框的转换。
+*   **接口:** `/api/download-docx` (假设)
+*   **方法:** POST (假设)
+*   **请求参数:**
+    *   `htmlContent`: HTML 字符串
+*   **响应参数:**
+    *   DOCX 文件流
+*   **技术实现:**
+    *   使用 `html-to-docx` 库进行 HTML 到 DOCX 的转换。
+    *   对 HTML 内容进行预处理，将 `div` 标签实现的水平分割线转换为 `<hr>` 标签，以提高 DOCX 转换的兼容性。
+    *   设置 DOCX 文件的默认字体为 'Calibri'。
+
 ## 3. 程序调用关系
 
 ```mermaid
@@ -53,6 +67,10 @@ graph LR
     L[前端应用] --> M(/api/fetch-url-content)
     M --> N(llmService.ts)
     N --> O(Tavily Extract API)
+    P[前端应用] --> Q(/api/download-docx)
+    Q --> R(docxGeneratorService.ts)
+    R --> S(html-to-docx)
+    Q --> T(DOCX 文件流)
 ```
 
 ## 4. 技术栈
@@ -148,6 +166,11 @@ ResumeOptimizer-backend/
 *   `analyzeResumeWithDeepSeek`: TODO: 实现调用 DeepSeek API 的逻辑。
 *   `analyzeResumeWithLLM`: 根据 LLM 类型调用 `analyzeResumeWithGemini` 或 `analyzeResumeWithDeepSeek` 函数。
 *   `callTavilyAPI`: 调用 Tavily Extract API，接收 URL，返回网页内容。从环境变量中读取 API Key。使用 AbortController 设置接口请求超时时间为 10 分钟。
+
+### 8.4 src/services/docxGeneratorService.ts
+
+*   实现 HTML 到 DOCX 的转换逻辑。
+*   `generateDocxFromHtml`: 接收 HTML 字符串，对其进行预处理（将特定的 `div` 水平分割线转换为 `<hr>` 标签），然后使用 `html-to-docx` 库生成 DOCX 文件的 Buffer。设置 DOCX 文件的默认字体为 'Calibri'。
 
 ## 9. 执行顺序
 

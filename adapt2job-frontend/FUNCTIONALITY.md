@@ -1,44 +1,36 @@
-# Functionality Documentation
+# Adapt2Job Frontend Functionality
 
-This document outlines the key functionalities of the `adapt2job-frontend` application.
+This document outlines the key functionalities and features of the Adapt2Job frontend application.
 
-## Resume Optimization Page (`OptimizerPage.tsx`)
+## Core Features
 
-- **Resume Input**: Users can paste their resume text directly or upload a file (PDF, DOCX, TXT).
-- **Job Description Input**: Users can paste a job description or provide a link to a job posting. The application will attempt to fetch the content from the provided link using the Tavily API.
-- **Language Selection**: Users can select their preferred language for the application interface and the resume analysis output. Supported languages include English, Chinese, Japanese, and Spanish. The language preference is persisted in local storage and can also be set via a URL parameter (`?lang=`).
-- **Resume Analysis**: Upon clicking the "Optimize My Resume" button, the application sends the resume and job description to a backend service for analysis. If the initial LLM (e.g., Gemini) returns a 503 error, the application will automatically retry the analysis using an alternative LLM (e.g., DeepSeek). The analysis provides:
-    - Modification Ideas: Suggestions on how to improve the resume.
-    - Content Explanation: An explanation of the analysis.
-    - Modified Resume: A version of the resume optimized for the job description.
-- **Loading Indicators and Toasts**: The application provides visual feedback during the optimization process (e.g., "Optimizing..." text on the button) and uses toast notifications for user guidance (e.g., "Please enter your resume content," "Optimization takes a few seconds").
-- **Button Styling**: The "Optimize My Resume" button now has a default gray background with a hover effect.
-- **Clerk Authentication Buttons**: The `SignInButton`, `SignUpButton`, and `UserButton` from Clerk are integrated for user authentication. These buttons have been styled to be smaller and more compact.
-- **How It Works Section**: A lazily loaded component explaining the process of resume optimization.
-- **Back to Home Button**: A button to navigate back to the main landing page.
+### 1. Resume Optimization
+- **Input:** Users can input their resume content (via paste or file upload) and a job description (via paste or job link).
+- **Analysis:** The application analyzes the resume against the job description using a large language model (LLM).
+- **Output:** Provides modification ideas, content explanations, and a modified resume tailored to the job description.
 
-## Landing Pages
+### 2. Multi-language Support
+- The application supports multiple languages (English, Chinese, Japanese, Spanish, German) for the user interface and analysis.
+- Language can be selected via a dropdown in the header or by a `lang` URL parameter.
 
-- The application supports multiple landing pages based on language (e.g., `landing-en.jsx`, `landing-zh.jsx`).
-- Each landing page includes components such as:
-    - Navbar
-    - Hero section
-    - Features section
-    - How It Works section
-    - Testimonials
-    - Pricing
-    - Call to Action
-    - Trust section
-    - Footer
-- Dedicated pages for Contact Us, FAQ, Privacy Policy, Terms of Service, and Usage Instructions are available for each language.
+### 3. User Authentication (Clerk)
+- Users can sign in and sign up using Clerk.
+- Signed-in users have access to a user button for managing their account.
 
-## Internationalization (i18n)
+### 4. Document Download
+- Users can download the modified resume as a PDF or DOCX file.
+- PDF generation is done client-side using `jspdf` and `html2canvas`.
+- DOCX generation is handled by the backend API, converting HTML content to a DOCX file. This now includes preprocessing of HTML to better retain horizontal rules and uses 'Calibri' as the default font for improved visual consistency.
 
-- The application uses `react-i18next` for internationalization.
-- Translation files are located in `public/locales/`.
-- Language detection is handled via URL parameters, local storage, and browser language settings.
+### 5. Job Description Fetching
+- Users can provide a job link, and the application will attempt to fetch the job description content using the Tavily API.
 
-## Styling
+## UI/UX Enhancements
 
-- The application uses Tailwind CSS for utility-first styling.
-- Custom CSS is defined in `src/App.css` for general styles and specific component overrides.
+### Consistent Button Styling
+- All primary action buttons, including "Sign In", "Sign Up", "User Button", "Download PDF", and "Download DOCX", now share a consistent size and styling with the "Home" button for improved visual coherence and user experience.
+
+### Landing Page Content Updates
+- The blog post 'how-to-tailor-resumes-for-jobs.html' has been updated with enriched, refined, and fully translated English content, replacing previous Chinese sections and inline CSS with external styling.
+- A new blog listing page (`index.html`) has been created in `adapt2job-frontend/landing_pages/en/blog/` to display a list of blog posts, starting with a link to 'how-to-tailor-resumes-for-jobs.html'.
+- **Blog Integration:** A "Blog" menu item has been added to the English Navbar, linking to the new blog index page. New routes for `/en/blog` and `/en/how-to-tailor-resumes-for-jobs` have been added to `main.jsx` to serve the blog content. The sitemap (`public/sitemap.xml`) has been updated to include these new blog URLs.

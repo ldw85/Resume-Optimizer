@@ -38,6 +38,8 @@ import FAQDe from '../landing_pages/de/faq.jsx';
 import ContactUsDe from '../landing_pages/de/contact-us.jsx';
 import PrivacyPolicyDe from '../landing_pages/de/privacy-policy.jsx';
 import TermsOfServiceDe from '../landing_pages/de/terms-of-service.jsx';
+import BlogIndexEn from '../landing_pages/en/blog/blogIndex.html?raw';
+import HowToTailorResumesForJobsEn from '../landing_pages/en/blog/how-to-tailor-resumes-for-jobs.html?raw';
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -100,6 +102,9 @@ createRoot(document.getElementById('root')).render(
             <Route path="/de/contact-us" element={<ContactUsDe />} />
             <Route path="/de/privacy-policy" element={<PrivacyPolicyDe />} />
             <Route path="/de/terms-of-service" element={<TermsOfServiceDe />} />
+            {/* New routes for English blog pages */}
+            <Route path="/en/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexEn }} />} />
+            <Route path="/en/blog/how-to-tailor-resumes-for-jobs" element={<div dangerouslySetInnerHTML={{ __html: HowToTailorResumesForJobsEn }} />} />
             {/* Optimizer page */}
             <Route path="/optimizer" element={<OptimizerPage />} />
             {/* Optional: Add a catch-all route for 404 */}

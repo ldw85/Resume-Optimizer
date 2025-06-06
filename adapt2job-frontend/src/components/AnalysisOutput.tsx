@@ -65,7 +65,7 @@ const AnalysisOutput: React.FC<AnalysisOutputProps> = ({ analysisResult }) => {
           {t('修改后的完整简历')}
           <div> {/* Add a div to group buttons for right alignment */}
             <button
-              className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-0.75 px-1.5 rounded mr-4"
+              className="small-button mr-4"
               onClick={async () => { // 声明为 async 函数
                 const element = document.getElementById('modifiedResumeContent');
                 if (element) {
@@ -92,7 +92,7 @@ const AnalysisOutput: React.FC<AnalysisOutputProps> = ({ analysisResult }) => {
               {t('下载PDF')}
             </button>
             <button
-              className="bg-gray-500 hover:bg-green-700 text-white font-bold py-0.75 px-1.5 rounded"
+              className="small-button"
               onClick={async () => {
                 const modifiedResumeHtml = analysisResult?.modifiedResume;
                 if (!modifiedResumeHtml) {

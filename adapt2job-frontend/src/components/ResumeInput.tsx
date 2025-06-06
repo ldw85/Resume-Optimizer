@@ -142,7 +142,7 @@ const ResumeInput: React.FC<ResumeInputProps> = ({ value, onChange, onContentCha
 
       {activeMethod === 'upload' && (
         <div
-          className={`border-2 border-dashed rounded-md p-8 text-center cursor-pointer transition-colors ${
+          className={`border-2 border-dashed rounded-md p-8 text-center cursor-pointer transition-colors relative ${
             error ? 'border-red-500 text-red-600' : 'border-gray-300 text-gray-500 hover:border-gray-400'
           }`}
           onClick={handleUploadAreaClick}
@@ -154,7 +154,7 @@ const ResumeInput: React.FC<ResumeInputProps> = ({ value, onChange, onContentCha
           <input
             type="file"
             ref={fileInputRef}
-            className="hidden"
+            style={{ display: 'none' }} // Hide the input visually
             accept=".pdf,.docx"
             onChange={handleFileChange}
           />
