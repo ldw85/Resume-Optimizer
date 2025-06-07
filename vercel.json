@@ -68,6 +68,15 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        }
+      ]
     }
   ],
   "installCommand": "npm install --prefix adapt2job-frontend && npm install --prefix adapt2job-backend",

@@ -13,12 +13,10 @@ import HowItWorks from './components/HowItWorks.jsx';
 import Trust from './components/Trust.jsx';
 import CallToAction from './components/CallToAction.jsx';
 import Footer from './components/Footer.jsx';
-// May also need to import Pricing and Testimonials? Determine based on App component content
-// import Pricing from './components/Pricing.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
 import { useClerk } from '@clerk/clerk-react';
-
+// import Pricing from './components/Pricing.jsx';
 // Import CSS (recommended way, ensure path is correct)
 // For example, if styles/main.css is in the project root: import '../../styles/main.css';
 
@@ -38,7 +36,7 @@ function App() {
                 <HowItWorks />
                 <Trust />
                 {/* <Pricing /> */}
-                {/* <Testimonials />  */}
+                <Testimonials /> 
                 <CallToAction />
                 <Footer />
             </div>

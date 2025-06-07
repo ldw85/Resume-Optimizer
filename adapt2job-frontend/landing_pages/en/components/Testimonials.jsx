@@ -2,22 +2,22 @@ export default function Testimonials() {
     try {
         const testimonials = [
             {
-                name: "Sarah Johnson",
-                role: "CEO at TechCorp",
+                name: "Li Hua",
+                role: "Job Seeker",
                 image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80",
-                quote: "CloudFlow has transformed how we operate. The analytics features are incredible!"
+                quote: "Before, I'd send out generic resumes and barely get any interview invites. But with ResumeOptimizer, I tailor each one perfectly and landed my dream offer super fast! So grateful!"
             },
             {
-                name: "Mark Wilson",
-                role: "CTO at StartupX",
+                name: "Wang Lei",
+                role: "Marketing Manager",
                 image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80",
-                quote: "The best SaaS platform we've used. The team collaboration tools are outstanding."
+                quote: "ResumeOptimizer totally transformed my resume, boosting its professionalism! My interview success rate shot up, and I felt completely secure about my privacy. Such a relief!"
             },
             {
-                name: "Emily Chen",
-                role: "Product Manager at InnovateCo",
+                name: "Zhang Min",
+                role: "Software Engineer",
                 image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80",
-                quote: "Implementation was smooth, and the results were immediate. Highly recommended!"
+                quote: "Job hunting used to be a nightmare, with generic resumes going nowhere. ResumeOptimizer made tailoring so easy, giving me confidence with every application. I finally found my dream job! Highly recommend!"
             }
         ];
 

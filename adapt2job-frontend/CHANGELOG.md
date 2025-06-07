@@ -40,6 +40,26 @@
 ### Reverted
 - Reverted client-side DOCX file generation (introduced in a previous attempt) due to incompatibility issues with `html-docx-js` and modern module bundlers (Vite). DOCX generation now continues to be handled by the backend API.
 
+## [1.0.7] - 2025-06-07
+
+### Changed
+- Updated all `lastmod` dates in `public/sitemap.xml` to the current date to ensure accuracy for search engine crawlers.
+
+## [1.0.9] - 2025-06-07
+
+### Changed
+- Translated user testimonials in `adapt2job-frontend/landing_pages/en/components/Testimonials.jsx` from Chinese to English, using colloquial expressions.
+
+## [1.0.8] - 2025-06-07
+
+### Changed
+- Updated user testimonials in `adapt2job-frontend/landing_pages/en/components/Testimonials.jsx` to reflect resume optimization benefits and user success stories.
+
+## [1.0.7] - 2025-06-07
+
+### Changed
+- Updated all `lastmod` dates in `public/sitemap.xml` to the current date to ensure accuracy for search engine crawlers.
+
 ## [1.0.6] - 2025-06-07
 
 ### Fixed
