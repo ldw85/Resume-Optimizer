@@ -70,7 +70,7 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
   // State for JobInput link functionality
   const [activeMethod, setActiveMethod] = useState<'paste' | 'link'>('paste');
   const [jobLink, setJobLink] = useState<string>('');
-  const [isLoadingJobFetch, setIsLoadingJobFetch] = useState<boolean>(false);
+  //const [isLoadingJobFetch, setIsLoadingJobFetch] = useState<boolean>(false);
   const [jobFetchError, setJobFetchError] = useState<string | null>(null);
 
   // State for feedback form visibility
@@ -171,7 +171,7 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
   const handleMethodChange = (method: 'paste' | 'link') => {
     setActiveMethod(method);
     setJobLink('');
-    setIsLoadingJobFetch(false);
+    //setIsLoadingJobFetch(false);
     setJobFetchError(null);
     if (method === 'paste') {
       setJobDescriptionText(''); // Clear job description when switching to paste
@@ -233,7 +233,7 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
         return;
       }
 
-      setIsLoadingJobFetch(true);
+      //setIsLoadingJobFetch(true);
       setJobFetchError(null);
 
       try {
@@ -245,16 +245,16 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
         } else {
           console.error('Tavily API returned non-string content:', content);
           setJobFetchError(t('jobInput.fetchFormatError'));
-          setIsLoadingJobFetch(false);
+          //setIsLoadingJobFetch(false);
           return; // Stop analysis if fetch fails or returns wrong format
         }
       } catch (err: unknown) {
         console.error('Error fetching job description:', err);
         setJobFetchError(t('jobInput.fetchLinkError'));
-        setIsLoadingJobFetch(false);
+        //setIsLoadingJobFetch(false);
         return; // Stop analysis if fetch fails
       } finally {
-        setIsLoadingJobFetch(false);
+        //setIsLoadingJobFetch(false);
         // Optionally switch back to paste view after fetching or on error
         // setActiveMethod('paste');
       }
