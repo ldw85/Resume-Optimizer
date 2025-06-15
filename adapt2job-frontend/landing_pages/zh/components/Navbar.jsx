@@ -12,6 +12,9 @@ export default function Navbar() {
                         </div>
                         
                         <div className="flex items-center space-x-4">
+                            <a href="/zh/blog" className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+                                博客
+                            </a>
                             <a href="/optimizer?lang=zh" className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
                                 免费试用
                             </a>

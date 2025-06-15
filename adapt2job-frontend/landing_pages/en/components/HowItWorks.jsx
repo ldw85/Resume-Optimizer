@@ -3,18 +3,18 @@ export default function HowItWorks() {
         const steps = [
             {
                 number: "01",
-                title: "Paste Resume Content",
-                description: "Copy your current resume content and paste it into the input box"
+                title: "Input Resume",
+                description: "Paste your resume content or upload a file (PDF, DOCX, JPG, PNG). Logged-in users can save and reuse resumes."
             },
             {
                 number: "02",
-                title: "Enter Job Requirements",
-                description: "Paste the description of the target job requirements to help AI match better"
+                title: "Input Job Description",
+                description: "Paste the job description or provide a job link."
             },
             {
                 number: "03",
-                title: "One-Click Optimization",
-                description: "The system quickly analyzes and generates an optimized professional resume"
+                title: "Optimize and Download",
+                description: "Get an optimized resume instantly and download it as PDF or Word."
             }
         ];
 

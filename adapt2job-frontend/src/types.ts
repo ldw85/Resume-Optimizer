@@ -4,5 +4,11 @@ interface AnalysisResponse {
   modifiedResume: string;
 }
 
-export type { AnalysisResponse };
+interface SavedResume {
+  id: string;
+  title: string;
+  content: string;
+  created_at: string; // Or Date if you parse it
+}
 
+export type { AnalysisResponse, SavedResume };

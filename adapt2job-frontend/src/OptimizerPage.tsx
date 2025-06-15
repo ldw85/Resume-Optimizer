@@ -13,11 +13,15 @@ import {
   SignInButton,
   SignUpButton,
   UserButton,
+  useUser, // Import useUser hook
 } from "@clerk/clerk-react";
 
 import Select from 'react-select'; // 导入 react-select
 import { callTavilyAPI } from './services/tavily'; // Import callTavilyAPI
+import FeedbackForm from './components/FeedbackForm'; // Import FeedbackForm
 // import HowItWorks from './components/HowItWorks'; // 将被懒加载
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 // 懒加载组件
 const AnalysisOutput = React.lazy(() => {
@@ -35,6 +39,8 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
   const [searchParams] = useSearchParams(); // Get search params
   const navigate = useNavigate(); // Get navigate function
   const { t, i18n } = useTranslation(); // Use useTranslation and get i18n instance
+  const { user, isSignedIn } = useUser(); // Get user and isSignedIn from Clerk
+  const [hasRegisteredInfoBeenSaved, setHasRegisteredInfoBeenSaved] = useState(false); // New state to track if user info has been saved
 
   const [resumeText, setResumeText] = useState<string>('');
   const [jobDescriptionText, setJobDescriptionText] = useState<string>('');
@@ -43,11 +49,23 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
     contentExplanation: '',
     modifiedResume: '',
   });
+  const [isResumeInputLoading, setIsResumeInputLoading] = useState(false); // New state for ResumeInput loading
+  const [isFileParsedSuccessfully, setIsFileParsedSuccessfully] = useState(false); // New state for file parsing status
+  const [resumeInputActiveMethod, setResumeInputActiveMethod] = useState<'upload' | 'paste'>('upload'); // New state for ResumeInput active method
+  const [isResumeContentAvailable, setIsResumeContentAvailable] = useState(false); // New state for resume content availability
 
   const [language, setLanguage] = useState(i18n.language); // Initialize language state
   const { analyzeResume } = useResumeAnalyzer(language);
   const [isOptimizing, setIsOptimizing] = useState(false);
-  const resumeInputRef = useRef<HTMLTextAreaElement>(null);
+  const resumeInputRef = useRef<any>(null); // Change ref type to any or a specific interface
+
+  // Function to handle saving the resume - now triggers the save in ResumeInput
+  const handleSaveResume = async () => {
+    console.log('handleSaveResume called in OptimizerPage');
+    if (resumeInputRef.current && resumeInputRef.current.triggerSaveResume) {
+      await resumeInputRef.current.triggerSaveResume();
+    }
+  };
 
   // State for JobInput link functionality
   const [activeMethod, setActiveMethod] = useState<'paste' | 'link'>('paste');
@@ -55,14 +73,17 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
   const [isLoadingJobFetch, setIsLoadingJobFetch] = useState<boolean>(false);
   const [jobFetchError, setJobFetchError] = useState<string | null>(null);
 
+  // State for feedback form visibility
+  const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+
 
   // 定义语言选项
   const languageOptions: LanguageOption[] = [
-    { value: 'en', label: t('English') },
-    { value: 'zh', label: t('中文') },
-    { value: 'ja', label: t('日本語') }, // 添加日语选项
-    { value: 'es', label: t('Español') }, // 添加西班牙语选项
-    { value: 'de', label: t('Deutsch') }, // 添加德语选项
+    { value: 'en', label: t('en') },
+    { value: 'zh', label: t('zh') },
+    { value: 'ja', label: t('ja') },
+    { value: 'es', label: t('es') },
+    { value: 'de', label: t('de') },
   ];
 
   // 获取当前选中的语言选项
@@ -94,6 +115,37 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
     document.documentElement.lang = shortLang;
     setLanguage(shortLang); // Update local language state
   }, [searchParams, i18n]); // Depend on searchParams and i18n
+
+  // Effect to save user info on initial sign-in/registration
+  useEffect(() => {
+    if (isSignedIn && user && !hasRegisteredInfoBeenSaved) {
+      const saveUserInfo = async () => {
+        try {
+          const response = await fetch(`${BACKEND_URL}/api/user/register-info`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              clerkUserId: user.id,
+              email: user.emailAddresses[0]?.emailAddress,
+            }),
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Failed to save user info:', errorData.message);
+          } else {
+            console.log('User info saved successfully or already exists.');
+            setHasRegisteredInfoBeenSaved(true); // Mark as saved to prevent re-execution
+          }
+        } catch (error) {
+          console.error('Error calling save user info API:', error);
+        }
+      };
+      saveUserInfo();
+    }
+  }, [isSignedIn, user, hasRegisteredInfoBeenSaved]); // Dependencies for this effect
 
   const changeLanguage = (selectedOption: LanguageOption | null) => {
     if (selectedOption) {
@@ -132,11 +184,14 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
   };
 
   const handleAnalyze = async () => {
-    if (!resumeText) {
+
+    // Simplified validation for resume input using isResumeContentAvailable
+    if (!isResumeContentAvailable) {
+      console.log('Resume content not available, returning early.');
       if (resumeInputRef.current) {
         resumeInputRef.current.focus();
         resumeInputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-        toast.error(t('请先输入您的简历内容'), {
+        toast.error(t('请先输入或上传您的简历内容'), {
           duration: 3000,
         });
       }
@@ -173,19 +228,19 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
         setIsLoadingJobFetch(false);
         return; // Stop analysis if fetch fails
       } finally {
-        setIsLoadingJobFetch(false);
+        //setIsLoadingJobFetch(false);
         // Optionally switch back to paste view after fetching or on error
         // setActiveMethod('paste');
       }
     }
 
     if (!jobDescriptionToAnalyze) {
+        console.log('Job description is empty, returning early.');
         toast.error(t('请先输入您的职位描述'), {
           duration: 3000,
         });
       return;
     }
-
 
     setIsOptimizing(true);
     const optimizingToastId = toast(
@@ -193,8 +248,12 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
         <span>
           {t('优化简历需要花费几秒时间，请耐心等待')}
         </span>
-      )
+      ),
+      { duration: Infinity } // Set duration to Infinity
     );
+    // Trigger saving the resume before analysis
+    await handleSaveResume();
+
     try {
       const geminiResponse = await analyzeResume(resumeText, jobDescriptionToAnalyze);
       setAnalysisResult(geminiResponse);
@@ -273,13 +332,11 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
             </button>
             
             <SignedOut>
-              <div className="clerk-buttons-container">
                 <SignInButton />
                 <SignUpButton />
-              </div>
             </SignedOut>
             <SignedIn>
-              <div className="clerk-buttons-container">
+              <div className="clerk-buttons-none">
                 <UserButton />
               </div>
             </SignedIn>
@@ -293,8 +350,13 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
             value={resumeText}
             onChange={handleResumeTextChange} // Keep this for textarea changes
             onContentChange={handleResumeContentChange} // New prop for content updates
+            onLoadingChange={setIsResumeInputLoading} // Pass the loading state setter
+            onFileParsedChange={setIsFileParsedSuccessfully} // Pass the file parsed status setter
+            onActiveMethodChange={setResumeInputActiveMethod} // Pass the active method setter
+            onResumeContentAvailableChange={setIsResumeContentAvailable} // Pass the new state setter
+            onSaveResume={handleSaveResume} // Pass the save resume handler - This prop is no longer strictly needed for triggering save from parent, but kept for potential other uses or if ResumeInput still calls it internally.
             required={true}
-            resumeInputRef={resumeInputRef}
+            ref={resumeInputRef} // Use ref instead of resumeInputRef prop
           />
         </section>
 
@@ -316,13 +378,13 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
           <button
             onClick={handleAnalyze}
             className="w-full py-3 text-white font-medium rounded-md bg-gray-500 hover:bg-gray-600"
-            disabled={isOptimizing || isLoadingJobFetch} // Disable button while fetching or optimizing
+            disabled={isOptimizing || isLoadingJobFetch || !isResumeContentAvailable || !jobDescriptionText} // Disable button while fetching, optimizing, resume content is not available, or job description is empty
           >
             {isOptimizing || isLoadingJobFetch ? t('优化中...') : t('优化我的简历')}
           </button>
         </section>
 
-       <Suspense fallback={<>{t('加载中...')}</>}>
+       <Suspense fallback={<>{t('loading')}</>}>
           {(() => {
             return null;
           })()}
@@ -331,6 +393,24 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
           )}
           <HowItWorks />
         </Suspense>
+
+        {/* Feedback Section */}
+        {isSignedIn && user?.id && (
+          <section className="mt-8 text-center">
+            <button
+              onClick={() => setShowFeedbackForm(!showFeedbackForm)}
+              className="py-2 px-4 bg-gray-200 text-gray-800 font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+              {showFeedbackForm ? t('feedback.hideForm') : t('feedback.provideFeedback')}
+            </button>
+            {showFeedbackForm && (
+              <FeedbackForm
+                userId={user.id}
+                onFeedbackSubmitted={() => setShowFeedbackForm(false)}
+              />
+            )}
+          </section>
+        )}
       </main>
 
       {/* <footer className="mt-10 pt-4 border-t border-gray-200">

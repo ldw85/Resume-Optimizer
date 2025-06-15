@@ -179,7 +179,7 @@ const analyzeResumeWithDeepSeek = async (resumeText: string, jobDescriptionText:
 
     if (contentString) {
       try {
-        const jsonString = contentString.substring(contentString.indexOf('$$$json') + 7, contentString.lastIndexOf('$$$'));
+        const jsonString = contentString.substring(contentString.indexOf("'''json") + 7, contentString.lastIndexOf("'''"));
         // 移除控制字符
         // eslint-disable-next-line no-control-regex
         const cleanedContentString = jsonString.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
@@ -190,7 +190,7 @@ const analyzeResumeWithDeepSeek = async (resumeText: string, jobDescriptionText:
           contentExplanation: content?. contentExplanation|| '',
         };
       } catch (parseError: unknown) {
-        console.error('JSON parse error:', parseError);
+        console.error('JSON parse error:', parseError + contentString);
         return {
           modificationIdeas: 'Error parsing DeepSeek response JSON.',
           contentExplanation: '',

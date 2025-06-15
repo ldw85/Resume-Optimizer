@@ -166,6 +166,7 @@
 .clerk-buttons-container .cl-button,
 .clerk-buttons-container .cl-userButtonBox { /* Targeting Clerk's default button class and UserButton container */
   padding: 0.5rem 1rem !important; /* Match Home button padding */
+  border: none !important; /* Remove double border */
   font-size: 0.875rem !important; /* Match Home button font size */
   height: auto !important; /* Allow height to adjust based on content */
   min-height: unset !important; /* Override any default min-height */
@@ -200,4 +201,9 @@
 
 .clerk-buttons-container .cl-userButtonPopoverFooter {
   display: none; /* Hide the footer if desired */
+}
+
+.clerk-buttons-none{
+  all: unset;
+  background-color: #ffffff;
 }

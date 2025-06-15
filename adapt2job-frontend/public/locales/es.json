@@ -1,4 +1,10 @@
 {
+  "loading": "Cargando...",
+  "en": "Inglés",
+  "zh": "Chino",
+  "ja": "Japonés",
+  "es": "Español",
+  "de": "Alemán",
   "English": "Inglés",
   "中文": "Chino",
   "请先输入您的简历内容": "Por favor, introduzca primero el contenido de su currículum",
@@ -78,5 +84,20 @@
   "下载DOCX失败，请稍后再试。": "Error al descargar DOCX, por favor intente de nuevo más tarde.",
   "下载DOCX失败，请检查网络连接。": "Error al descargar DOCX, por favor revise la conexión de red.",
   "生成PDF失败，请稍后再试。": "Error al generar PDF, por favor intente de nuevo más tarde.",
-  "下载DOCX": "Descargar DOCX"
+  "下载DOCX": "Descargar DOCX",
+  "resumeInput.saveResumeError": "Error al guardar el currículum, por favor inicie sesión primero para usar la función de guardar.",
+  "resumeInput.saveResumeToggle": "Guardar currículum de uso frecuente",
+  "resumeInput.saveResumeDescription": "Cuando está habilitado, su currículum más reciente se guardará automáticamente, máximo 1 copia.",
+  "resumeInput.loadingSavedResumes": "Cargando currículums de uso frecuente...",
+  "resumeInput.yourSavedResume": "Su currículum de uso frecuente:",
+  "resumeInput.uploadNewResume": "Subir nuevo currículum",
+  "支持 PDF, Word (.docx), 图片 (.jpg, .png)": "Soporta PDF, Word (.docx), Imágenes (.jpg, .png)",
+  "howItWorks.step1Title": "Introducir o subir currículum",
+  "howItWorks.step1Description": "Admite pegar, subir múltiples formatos de currículum y guardar currículums de uso frecuente después de iniciar sesión.",
+  "howItWorks.step2Title": "Introducir requisitos del puesto o enlace",
+  "howItWorks.step2Description": "Pegue el texto de la descripción del puesto o introduzca directamente un enlace del puesto.",
+  "howItWorks.step3Title": "Optimizar currículum con un clic",
+  "howItWorks.step3Description": "El sistema analizará rápidamente y generará un currículum optimizado que coincida con el puesto.",
+  "howItWorks.step4Title": "Descargar currículum optimizado",
+  "howItWorks.step4Description": "Admite la descarga de currículums optimizados en formato PDF y Word."
 }

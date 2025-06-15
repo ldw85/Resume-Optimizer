@@ -183,7 +183,7 @@ const analyzeResumeWithDeepSeek = (resumeText, jobDescriptionText) => __awaiter(
         const contentString = (_c = (_b = (_a = data === null || data === void 0 ? void 0 : data.choices) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.message) === null || _c === void 0 ? void 0 : _c.content;
         if (contentString) {
             try {
-                const jsonString = contentString.substring(contentString.indexOf('$$$json') + 7, contentString.lastIndexOf('$$$'));
+                const jsonString = contentString.substring(contentString.indexOf("'''json") + 7, contentString.lastIndexOf("'''"));
                 // 移除控制字符
                 // eslint-disable-next-line no-control-regex
                 const cleanedContentString = jsonString.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
@@ -195,7 +195,7 @@ const analyzeResumeWithDeepSeek = (resumeText, jobDescriptionText) => __awaiter(
                 };
             }
             catch (parseError) {
-                console.error('JSON parse error:', parseError);
+                console.error('JSON parse error:', parseError + contentString);
                 return {
                     modificationIdeas: 'Error parsing DeepSeek response JSON.',
                     contentExplanation: '',

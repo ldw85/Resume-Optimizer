@@ -1,4 +1,10 @@
 {
+  "loading": "Wird geladen...",
+  "en": "Englisch",
+  "zh": "Chinesisch",
+  "ja": "Japanisch",
+  "es": "Spanisch",
+  "de": "Deutsch",
   "English": "Englisch",
   "中文": "Chinesisch",
   "请先输入您的简历内容": "Bitte geben Sie zuerst Ihren Lebenslauf ein",
@@ -75,5 +81,20 @@
   "下载DOCX失败，请稍后再试。": "DOCX-Download fehlgeschlagen, bitte versuchen Sie es später erneut.",
   "下载DOCX失败，请检查网络连接。": "DOCX-Download fehlgeschlagen, bitte überprüfen Sie die Netzwerkverbindung.",
   "生成PDF失败，请稍后再试。": "PDF-Generierung fehlgeschlagen, bitte versuchen Sie es später erneut.",
-  "下载DOCX": "DOCX herunterladen"
+  "下载DOCX": "DOCX herunterladen",
+  "resumeInput.saveResumeError": "Speichern des Lebenslaufs fehlgeschlagen, bitte melden Sie sich zuerst an, um die Speicherfunktion zu nutzen.",
+  "resumeInput.saveResumeToggle": "Häufig verwendeten Lebenslauf speichern",
+  "resumeInput.saveResumeDescription": "Wenn aktiviert, wird Ihr neuester Lebenslauf automatisch gespeichert, maximal 1 Kopie.",
+  "resumeInput.loadingSavedResumes": "Häufig verwendete Lebensläufe werden geladen...",
+  "resumeInput.yourSavedResume": "Ihr häufig verwendeter Lebenslauf:",
+  "resumeInput.uploadNewResume": "Neuen Lebenslauf hochladen",
+  "支持 PDF, Word (.docx), 图片 (.jpg, .png)": "Unterstützt PDF, Word (.docx), Bilder (.jpg, .png)",
+  "howItWorks.step1Title": "Lebenslauf eingeben oder hochladen",
+  "howItWorks.step1Description": "Unterstützt das Einfügen, Hochladen mehrerer Lebenslaufformate und das Speichern häufig verwendeter Lebensläufe nach dem Einloggen.",
+  "howItWorks.step2Title": "Stellenanforderungen oder Link eingeben",
+  "howItWorks.step2Description": "Fügen Sie den Text der Stellenbeschreibung ein oder geben Sie direkt einen Stellenlink ein.",
+  "howItWorks.step3Title": "Lebenslauf mit einem Klick optimieren",
+  "howItWorks.step3Description": "Das System analysiert schnell und generiert einen optimierten Lebenslauf, der zur Stelle passt.",
+  "howItWorks.step4Title": "Optimierten Lebenslauf herunterladen",
+  "howItWorks.step4Description": "Unterstützt das Herunterladen optimierter Lebensläufe im PDF- und Word-Format."
 }

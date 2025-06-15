@@ -3,18 +3,18 @@ export default function HowItWorks() {
         const steps = [
             {
                 number: "01",
-                title: "Lebenslauf-Inhalt einfügen",
-                description: "Kopieren Sie den Inhalt Ihres aktuellen Lebenslaufs und fügen Sie ihn in das Eingabefeld ein"
+                title: "Lebenslauf eingeben",
+                description: "Fügen Sie den Inhalt Ihres Lebenslaufs ein oder laden Sie eine Datei hoch (PDF, DOCX, JPG, PNG). Angemeldete Benutzer können Lebensläufe speichern und wiederverwenden."
             },
             {
                 number: "02",
-                title: "Stellenanforderungen eingeben",
-                description: "Fügen Sie die Beschreibung der Zielstellenanforderungen ein, um der KI eine bessere Übereinstimmung zu ermöglichen"
+                title: "Stellenbeschreibung eingeben",
+                description: "Fügen Sie die Stellenbeschreibung ein oder geben Sie einen Stellenlink an."
             },
             {
                 number: "03",
-                title: "Ein-Klick-Optimierung",
-                description: "Das System analysiert schnell und generiert einen optimierten professionellen Lebenslauf"
+                title: "Optimieren und herunterladen",
+                description: "Erhalten Sie sofort einen optimierten Lebenslauf und laden Sie ihn als PDF oder Word herunter."
             }
         ];
 

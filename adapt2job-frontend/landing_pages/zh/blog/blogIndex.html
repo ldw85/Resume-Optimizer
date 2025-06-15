@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客 | Resume Optimizer</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="icon" href="/resume-icon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">博客</h1>
+            <p class="text-lg text-gray-600">获取有助于您找到下一份工作的见解和建议。</p>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Blog Post Card 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <a href="/zh/blog/professional-resume-writing-services">
+                    <img src="/image/how-to-create-a-great-resume.png" alt="专业简历代写服务：是求职加速器还是不必要的开销？" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-2">专业简历代写服务：是求职加速器还是不必要的开销？</h2>
+                        <p class="text-gray-600 text-sm">深入分析专业简历代写服务，探讨其价值、成本以及是否值得投资，帮助您在竞争激烈的就业市场中做出明智决策。</p>
+                        <span class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-medium">阅读更多 &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-200">
+            <p class="text-gray-600">&copy; <span id="currentYear"></span> ResumeOptimizer.click - All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -3,18 +3,18 @@ export default function HowItWorks() {
         const steps = [
             {
                 number: "01",
-                title: "履歴書の内容を貼り付け",
-                description: "現在の履歴書の内容をコピーして、入力ボックスに貼り付けます"
+                title: "履歴書を入力",
+                description: "履歴書の内容を貼り付けるか、ファイルをアップロードします（PDF、DOCX、JPG、PNG）。ログインユーザーは履歴書を保存して再利用できます。"
             },
             {
                 number: "02",
-                title: "職務要件を入力",
-                description: "応募する職務の要件説明を貼り付け、AIがより適切にマッチングできるようにします"
+                title: "職務内容を入力",
+                description: "職務内容を貼り付けるか、求人リンクを提供します。"
             },
             {
                 number: "03",
-                title: "ワンクリックで最適化を生成",
-                description: "システムが迅速に分析し、最適化されたプロフェッショナルな履歴書を生成します"
+                title: "最適化してダウンロード",
+                description: "最適化された履歴書を即座に入手し、PDFまたはWordとしてダウンロードします。"
             }
         ];
 

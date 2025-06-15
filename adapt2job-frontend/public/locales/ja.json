@@ -1,4 +1,10 @@
 {
+  "loading": "読み込み中...",
+  "en": "英語",
+  "zh": "中国語",
+  "ja": "日本語",
+  "es": "スペイン語",
+  "de": "ドイツ語",
   "English": "英語",
   "中文": "中国語",
   "请先输入您的简历内容": "まず、履歴書の内容を入力してください",
@@ -78,5 +84,20 @@
   "下载DOCX失败，请稍后再试。": "DOCXのダウンロードに失敗しました。後でもう一度お試しください。",
   "下载DOCX失败，请检查网络连接。": "DOCXのダウンロードに失敗しました。ネットワーク接続を確認してください。",
   "生成PDF失败，请稍后再试。": "PDFの生成に失敗しました。後でもう一度お試しください。",
-  "下载DOCX": "DOCXをダウンロード"
+  "下载DOCX": "DOCXをダウンロード",
+  "resumeInput.saveResumeError": "履歴書の保存に失敗しました。保存機能を使用するには、まずログインしてください。",
+  "resumeInput.saveResumeToggle": "よく使う履歴書を保存",
+  "resumeInput.saveResumeDescription": "有効にすると、最新の履歴書が自動的に保存されます（最大1部）。",
+  "resumeInput.loadingSavedResumes": "よく使う履歴書を読み込み中...",
+  "resumeInput.yourSavedResume": "あなたのよく使う履歴書：",
+  "resumeInput.uploadNewResume": "新しい履歴書をアップロード",
+  "支持 PDF, Word (.docx), 图片 (.jpg, .png)": "PDF、Word (.docx)、画像 (.jpg, .png) をサポート",
+  "howItWorks.step1Title": "履歴書を入力またはアップロード",
+  "howItWorks.step1Description": "複数の履歴書形式の貼り付け、アップロード、およびログイン後のよく使う履歴書の保存をサポートします。",
+  "howItWorks.step2Title": "職務要件またはリンクを入力",
+  "howItWorks.step2Description": "職務内容のテキストを貼り付けるか、直接職務リンクを入力します。",
+  "howItWorks.step3Title": "ワンクリックで履歴書を最適化",
+  "howItWorks.step3Description": "システムは迅速に分析し、職務に一致する最適化された履歴書を生成します。",
+  "howItWorks.step4Title": "最適化された履歴書をダウンロード",
+  "howItWorks.step4Description": "PDFおよびWord形式の最適化された履歴書のダウンロードをサポートします。"
 }

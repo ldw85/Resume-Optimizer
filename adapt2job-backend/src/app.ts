@@ -4,6 +4,9 @@ import cors, { CorsOptions } from 'cors';
 import resumeRoutes from './routes/resume';
 import llmRoutes from './routes/llm';
 import downloadRoutes from './routes/download'; // Import the new download route
+import feedbackRoutes from './routes/feedback'; // Import the new feedback route
+import { userResumesRouter } from './routes/userResumes'; // Import the user resumes router
+import userRoutes from './routes/userRoutes'; // Import the new user routes
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -17,9 +20,12 @@ const corsOptions: CorsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-app.use('/api', resumeRoutes);
+app.use('/api/resume', resumeRoutes);
 app.use('/api', llmRoutes);
 app.use('/api/download', downloadRoutes); // Register the new download route
+app.use('/api', feedbackRoutes); // Register the new feedback route
+app.use('/api/resumes', userResumesRouter); // Register the new resumes route
+app.use('/api/user', userRoutes); // Register the new user routes
 
 //console.log('Express app configured and routes applied.');
 
