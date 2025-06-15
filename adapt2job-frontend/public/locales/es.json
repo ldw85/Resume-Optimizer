@@ -8,7 +8,7 @@
   "English": "Inglés",
   "中文": "Chino",
   "请先输入您的简历内容": "Por favor, introduzca primero el contenido de su currículum",
-  "请先输入您的职位描述": "Por favor, introduzca primero la descripción del puesto",
+  "请先输入您的职位描述": "Por favor, introduzca primero la descripción del puesto o el enlace del puesto",
   "优化简历需要花费几秒时间，请耐心等待": "Optimizar su currículum tardará unos segundos, por favor espere pacientemente",
   "优化中...": "Optimizando...",
   "优化我的简历": "Optimizar mi currículum",
@@ -99,5 +99,6 @@
   "howItWorks.step3Title": "Optimizar currículum con un clic",
   "howItWorks.step3Description": "El sistema analizará rápidamente y generará un currículum optimizado que coincida con el puesto.",
   "howItWorks.step4Title": "Descargar currículum optimizado",
-  "howItWorks.step4Description": "Admite la descarga de currículums optimizados en formato PDF y Word."
+  "howItWorks.step4Description": "Admite la descarga de currículums optimizados en formato PDF y Word.",
+  "职位链接解析失败，请粘贴职位信息": "Error al analizar el enlace del puesto, por favor pegue la información del puesto"
 }

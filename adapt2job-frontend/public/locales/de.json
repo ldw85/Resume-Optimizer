@@ -8,7 +8,7 @@
   "English": "Englisch",
   "中文": "Chinesisch",
   "请先输入您的简历内容": "Bitte geben Sie zuerst Ihren Lebenslauf ein",
-  "请先输入您的职位描述": "Bitte geben Sie zuerst die Stellenbeschreibung ein",
+  "请先输入您的职位描述": "Bitte geben Sie zuerst Ihre Stellenbeschreibung oder den Stellenlink ein",
   "优化简历需要花费几秒时间，请耐心等待": "Die Optimierung Ihres Lebenslaufs dauert einige Sekunden, bitte haben Sie etwas Geduld",
   "优化中...": "Wird optimiert...",
   "优化我的简历": "Meinen Lebenslauf optimieren",
@@ -96,5 +96,6 @@
   "howItWorks.step3Title": "Lebenslauf mit einem Klick optimieren",
   "howItWorks.step3Description": "Das System analysiert schnell und generiert einen optimierten Lebenslauf, der zur Stelle passt.",
   "howItWorks.step4Title": "Optimierten Lebenslauf herunterladen",
-  "howItWorks.step4Description": "Unterstützt das Herunterladen optimierter Lebensläufe im PDF- und Word-Format."
+  "howItWorks.step4Description": "Unterstützt das Herunterladen optimierter Lebensläufe im PDF- und Word-Format.",
+  "职位链接解析失败，请粘贴职位信息": "Das Parsen des Joblinks ist fehlgeschlagen. Bitte fügen Sie die Jobinformationen ein"
 }

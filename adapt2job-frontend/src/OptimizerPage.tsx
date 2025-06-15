@@ -184,6 +184,14 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
   };
 
   const handleAnalyze = async () => {
+    // console.log('handleAnalyze called.');
+    // console.log('Current activeMethod:', activeMethod);
+    // console.log('Current jobLink:', jobLink);
+    // console.log('Current isOptimizing:', isOptimizing);
+    // console.log('Current isLoadingJobFetch:', isLoadingJobFetch);
+    // console.log('Current isResumeContentAvailable:', isResumeContentAvailable);
+    // console.log('Current jobDescriptionText length:', jobDescriptionText.length);
+    // console.log('Current jobDescriptionText is empty:', !jobDescriptionText);
 
     // Simplified validation for resume input using isResumeContentAvailable
     if (!isResumeContentAvailable) {
@@ -197,6 +205,24 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
       }
       return;
     }
+
+    if ((!jobDescriptionText && jobDescriptionText.trim() === '') && (!jobLink || jobLink.trim() === '')) {
+        console.log('Job description or link is empty, returning early.');
+        toast.error(t('请先输入您的职位描述或职位链接'), {
+          duration: 3000,
+        });
+      return;
+    }
+
+    setIsOptimizing(true);
+    const optimizingToastId = toast(
+      () => (
+        <span>
+          {t('优化简历需要花费几秒时间，请耐心等待')}
+        </span>
+      ),
+      { duration: Infinity } // Set duration to Infinity
+    );
 
     let jobDescriptionToAnalyze = jobDescriptionText;
 
@@ -228,29 +254,20 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
         setIsLoadingJobFetch(false);
         return; // Stop analysis if fetch fails
       } finally {
-        //setIsLoadingJobFetch(false);
+        setIsLoadingJobFetch(false);
         // Optionally switch back to paste view after fetching or on error
         // setActiveMethod('paste');
       }
     }
 
     if (!jobDescriptionToAnalyze) {
-        console.log('Job description is empty, returning early.');
-        toast.error(t('请先输入您的职位描述'), {
+        //console.log('Job description is empty, returning early.');
+        toast.error(t('职位链接解析失败，请粘贴职位信息'), {
           duration: 3000,
         });
       return;
     }
 
-    setIsOptimizing(true);
-    const optimizingToastId = toast(
-      () => (
-        <span>
-          {t('优化简历需要花费几秒时间，请耐心等待')}
-        </span>
-      ),
-      { duration: Infinity } // Set duration to Infinity
-    );
     // Trigger saving the resume before analysis
     await handleSaveResume();
 
@@ -378,9 +395,9 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
           <button
             onClick={handleAnalyze}
             className="w-full py-3 text-white font-medium rounded-md bg-gray-500 hover:bg-gray-600"
-            disabled={isOptimizing || isLoadingJobFetch || !isResumeContentAvailable || !jobDescriptionText} // Disable button while fetching, optimizing, resume content is not available, or job description is empty
+            disabled={isOptimizing || !isResumeContentAvailable || !jobDescriptionText && !jobLink} // Disable button while fetching, optimizing, resume content is not available, or job description is empty
           >
-            {isOptimizing || isLoadingJobFetch ? t('优化中...') : t('优化我的简历')}
+            {isOptimizing ? t('优化中...') : t('优化我的简历')}
           </button>
         </section>
 

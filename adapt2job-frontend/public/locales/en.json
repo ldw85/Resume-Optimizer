@@ -8,7 +8,7 @@
   "English": "English",
   "中文": "Chinese",
   "请先输入您的简历内容": "Please enter your resume content first",
-  "请先输入您的职位描述": "Please enter your job description first",
+  "请先输入您的职位描述": "Please enter your job description or job link first",
   "优化简历需要花费几秒时间，请耐心等待": "Optimizing your resume will take a few seconds, please wait patiently",
   "优化中...": "Optimizing...",
   "优化我的简历": "Optimize my resume",
@@ -120,5 +120,6 @@
   "howItWorks.step3Title": "One-Click Optimize Resume",
   "howItWorks.step3Description": "The system will quickly analyze and generate an optimized resume that matches the job.",
   "howItWorks.step4Title": "Download Optimized Resume",
-  "howItWorks.step4Description": "Supports downloading optimized resumes in PDF and Word formats."
+  "howItWorks.step4Description": "Supports downloading optimized resumes in PDF and Word formats.",
+  "职位链接解析失败，请粘贴职位信息": "Failed to parse job link, please paste job information"
 }
