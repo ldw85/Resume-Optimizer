@@ -49,9 +49,9 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
     contentExplanation: '',
     modifiedResume: '',
   });
-  const [isResumeInputLoading, setIsResumeInputLoading] = useState(false); // New state for ResumeInput loading
-  const [isFileParsedSuccessfully, setIsFileParsedSuccessfully] = useState(false); // New state for file parsing status
-  const [resumeInputActiveMethod, setResumeInputActiveMethod] = useState<'upload' | 'paste'>('upload'); // New state for ResumeInput active method
+  // const [isResumeInputLoading, setIsResumeInputLoading] = useState(false); // New state for ResumeInput loading - Removed as unused
+  // const [isFileParsedSuccessfully, setIsFileParsedSuccessfully] = useState(false); // New state for file parsing status - Removed as unused
+  // const [resumeInputActiveMethod, setResumeInputActiveMethod] = useState<'upload' | 'paste'>('upload'); // New state for ResumeInput active method - Removed as unused
   const [isResumeContentAvailable, setIsResumeContentAvailable] = useState(false); // New state for resume content availability
 
   const [language, setLanguage] = useState(i18n.language); // Initialize language state
@@ -350,12 +350,12 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
             value={resumeText}
             onChange={handleResumeTextChange} // Keep this for textarea changes
             onContentChange={handleResumeContentChange} // New prop for content updates
-            onLoadingChange={setIsResumeInputLoading} // Pass the loading state setter
-            onFileParsedChange={setIsFileParsedSuccessfully} // Pass the file parsed status setter
-            onActiveMethodChange={setResumeInputActiveMethod} // Pass the active method setter
+            onLoadingChange={() => {}} // Pass a no-op function as the loading state setter
+            onFileParsedChange={() => {}} // Pass a no-op function as the file parsed status setter
+            onActiveMethodChange={() => {}} // Pass a no-op function as the active method setter
             onResumeContentAvailableChange={setIsResumeContentAvailable} // Pass the new state setter
-            onSaveResume={handleSaveResume} // Pass the save resume handler - This prop is no longer strictly needed for triggering save from parent, but kept for potential other uses or if ResumeInput still calls it internally.
-            required={true}
+            // onSaveResume={handleSaveResume} // Pass the save resume handler - This prop is no longer strictly needed for triggering save from parent, but kept for potential other uses or if ResumeInput still calls it internally. - Removed as unused
+            // required={true} // Removed as unused
             ref={resumeInputRef} // Use ref instead of resumeInputRef prop
           />
         </section>

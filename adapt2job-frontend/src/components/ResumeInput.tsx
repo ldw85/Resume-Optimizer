@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'; // Import useEffect
 import axios from 'axios';
-import { FaLock, FaFileUpload, FaPaste, FaSpinner } from 'react-icons/fa';
+import { FaFileUpload, FaPaste, FaSpinner } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast'; // Import toast
 import { getSavedResumes, saveResume } from '../services/resumeService'; // Import resume service
@@ -14,14 +14,14 @@ interface ResumeInputProps {
   onFileParsedChange: (isParsed: boolean) => void; // New prop to communicate file parsing status
   onActiveMethodChange: (method: 'upload' | 'paste') => void; // New prop to communicate active method
   onResumeContentAvailableChange: (isAvailable: boolean) => void; // New prop to communicate resume content availability
-  onSaveResume: () => void; // New prop to trigger saving from parent
-  required: boolean;
+  // onSaveResume: () => void; // New prop to trigger saving from parent - Removed as using ref
+  // required: boolean; // Removed as unused
   // resumeInputRef: React.Ref<any>; // Removed as using forwardRef
 }
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, onContentChange, onLoadingChange, onFileParsedChange, onActiveMethodChange, onResumeContentAvailableChange, onSaveResume, required }, ref) => {
+const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, onContentChange, onLoadingChange, onFileParsedChange, onActiveMethodChange, onResumeContentAvailableChange }, ref) => {
   const [activeMethod, setActiveMethod] = useState<'upload' | 'paste'>('upload');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,10 +30,10 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
   const { t } = useTranslation();
 
   const [isSaveResumeEnabled, setIsSaveResumeEnabled] = useState(false);
-  const [savedResumes, setSavedResumes] = useState<SavedResume[]>([]); // Use imported type
+  // const [savedResumes, setSavedResumes] = useState<SavedResume[]>([]); // Use imported type - Removed as unused
   const [selectedSavedResume, setSelectedSavedResume] = useState<SavedResume | null>(null); // Store the selected resume object
   const [showUploadArea, setShowUploadArea] = useState(true); // Initially show upload area
-  const [isLoadingSavedResumes, setIsLoadingSavedResumes] = useState(false); // New state for loading
+  // const [isLoadingSavedResumes, setIsLoadingSavedResumes] = useState(false); // New state for loading - Removed as unused
   const [hasAttemptedSavedResumesFetch, setHasAttemptedSavedResumesFetch] = useState(false); // New state to prevent re-fetching on error
 
   // New state to track if resume content is available and valid
@@ -74,8 +74,8 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
 
         const saved = await saveResume(value, title);
         console.log('Resume saved:', saved);
-        // After saving, update the savedResumes state and selectedSavedResume
-        setSavedResumes([saved]); // Assuming only one resume is saved
+        // After saving, update the selectedSavedResume
+        // setSavedResumes([saved]); // Assuming only one resume is saved - Removed as unused
         setSelectedSavedResume(saved);
         // Do NOT reset hasAttemptedSavedResumesFetch here, as saving should not trigger re-fetch
       } catch (error) {
@@ -93,7 +93,7 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
         setHasAttemptedSavedResumesFetch(true); // Mark as attempted
         try {
           const resumes = await getSavedResumes();
-          setSavedResumes(resumes);
+          // setSavedResumes(resumes); // Removed as unused
           // Decide whether to display saved resume or upload area based ONLY on whether resumes were found
           if (resumes.length > 0) {
             const latestResume = resumes[0];
@@ -110,7 +110,7 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
         } catch (error) {
           console.error('Failed to fetch saved resumes on mount:', error);
           setShowUploadArea(true);
-          setSavedResumes([]);
+          // setSavedResumes([]); // Removed as unused
           setSelectedSavedResume(null);
           if (activeMethod !== 'paste' || value === '') {
             onContentChange('');
@@ -257,13 +257,13 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
   // Effect to update isResumeContentAvailable and notify parent
   useEffect(() => {
     const currentIsResumeContentAvailable =
-      value.trim().length > 0 && !isLoading && !isLoadingSavedResumes && !error;
+      value.trim().length > 0 && !isLoading && !error; // Removed isLoadingSavedResumes
     //console.log('ResumeInput: isResumeContentAvailable Effect - value length:', value.trim().length, 'isLoading:', isLoading, 'isLoadingSavedResumes:', isLoadingSavedResumes, 'error:', error, 'currentIsResumeContentAvailable:', currentIsResumeContentAvailable);
     if (currentIsResumeContentAvailable !== isResumeContentAvailable) {
       setIsResumeContentAvailable(currentIsResumeContentAvailable);
       onResumeContentAvailableChange(currentIsResumeContentAvailable);
     }
-  }, [value, isLoading, isLoadingSavedResumes, error, isResumeContentAvailable, onResumeContentAvailableChange]);
+  }, [value, isLoading, error, isResumeContentAvailable, onResumeContentAvailableChange]); // Removed isLoadingSavedResumes
 
 
   // Expose triggerSaveResume to parent via ref
@@ -295,127 +295,121 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
         </div>
       )}
 
-      {isLoadingSavedResumes ? (
-        <div className="flex flex-col items-center justify-center h-[250px] border border-gray-300 rounded-md">
-          <FaSpinner className="mx-auto text-2xl mb-2 animate-spin" />
-          <p>{t('resumeInput.loadingSavedResumes')}</p>
-        </div>
-      ) : (
-        <>
-          {/* Display saved resume or upload area */}
-          {selectedSavedResume && !showUploadArea ? (
-            <div className="flex items-center justify-between mb-4 p-4 border border-gray-300 rounded-md bg-gray-50">
-              <p className="text-sm text-slate-700">
-                {t('resumeInput.yourSavedResume')}
-                <span className="font-semibold text-gray-800 ml-1">{selectedSavedResume?.title}</span>
-              </p>
+      {/* Removed isLoadingSavedResumes check */}
+      <>
+        {/* Display saved resume or upload area */}
+        {selectedSavedResume && !showUploadArea ? (
+          <div className="flex items-center justify-between mb-4 p-4 border border-gray-300 rounded-md bg-gray-50">
+            <p className="text-sm text-slate-700">
+              {t('resumeInput.yourSavedResume')}
+              <span className="font-semibold text-gray-800 ml-1">{selectedSavedResume?.title}</span>
+            </p>
+            <button
+              onClick={() => {
+                setShowUploadArea(true);
+                handleMethodChange('upload');
+              }}
+              className="text-sm text-blue-600 hover:underline px-3 py-1 rounded-md border border-blue-600 hover:bg-blue-50"
+            >
+              {t('resumeInput.uploadNewResume')}
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* Method selection buttons */}
+            <div className="flex gap-2 mb-4 p-1 rounded-md">
               <button
-                onClick={() => {
-                  setShowUploadArea(true);
-                  handleMethodChange('upload');
-                }}
-                className="text-sm text-blue-600 hover:underline px-3 py-1 rounded-md border border-blue-600 hover:bg-blue-50"
+                onClick={() => handleMethodChange('upload')}
+                className={`flex items-center justify-center gap-2 px-4 py-2 rounded-md transition-colors ${
+                  activeMethod === 'upload'
+                    ? 'bg-gray-700 text-white'
+                    : 'tab-button bg-gray-400 text-gray-800 hover:bg-gray-500'
+                }`}
+                tabIndex={0}
+                aria-label={t('上传文件')}
               >
-                {t('resumeInput.uploadNewResume')}
+                <FaFileUpload />
+                <span>{t('上传文件')}</span>
+              </button>
+              <button
+                onClick={() => handleMethodChange('paste')}
+                className={`flex items-center justify-center gap-2 px-4 py-2 rounded-md transition-colors ${
+                  activeMethod === 'paste'
+                    ? 'bg-gray-700 text-white'
+                    : 'tab-button bg-gray-400 text-gray-800 hover:bg-gray-500'
+                }`}
+                tabIndex={0}
+                aria-label={t('粘贴简历')}
+              >
+                <FaPaste />
+                <span>{t('粘贴简历')}</span>
               </button>
             </div>
-          ) : (
-            <>
-              {/* Method selection buttons */}
-              <div className="flex gap-2 mb-4 p-1 rounded-md">
-                <button
-                  onClick={() => handleMethodChange('upload')}
-                  className={`flex items-center justify-center gap-2 px-4 py-2 rounded-md transition-colors ${
-                    activeMethod === 'upload'
-                      ? 'bg-gray-700 text-white'
-                      : 'tab-button bg-gray-400 text-gray-800 hover:bg-gray-500'
-                  }`}
-                  tabIndex={0}
-                  aria-label={t('上传文件')}
-                >
-                  <FaFileUpload />
-                  <span>{t('上传文件')}</span>
-                </button>
-                <button
-                  onClick={() => handleMethodChange('paste')}
-                  className={`flex items-center justify-center gap-2 px-4 py-2 rounded-md transition-colors ${
-                    activeMethod === 'paste'
-                      ? 'bg-gray-700 text-white'
-                      : 'tab-button bg-gray-400 text-gray-800 hover:bg-gray-500'
-                  }`}
-                  tabIndex={0}
-                  aria-label={t('粘贴简历')}
-                >
-                  <FaPaste />
-                  <span>{t('粘贴简历')}</span>
-                </button>
+
+            {/* Resume Input Area (Textarea or Upload Area) */}
+            {activeMethod === 'paste' && (
+              <div className="relative">
+                <textarea
+                  placeholder={t('在此粘贴您的简历内容...')}
+                  value={value}
+                  onChange={onChange} // Keep original onChange for immediate UI update
+                  className="w-full h-[250px] border border-gray-300 rounded-md p-3 resize-none"
+                  ref={ref}
+                  aria-label={t('简历内容输入框')}
+                />
               </div>
+            )}
 
-              {/* Resume Input Area (Textarea or Upload Area) */}
-              {activeMethod === 'paste' && (
-                <div className="relative">
-                  <textarea
-                    placeholder={t('在此粘贴您的简历内容...')}
-                    value={value}
-                    onChange={onChange} // Keep original onChange for immediate UI update
-                    className="w-full h-[250px] border border-gray-300 rounded-md p-3 resize-none"
-                    ref={ref}
-                    aria-label={t('简历内容输入框')}
-                  />
-                </div>
-              )}
-
-              {activeMethod === 'upload' && (
-                <div
-                  className={`border-2 border-dashed rounded-md p-8 text-center cursor-pointer transition-colors relative ${
-                    error ? 'border-red-500 text-red-600' : 'border-gray-300 text-gray-500 hover:border-gray-400'
-                  }`}
-                  aria-label={t('点击或拖拽文件上传')}
-                >
-                  {isLoading ? (
-                    <div className="flex flex-col items-center">
-                      <FaSpinner className="mx-auto text-2xl mb-2 animate-spin" />
-                      <p>{t('正在解析文件...')}</p>
-                    </div>
-                  ) : selectedFile ? (
-                    <div className="flex flex-col items-center">
-                      <FaFileUpload className="mx-auto text-2xl mb-2" />
-                      <p className="text-gray-800 font-semibold">{selectedFile?.name}</p>
-                      <p className="text-sm text-gray-500">{t('文件已选择，等待解析')}</p>
-                    </div>
-                  ) : error ? (
-                    <div className="flex flex-col items-center">
-                      <p className="text-red-600 font-semibold">{error}</p>
-                      <p className="text-sm text-gray-500">{t('请重新选择文件')}</p>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center">
-                      <FaFileUpload className="mx-auto text-2xl mb-2" />
-                      <p>{t('点击此处或拖拽文件上传')}</p>
-                      <p className="text-sm text-gray-500">{t('支持 PDF, Word (.docx), 图片 (.jpg, .png)')}</p>
-                    </div>
-                  )}
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    style={{
-                      opacity: 0,
-                      position: 'absolute',
-                      left: 0,
-                      top: 0,
-                      width: '100%',
-                      height: '100%',
-                      cursor: 'pointer',
-                    }}
-                    accept=".pdf,.docx,.jpg,.jpeg,.png"
-                    onChange={handleFileChange}
-                  />
-                </div>
-              )}
-            </>
-          )}
-        </>
-      )}
+            {activeMethod === 'upload' && (
+              <div
+                className={`border-2 border-dashed rounded-md p-8 text-center cursor-pointer transition-colors relative ${
+                  error ? 'border-red-500 text-red-600' : 'border-gray-300 text-gray-500 hover:border-gray-400'
+                }`}
+                aria-label={t('点击或拖拽文件上传')}
+              >
+                {isLoading ? (
+                  <div className="flex flex-col items-center">
+                    <FaSpinner className="mx-auto text-2xl mb-2 animate-spin" />
+                    <p>{t('正在解析文件...')}</p>
+                  </div>
+                ) : selectedFile ? (
+                  <div className="flex flex-col items-center">
+                    <FaFileUpload className="mx-auto text-2xl mb-2" />
+                    <p className="text-gray-800 font-semibold">{selectedFile?.name}</p>
+                    <p className="text-sm text-gray-500">{t('文件已选择，等待解析')}</p>
+                  </div>
+                ) : error ? (
+                  <div className="flex flex-col items-center">
+                    <p className="text-red-600 font-semibold">{error}</p>
+                    <p className="text-sm text-gray-500">{t('请重新选择文件')}</p>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center">
+                    <FaFileUpload className="mx-auto text-2xl mb-2" />
+                    <p>{t('点击此处或拖拽文件上传')}</p>
+                    <p className="text-sm text-gray-500">{t('支持 PDF, Word (.docx), 图片 (.jpg, .png)')}</p>
+                  </div>
+                )}
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  style={{
+                    opacity: 0,
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    width: '100%',
+                    height: '100%',
+                    cursor: 'pointer',
+                  }}
+                  accept=".pdf,.docx,.jpg,.jpeg,.png"
+                  onChange={handleFileChange}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </>
     </div>
   );
 });
