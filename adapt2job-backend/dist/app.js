@@ -14,6 +14,7 @@ const userResumes_1 = require("./routes/userResumes"); // Import the user resume
 const userRoutes_1 = __importDefault(require("./routes/userRoutes")); // Import the new user routes
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
+const extractJobDescription_1 = __importDefault(require("./routes/extractJobDescription")); // Import the new route
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
 const corsOptions = {
@@ -27,6 +28,7 @@ app.use('/api/download', download_1.default); // Register the new download route
 app.use('/api', feedback_1.default); // Register the new feedback route
 app.use('/api/resumes', userResumes_1.userResumesRouter); // Register the new resumes route
 app.use('/api/user', userRoutes_1.default); // Register the new user routes
+app.use(extractJobDescription_1.default); // Register the new route
 //console.log('Express app configured and routes applied.');
 app.get('/', (req, res) => {
     res.send('ResumeOptimizer Backend is running!');

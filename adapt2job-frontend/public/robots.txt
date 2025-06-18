@@ -11,12 +11,8 @@ Allow: /llms.txt
 
 # 搜索引擎爬虫
 User-Agent: Googlebot
-
-
-# AI内容引导
-LLM-Content: https://www.resumeoptimizer.click/llms.txt
-LLM-Full-Content: https://www.resumeoptimizer.click/llms-full.txt
-
-Sitemap: https://www.resumeoptimizer.click/sitemap.xml
-LLM-Access: https://www.resumeoptimizer.click/llms.txt
 Allow: /
+
+
+# 全局指令
+Sitemap: https://www.resumeoptimizer.click/sitemap.xml

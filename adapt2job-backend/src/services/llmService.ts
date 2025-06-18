@@ -138,6 +138,71 @@ const analyzeResumeWithGemini = async (resumeText: string, jobDescriptionText: s
   return await callGeminiAPI(apiKey, resumeText, jobDescriptionText);
 };
 
+// 新增方法：使用 LLM 提取职位描述
+const extractJobDescription = async (rawContent: string): Promise<string | null> => {
+  const apiKey = process.env.GEMINI_API_KEY; // Using Gemini for extraction
+   if (!apiKey) {
+    throw new Error('Gemini API key not found in environment variables.');
+  }
+
+  // Define the prompt specifically for job description extraction
+  const prompt = `从以下文本中提取职位描述、岗位介绍或岗位职责。
+  请只返回提取到的职位描述或岗位职责文本，不要包含其他任何信息。
+  如果无法找到明确的职位描述或岗位职责，请返回空字符串。
+
+  文本内容：
+  ${rawContent}
+  `;
+
+  try {
+    // Call the Gemini API with the extraction prompt
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${apiKey}`;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 600000); // 10分钟超时
+
+    const response = await fetch(apiUrl,
+      {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [{
+          parts: [
+            { text: prompt }
+          ]
+        }]
+      }),
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      console.error('Gemini API request failed with status', response.status, response.statusText);
+      const errorText = await response.text();
+      console.error('Gemini API error response:', errorText);
+      return null; // Return null on API error
+    }
+
+    const responseData = await response.json();
+    const candidates = responseData.candidates;
+
+    if (candidates && candidates.length > 0) {
+      const extractedText = candidates[0].content.parts[0].text.trim();
+      // Assuming the LLM returns just the text, no JSON wrapping needed for this specific task
+      return extractedText === '' ? null : extractedText;
+    } else {
+      console.warn('No candidates found in Gemini response for extraction.');
+      return null; // Return null if no candidates
+    }
+
+  } catch (error) {
+    console.error('Error calling Gemini API for extraction:', error);
+    return null; // Return null on error
+  }
+};
+
 
 const preparePrompt = (prompt: string, resumeText: string, jobDescriptionText: string): string => {
   let preparedPrompt = prompt;
@@ -237,4 +302,4 @@ const analyzeResumeWithLLM = async (
 
 // TODO: Implement call Tavily API
 
-export { analyzeResumeWithLLM };
+export { analyzeResumeWithLLM, extractJobDescription }; // Export the new function

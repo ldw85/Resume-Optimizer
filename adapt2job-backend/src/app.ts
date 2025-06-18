@@ -10,6 +10,8 @@ import userRoutes from './routes/userRoutes'; // Import the new user routes
 import dotenv from 'dotenv';
 dotenv.config();
 
+import extractJobDescriptionRoutes from './routes/extractJobDescription'; // Import the new route
+
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
@@ -26,6 +28,7 @@ app.use('/api/download', downloadRoutes); // Register the new download route
 app.use('/api', feedbackRoutes); // Register the new feedback route
 app.use('/api/resumes', userResumesRouter); // Register the new resumes route
 app.use('/api/user', userRoutes); // Register the new user routes
+app.use(extractJobDescriptionRoutes); // Register the new route
 
 //console.log('Express app configured and routes applied.');
 

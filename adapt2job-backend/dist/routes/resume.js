@@ -47,6 +47,16 @@ const parseResumeHandler = (req, res) => __awaiter(void 0, void 0, void 0, funct
         }
         const text = yield (0, fileParser_1.parseFile)(req.file);
         res.status(200).send({ text });
+        // 删除临时文件
+        if (req.file && req.file.path) {
+            try {
+                yield promises_1.default.unlink(req.file.path);
+                console.log(`Deleted temporary file: ${req.file.path}`);
+            }
+            catch (unlinkError) {
+                console.warn(`Failed to delete temporary file: ${req.file.path}`, unlinkError);
+            }
+        }
         return;
     }
     catch (error) {
