@@ -44,6 +44,7 @@ import HowToCreateAGreatResumeEn from '../landing_pages/en/blog/how-to-create-a-
 import ProfessionalResumeWritingServicesEn from '../landing_pages/en/blog/professional-resume-writing-services.html?raw';
 import ProfessionalResumeWritingServicesZh from '../landing_pages/zh/blog/professional-resume-writing-services.html?raw';
 import BlogIndexZh from '../landing_pages/zh/blog/blogIndex.html?raw';
+import CanAResumeBe2PagesEn from '../landing_pages/en/blog/can-a-resume-be-2-pages-your-ultimate-guide-to-optimal-length.html?raw';
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -114,6 +115,7 @@ createRoot(document.getElementById('root')).render(
             {/* New routes for Chinese blog pages */}
             <Route path="/zh/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexZh }} />} />
             <Route path="/zh/blog/professional-resume-writing-services" element={<div dangerouslySetInnerHTML={{ __html: ProfessionalResumeWritingServicesZh }} />} />
+            <Route path="/en/blog/can-a-resume-be-2-pages-your-ultimate-guide-to-optimal-length" element={<div dangerouslySetInnerHTML={{ __html: CanAResumeBe2PagesEn }} />} />
             {/* Optimizer page */}
             <Route path="/optimizer" element={<OptimizerPage />} />
             {/* Optional: Add a catch-all route for 404 */}
