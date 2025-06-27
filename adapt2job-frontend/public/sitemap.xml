@@ -1,214 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.resumeoptimizer.click/</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://resumeoptimizer.click/</loc>
+  <lastmod>2025-06-27T19:28:24+00:00</lastmod>
+</url>
+<url>
+  <loc>https://resumeoptimizer.click/</loc>
+  <lastmod>2025-06-27T19:28:24+00:00</lastmod>
+</url>
+<url>
     <loc>https://www.resumeoptimizer.click/en</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-06-27T19:28:24+00:00</lastmod>
   </url>
   <url>
     <loc>https://www.resumeoptimizer.click/es</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-06-27T19:28:24+00:00</lastmod>
   </url>
   <url>
     <loc>https://www.resumeoptimizer.click/ja</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-06-27T19:28:24+00:00</lastmod>
   </url>
   <url>
     <loc>https://www.resumeoptimizer.click/zh</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-06-27T19:28:24+00:00</lastmod>
   </url>
   <url>
     <loc>https://www.resumeoptimizer.click/de</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+   <lastmod>2025-06-27T19:28:24+00:00</lastmod>
   </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/en/usage-instructions</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/en/faq</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/en/contact-us</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/en/privacy-policy</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/en/terms-of-service</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  
   <url>
     <loc>https://www.resumeoptimizer.click/en/blog</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1</priority>
+    <lastmod>2025-06-27T19:28:24+00:00</lastmod>
   </url>
   <url>
     <loc>https://www.resumeoptimizer.click/en/blog/how-to-tailor-resumes-for-jobs</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2025-06-27T19:28:24+00:00</lastmod>
   </url>
   <url>
     <loc>https://www.resumeoptimizer.click/en/blog/how-to-create-a-great-resume</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+   <lastmod>2025-06-27T19:28:24+00:00</lastmod>
   </url>
   <url>
     <loc>https://www.resumeoptimizer.click/en/blog/professional-resume-writing-services</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/es/usage-instructions</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/es/faq</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/es/contact-us</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/es/privacy-policy</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/es/terms-of-service</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/ja/usage-instructions</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/ja/faq</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/ja/contact-us</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/ja/privacy-policy</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/ja/terms-of-service</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/zh/usage-instructions</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/zh/faq</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/zh/contact-us</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/zh/privacy-policy</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/zh/terms-of-service</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/de/usage-instructions</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/de/faq</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/de/contact-us</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/de/privacy-policy</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.resumeoptimizer.click/de/terms-of-service</loc>
-    <lastmod>2025-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2025-06-27T19:28:24+00:00</lastmod>
   </url>
   <url>
     <loc>https://www.resumeoptimizer.click/zh/blog</loc>
@@ -230,8 +72,15 @@
   </url>
   <url>
     <loc>https://www.resumeoptimizer.click/en/blog/can-a-resume-be-2-pages-your-ultimate-guide-to-optimal-length</loc>
-    <lastmod>2025-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2025-06-27T19:28:24+00:00</lastmod>
   </url>
+  <url>
+    <loc>https://www.resumeoptimizer.click/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025</loc>
+    <lastmod>2025-06-27T19:28:24+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://www.resumeoptimizer.click/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment</loc>
+    <lastmod>2025-06-27T19:28:24+00:00</lastmod>
+  </url>
+
 </urlset>
