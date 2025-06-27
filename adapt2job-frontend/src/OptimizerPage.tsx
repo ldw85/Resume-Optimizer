@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, Suspense } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom'; // Import useSearchParams and useNavigate
+import { useNavigate } from 'react-router-dom'; // Import useSearchParams and useNavigate
 import './App.css';
 // import AnalysisOutput from './components/AnalysisOutput'; // 将被懒加载
 import JobInput from './components/JobInput';
@@ -36,7 +36,6 @@ interface LanguageOption {
 }
 
 const OptimizerPage: React.FC = () => { // Use const and specify type
-  const [searchParams] = useSearchParams(); // Get search params
   const navigate = useNavigate(); // Get navigate function
   const { t, i18n } = useTranslation(); // Use useTranslation and get i18n instance
   const { user, isSignedIn } = useUser(); // Get user and isSignedIn from Clerk
@@ -79,42 +78,51 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
 
   // 定义语言选项
   const languageOptions: LanguageOption[] = [
-    { value: 'en', label: t('en') },
-    { value: 'zh', label: t('zh') },
-    { value: 'ja', label: t('ja') },
-    { value: 'es', label: t('es') },
-    { value: 'de', label: t('de') },
+    { value: 'en', label: 'English' },
+    { value: 'zh', label: '中文' },
+    { value: 'ja', label: '日本語' },
+    { value: 'es', label: 'Español' },
+    { value: 'de', label: 'Deutsch' },
   ];
 
   // 获取当前选中的语言选项
   const selectedLanguageOption = languageOptions.find(option => option.value === language);
 
-  useEffect(() => {
-    const langParam = searchParams.get('lang'); // Get lang parameter from URL
-    let targetLanguage = langParam;
+  console.log('OptimizerPage: languageOptions', languageOptions);
+  console.log('OptimizerPage: selectedLanguageOption', selectedLanguageOption);
 
-    if (!targetLanguage) {
-      // If no lang parameter in URL, check localStorage or browser language
-      const savedLanguage = localStorage.getItem('i18nextLng');
-      if (savedLanguage) {
-        targetLanguage = savedLanguage;
-      } else {
-        targetLanguage = i18n.language || navigator.language;
-      }
+  useEffect(() => {
+    let targetLanguage;
+
+    // Check sessionStorage first
+    const savedLanguage = sessionStorage.getItem('i18nextLng');
+    if (savedLanguage) {
+      targetLanguage = savedLanguage;
+    } else {
+      // Fallback to i18n.language or browser language
+      targetLanguage = i18n.language || navigator.language;
     }
 
     // Ensure language code format is correct, e.g., 'en-US' -> 'en'
     const shortLang = targetLanguage.split('-')[0];
 
+    console.log('OptimizerPage useEffect: current i18n.language before change', i18n.language);
+    console.log('OptimizerPage useEffect: targetLanguage (shortLang)', shortLang);
+
     // Switch language if different from current
     if (i18n.language !== shortLang) {
       i18n.changeLanguage(shortLang);
+      console.log('OptimizerPage useEffect: i18n.changeLanguage called with', shortLang);
     }
 
     // Update HTML language tag
     document.documentElement.lang = shortLang;
     setLanguage(shortLang); // Update local language state
-  }, [searchParams, i18n]); // Depend on searchParams and i18n
+    console.log('OptimizerPage useEffect: language state updated to', shortLang);
+    console.log('OptimizerPage useEffect: i18n.language after potential change', i18n.language);
+    console.log('OptimizerPage useEffect: language state variable', language); // Add this line
+    console.log('OptimizerPage useEffect: triggered'); // Add this line
+  }, [i18n, language]); // Depend on i18n and language
 
   // Effect to save user info on initial sign-in/registration
   useEffect(() => {
@@ -147,10 +155,30 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
     }
   }, [isSignedIn, user, hasRegisteredInfoBeenSaved]); // Dependencies for this effect
 
+  // Effect to listen for i18n language changes
+  useEffect(() => {
+    const handleLanguageChanged = (lng: string) => {
+      console.log('i18n languageChanged event fired:', lng);
+    };
+
+    i18n.on('languageChanged', handleLanguageChanged);
+
+    return () => {
+      i18n.off('languageChanged', handleLanguageChanged);
+    };
+  }, [i18n]); // Depend on i18n instance
+
   const changeLanguage = (selectedOption: LanguageOption | null) => {
+    console.log('changeLanguage: selectedOption', selectedOption);
     if (selectedOption) {
-      i18n.changeLanguage(selectedOption.value);
-      // setLanguage(selectedOption.value); // Language state updated by useEffect
+      i18n.changeLanguage(selectedOption.value).then(() => {
+        console.log('changeLanguage: i18n.changeLanguage called with', selectedOption.value);
+        setLanguage(selectedOption.value); // Update language state after i18n.changeLanguage
+        sessionStorage.setItem('i18nextLng', selectedOption.value); // Save language to localStorage
+        console.log('changeLanguage: language state updated to', selectedOption.value); // Add this line
+      });
+      console.log('changeLanguage: i18n.changeLanguage called', selectedOption.value); // Add this line
+      console.log('changeLanguage: setLanguage called'); // Add this line
     }
   };
 
@@ -311,12 +339,13 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
             {/* Language Switcher */}
             <div className="w-32 ml-4"> {/* Added ml-4 */}
               <Select<LanguageOption>
+                key={language} // Add key prop to force re-render on language change
                 value={selectedLanguageOption}
-              onChange={changeLanguage}
-              options={languageOptions}
-              classNamePrefix="react-select" // 用于自定义样式
-              styles={{
-                control: (baseStyles, state) => ({
+                onChange={changeLanguage}
+                options={languageOptions}
+                classNamePrefix="react-select" // 用于自定义样式
+                styles={{
+                  control: (baseStyles, state) => ({
                   ...baseStyles,
                   borderColor: state.isFocused ? '#a5b4fc' : '#d1d5db', // Tailwind indigo-300 and gray-300
                   boxShadow: state.isFocused ? '0 0 0 1px #a5b4fc' : 'none', // Tailwind ring-indigo-300

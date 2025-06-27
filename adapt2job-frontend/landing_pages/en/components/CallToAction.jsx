@@ -1,7 +1,16 @@
 // Add export default keyword
-import { Link } from 'react-router-dom'; // Import Link
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 export default function CallToAction() {
+    const navigate = useNavigate();
+    useTranslation();
+
+    const handleOptimizeClick = () => {
+        sessionStorage.setItem('i18nextLng', 'en');
+        navigate('/optimizer');
+    };
+
     try {
         return (
             <section data-name="call-to-action" className="py-20">
@@ -15,10 +24,10 @@ export default function CallToAction() {
                                 Try AI Resume Optimization now and make your resume stand out
                             </p>
                             <div className="mt-10">
-                                <Link to="/optimizer?lang=en" className="bg-white text-indigo-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-50 transition-colors">
+                                <a onClick={handleOptimizeClick} className="bg-white text-indigo-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-50 transition-colors cursor-pointer">
                                     Get started for free
                                     <i className="fas fa-arrow-right ml-2"></i>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,7 @@ import geminiPrompt from '../prompts/gemini.prompt';
 
 // TODO: Implement analyze resume with Gemini
 const callGeminiAPI = async (apiKey: string, resumeText: string, jobDescriptionText: string): Promise<AnalysisResponse> => {
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`; // 假设的 Gemini API 端点
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`; // 假设的 Gemini API 端点
 
   try {
     let prompt = geminiPrompt;

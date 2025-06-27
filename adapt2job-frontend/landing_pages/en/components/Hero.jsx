@@ -1,4 +1,15 @@
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 export default function Hero() {
+    const navigate = useNavigate();
+    const { i18n } = useTranslation();
+
+    const handleOptimizeClick = () => {
+        sessionStorage.setItem('i18nextLng', 'en');
+        navigate('/optimizer');
+    };
+
     try {
         return (
             <div data-name="hero" className="hero-gradient pt-24">
@@ -17,7 +28,7 @@ export default function Hero() {
                         </p>
                         <div className="mt-10">
                             {/* Change button tag to a tag and add href="#" */}
-                            <a href="/optimizer?lang=en" className="btn-primary text-xl px-8 py-4 rounded-lg text-white font-medium">
+                            <a onClick={handleOptimizeClick} className="btn-primary text-xl px-8 py-4 rounded-lg text-white font-medium cursor-pointer">
                                 Optimize Your Resume Now
                                 <i className="fas fa-arrow-right ml-2"></i>
                             </a>

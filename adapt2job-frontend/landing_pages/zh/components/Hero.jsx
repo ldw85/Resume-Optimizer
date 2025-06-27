@@ -1,4 +1,15 @@
-export default function Hero({ onNavigateToOptimizer }) { // 接受 onNavigateToOptimizer prop
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+export default function Hero() {
+    const navigate = useNavigate();
+    const { i18n } = useTranslation();
+
+    const handleOptimizeClick = () => {
+        sessionStorage.setItem('i18nextLng', 'zh');
+        navigate('/optimizer');
+    };
+
     try {
         return (
             <div data-name="hero" className="hero-gradient pt-24">
@@ -16,7 +27,7 @@ export default function Hero({ onNavigateToOptimizer }) { // 接受 onNavigateTo
                             让你的简历脱颖而出
                         </p>
                         <div className="mt-10">
-                             <a href="/optimizer?lang=zh" className="btn-primary text-xl px-8 py-4 rounded-lg text-white font-medium">
+                             <a onClick={handleOptimizeClick} className="btn-primary text-xl px-8 py-4 rounded-lg text-white font-medium cursor-pointer">
                              立即优化简历
                                 <i className="fas fa-arrow-right ml-2"></i>
                             </a>

@@ -1,6 +1,15 @@
-import { Link } from 'react-router-dom'; // Import Link
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function CallToAction() {
+    const navigate = useNavigate();
+    const { i18n } = useTranslation();
+
+    const handleOptimizeClick = () => {
+        sessionStorage.setItem('i18nextLng', i18n.language);
+        navigate('/optimizer');
+    };
+
     try {
         return (
             <section data-name="call-to-action" className="py-20">
@@ -14,10 +23,10 @@ export default function CallToAction() {
                                 Probieren Sie jetzt die KI-Lebenslaufoptimierung aus und heben Sie Ihren Lebenslauf hervor!
                             </p>
                             <div className="mt-10">
-                                <Link to="/optimizer?lang=de" className="bg-white text-indigo-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-50 transition-colors">
+                                <a onClick={handleOptimizeClick} className="bg-white text-indigo-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-50 transition-colors cursor-pointer">
                                     Kostenlos starten
                                     <i className="fas fa-arrow-right ml-2"></i>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>
