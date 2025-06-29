@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import HeroReportWrapper from '../../../src/components/HeroReportWrapper';
 
 export default function Hero() {
     const navigate = useNavigate();
@@ -39,18 +40,15 @@ export default function Hero() {
                         </div>
                     </div>
                     <div className="mt-20">
-                        <img
-                            src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80"
-                            alt="AI Resume Optimization Demo"
-                            className="rounded-lg shadow-2xl mx-auto"
-                        />
+                        <HeroReportWrapper />
                     </div>
                 </div>
             </div>
         );
     } catch (error) {
         console.error('Hero component error:', error);
-        reportError(error);
+        // Assuming reportError is defined elsewhere or can be removed if not needed
+        // reportError(error); 
         return null;
     }
 }
