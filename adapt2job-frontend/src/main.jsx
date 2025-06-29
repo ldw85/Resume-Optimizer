@@ -48,6 +48,7 @@ import CanAResumeBe2PagesEn from '../landing_pages/en/blog/can-a-resume-be-2-pag
 import HowToImproveResumeQualityEn from '../landing_pages/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025.html?raw';
 import IsProfessionallyWrittenAtsFriendlyResumeWorthTheInvestmentEn from '../landing_pages/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment.html?raw';
 import WhyYourResumeGetsIgnoredEn from '../landing_pages/en/blog/why-your-resume-gets-ignored-and-the-free-ai-trick-to-fix-it-instantly.html?raw';
+import InteractiveReportWrapper from './components/InteractiveReportWrapper';
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -115,6 +116,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/en/blog/how-to-tailor-resumes-for-jobs" element={<div dangerouslySetInnerHTML={{ __html: HowToTailorResumesForJobsEn }} />} />
             <Route path="/en/blog/how-to-create-a-great-resume" element={<div dangerouslySetInnerHTML={{ __html: HowToCreateAGreatResumeEn }} />} />
             <Route path="/en/blog/professional-resume-writing-services" element={<div dangerouslySetInnerHTML={{ __html: ProfessionalResumeWritingServicesEn }} />} />
+            <Route path="/en/blog/interactive-report-ai-resume-optimization-tools" element={<InteractiveReportWrapper />} />
             {/* New routes for Chinese blog pages */}
             <Route path="/zh/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexZh }} />} />
             <Route path="/zh/blog/professional-resume-writing-services" element={<div dangerouslySetInnerHTML={{ __html: ProfessionalResumeWritingServicesZh }} />} />

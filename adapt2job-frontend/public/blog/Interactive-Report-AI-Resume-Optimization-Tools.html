@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The 2025 Guide to AI Resume Optimizers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- 
+        Chosen Palette: Calm Professional (A palette of light grays and professional blues with a gold/amber accent for highlights and calls-to-action.)
+        Application Structure Plan: The SPA is designed as a narrative journey for a job seeker. It starts with a "Hook" (The ATS Problem), moves to "Understanding" (How ATS Works), explores "Solutions" (A dashboard of tools with interactive filtering), provides a "Spotlight" (on ResumeOptimizer.click), offers data-driven "Comparison" (interactive charts), and concludes with a clear "Verdict" (cost-performance ranking). This structure guides the user from problem to solution logically, making complex information digestible and actionable, which is more user-friendly than the report's linear chapter structure.
+        Visualization & Content Choices: 
+        - Hiring Funnel (Inform): Pictograph (Unicode chars) to visually show the stark 250 -> 5 applicant reduction. Justification: More impactful than text alone. Method: HTML/JS.
+        - ATS Fail Points (Compare): Side-by-side cards with icons to contrast Parsing Errors vs. Keyword Deficiency. Justification: Clear visual separation of concepts. Method: HTML/Tailwind.
+        - Tool Comparison (Organize/Explore): Interactive dashboard with cards and filters. Justification: Allows users to explore tools based on their specific needs (cost, features), promoting active engagement. Method: HTML/JS.
+        - Cost Comparison (Compare): Interactive Bar Chart. Justification: Provides a clear, quantitative comparison of pricing, a key decision factor. Method: Chart.js/Canvas.
+        - Ranking (Organize): Styled cards with trophy icons. Justification: Visually reinforces the final verdict from the report. Method: HTML/Tailwind.
+        - ResumeOptimizer Workflow (Organize): HTML/CSS flowchart. Justification: Simplifies the process explanation. Method: HTML/Tailwind.
+        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 500px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #2563eb, #0c4a6e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .tool-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .flow-step {
+            position: relative;
+            text-align: center;
+        }
+        .flow-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #d1d5db;
+        }
+        @media (max-width: 768px) {
+            .flow-step:not(:last-child)::after {
+                content: '↓';
+                right: 50%;
+                top: 100%;
+                transform: translateX(50%);
+                padding-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold gradient-text">AI Resume Tool Report</h1>
+            <div class="hidden md:block">
+                <a href="#problem" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">The Problem</a>
+                <a href="#spotlight" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Spotlight</a>
+                <a href="#dashboard" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                <a href="#verdict" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Verdict</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-10">
+        
+        <section id="hero" class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-800">Your Resume vs. The Machine</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600">In the modern job market, your application's first gatekeeper isn't human. It's an Applicant Tracking System (ATS). This interactive report decodes the tools that ensure you're seen by the right people.</p>
+        </section>
+
+        <section id="problem" class="mb-16">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800">The Hiring Funnel is Brutal</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">This section breaks down the scale of the challenge. Automation is necessary for companies, but it creates a massive filtering problem for applicants. Only the most optimized resumes survive.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="kpi-card text-center">
+                    <p class="text-8xl font-black text-blue-600">250 ➞ 5</p>
+                    <p class="text-xl font-bold mt-2 text-gray-800">The Applicant Reality</p>
+                    <p class="mt-2 text-gray-600">For a typical corporate job, 250 resumes are submitted. Only 5 candidates get an interview. This pictograph represents the odds.</p>
+                    <div id="hiring-funnel-viz" class="flex flex-wrap justify-center items-center gap-1.5 mt-4 p-2 bg-gray-50 rounded-lg"></div>
+                </div>
+                <div class="kpi-card">
+                    <h4 class="text-xl font-bold mb-4 text-center text-gray-800">How Resumes Fail the ATS Test</h4>
+                    <p class="text-gray-600 mb-6 text-center">Your application isn't "rejected" by a bot; it's made *invisible* to the recruiter's search. Here are the two main failure points:</p>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                            <h5 class="font-bold text-red-800">1. Parsing Errors</h5>
+                            <p class="text-sm text-red-700">Complex layouts, custom fonts, tables, or graphics can make your resume unreadable to the ATS, resulting in a garbled profile.</p>
+                        </div>
+                        <div class="p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-r-lg">
+                             <h5 class="font-bold text-yellow-800">2. Keyword Deficiency</h5>
+                            <p class="text-sm text-yellow-700">If your resume lacks the specific skills and keywords from the job description, you won't appear in the recruiter's search results.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="spotlight" class="mb-16 bg-gradient-to-br from-blue-50 to-white p-8 rounded-lg ring-1 ring-blue-200">
+            <div class="text-center mb-10">
+                <span class="inline-block bg-blue-600 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">Special Spotlight</span>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-gray-800">The Efficient Choice: ResumeOptimizer.click</h3>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600 mt-2">The report identifies a new type of tool designed for speed, privacy, and mass applications ("海投"). This tool excels by focusing on a single task: rapid, transparent resume tailoring.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <h4 class="text-xl font-bold text-gray-800 mb-4">Core Strengths</h4>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <p class="text-3xl mb-2">⚡️</p>
+                            <h5 class="font-bold">Extreme Efficiency</h5>
+                            <p class="text-sm text-gray-600">A simple upload-paste-optimize workflow cuts out account creation and dashboards, saving immense time for high-volume applicants.</p>
+                        </div>
+                         <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <p class="text-3xl mb-2">🔒</p>
+                            <h5 class="font-bold">Privacy by Design</h5>
+                            <p class="text-sm text-gray-600">With no account needed, your resume data isn't stored, offering a secure alternative to platforms that keep your information indefinitely.</p>
+                        </div>
+                         <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <p class="text-3xl mb-2">🔄</p>
+                            <h5 class="font-bold">Transparent Feedback</h5>
+                            <p class="text-sm text-gray-600">Its unique before-and-after report doesn't just make changes—it explains *why*, teaching you to become a better resume writer.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                             <p class="text-3xl mb-2">💰</p>
+                            <h5 class="font-bold">Completely Free</h5>
+                            <p class="text-sm text-gray-600">Delivers premium-level keyword optimization and tailoring without any cost, providing unmatched value.</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                     <h4 class="text-xl font-bold text-gray-800 mb-4">The "Before & After" Advantage</h4>
+                     <p class="text-gray-600 text-sm mb-4">This tool's report demystifies AI. It shows your original text and the optimized version side-by-side, with clear explanations for each change. This builds trust and provides lasting educational value.</p>
+                     <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                         <h5 class="font-bold text-sm text-gray-800">Example Suggestion:</h5>
+                         <div class="mt-2 text-xs text-gray-500">
+                            <p class="font-semibold">Before:</p>
+                            <p class="mb-2 p-2 bg-red-50 rounded">"Responsible for managing the project budget."</p>
+                            <p class="font-semibold">After:</p>
+                            <p class="p-2 bg-green-50 rounded">"Orchestrated a $500K project budget, reallocating 15% of funds to critical path activities which accelerated project completion by two weeks."</p>
+                         </div>
+                         <p class="text-xs text-blue-700 mt-3 p-2 bg-blue-50 rounded"><span class="font-bold">Rationale:</span> Added quantifiable metrics and a stronger action verb ('Orchestrated') to demonstrate impact, aligning with recruiter preferences.</p>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="mb-16">
+             <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800">Competitive Dashboard</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">This interactive dashboard summarizes the key players in the resume tool market. Use the filters to find the right tool for your specific needs.</p>
+                <div id="tool-filters" class="flex justify-center flex-wrap gap-2 mt-6">
+                    <button data-filter="all" class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">All</button>
+                    <button data-filter="builder" class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold border">Builders</button>
+                    <button data-filter="scanner" class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold border">Scanners</button>
+                    <button data-filter="organizer" class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold border">Organizers</button>
+                    <button data-filter="free" class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold border">Good Free Plan</button>
+                </div>
+            </div>
+            <div id="tool-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            </div>
+        </section>
+
+        <section id="cost-analysis" class="mb-16">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800">Cost vs. Value Analysis</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Premium features come at a price. This chart compares the approximate monthly cost of leading platforms, highlighting the significant variation in the market. The goal is to find the best cost-performance ratio (性价比).</p>
+            </div>
+            <div class="kpi-card p-4 md:p-8">
+                <div class="chart-container">
+                    <canvas id="costComparisonChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="verdict" class="mb-16">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800">The Final Verdict: Ranked by Value</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Based on the comprehensive analysis of cost, features, and user experience, this is the definitive ranking of resume optimization tools by their overall value proposition (性价比).</p>
+            </div>
+             <div class="space-y-6">
+                <div class="kpi-card p-6 flex flex-col md:flex-row items-center bg-gradient-to-r from-amber-100 to-white border-l-8 border-amber-400">
+                    <span class="text-6xl mr-6 mb-4 md:mb-0">🏆</span>
+                    <div>
+                        <h4 class="text-2xl font-bold text-amber-800">#1: ResumeOptimizer.click</h4>
+                        <p class="text-amber-700 mt-1">Best for Mass Applications & Cost-Conscious Users. Its unparalleled combination of zero cost, high speed, strong privacy, and transparent feedback provides the best overall value for pragmatic job seekers.</p>
+                    </div>
+                </div>
+                <div class="kpi-card p-6 flex flex-col md:flex-row items-center bg-gradient-to-r from-gray-100 to-white border-l-8 border-gray-400">
+                    <span class="text-6xl mr-6 mb-4 md:mb-0">🥈</span>
+                    <div>
+                        <h4 class="text-2xl font-bold text-gray-800">#2: Teal</h4>
+                        <p class="text-gray-700 mt-1">Best for Comprehensive Job Search Organization. Offers the most generous free plan for organizing applications, making it an essential tool for managing a high-volume search.</p>
+                    </div>
+                </div>
+                <div class="kpi-card p-6 flex flex-col md:flex-row items-center bg-gradient-to-r from-orange-100 to-white border-l-8 border-orange-500">
+                     <span class="text-6xl mr-6 mb-4 md:mb-0">🥉</span>
+                    <div>
+                        <h4 class="text-2xl font-bold text-orange-800">#3: Rezi</h4>
+                        <p class="text-orange-700 mt-1">Best for Long-Term Career Management. Its lifetime access deal is a game-changer for those who want to master ATS rules. An excellent long-term investment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p class="font-semibold">The 2025 AI Resume Optimization Report</p>
+            <p class="text-sm text-gray-400 mt-2">This interactive report was generated based on a comprehensive market analysis. All visualizations were created with HTML, Tailwind CSS, and Chart.js. No SVG or Mermaid.js libraries were used.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const toolsData = [
+                { name: 'ResumeOptimizer.click', category: ['scanner', 'free'], focus: 'Fast, Transparent Tailoring', cost: '$0', feature: 'Shows before/after changes' },
+                { name: 'Jobscan', category: ['scanner'], focus: 'Technical ATS Score', cost: '~$49.95/mo', feature: 'Tips for specific company ATS' },
+                { name: 'Kickresume', category: ['builder', 'free'], focus: 'AI Writing & Design', cost: '~$8/mo', feature: 'GPT-4 AI Writer' },
+                { name: 'Rezi', category: ['builder', 'free'], focus: 'ATS Rules & Content', cost: '~$29/mo', feature: 'Lifetime access deal' },
+                { name: 'Teal', category: ['organizer', 'builder', 'free'], focus: 'Job Search Organization', cost: '~$9/wk', feature: 'Best-in-class job tracker' },
+                { name: 'Careerflow.ai', category: ['builder', 'organizer', 'free'], focus: 'All-in-One Platform', cost: 'Freemium', feature: 'One-click optimizer' },
+                { name: 'ResumeWorded', category: ['scanner', 'free'], focus: 'AI Scoring & Feedback', cost: '~$49/mo', feature: 'Score based on 20+ checks' },
+                { name: 'Zety', category: ['builder'], focus: 'Guided Builder for Beginners', cost: 'Freemium', feature: 'Frustrating "freemium trap"' }
+            ];
+
+            const toolGrid = document.getElementById('tool-grid');
+            const filters = document.getElementById('tool-filters');
+            let currentFilter = 'all';
+
+            function renderTools() {
+                toolGrid.innerHTML = '';
+                toolsData
+                    .filter(tool => currentFilter === 'all' || tool.category.includes(currentFilter))
+                    .forEach(tool => {
+                        const card = document.createElement('div');
+                        card.className = 'kpi-card tool-card';
+                        card.innerHTML = `
+                            <div>
+                                <h5 class="text-lg font-bold text-gray-800">${tool.name}</h5>
+                                <p class="text-sm text-gray-500 mb-3">${tool.focus}</p>
+                                <p class="text-xs text-gray-600"><span class="font-semibold">Key Feature:</span> ${tool.feature}</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-gray-100">
+                                <span class="text-lg font-bold text-blue-600">${tool.cost}</span>
+                            </div>
+                        `;
+                        toolGrid.appendChild(card);
+                    });
+            }
+
+            filters.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    currentFilter = e.target.dataset.filter;
+                    filters.querySelectorAll('button').forEach(btn => {
+                        btn.classList.remove('bg-blue-600', 'text-white');
+                        btn.classList.add('bg-white', 'text-gray-700');
+                    });
+                    e.target.classList.add('bg-blue-600', 'text-white');
+                    e.target.classList.remove('bg-white', 'text-gray-700');
+                    renderTools();
+                }
+            });
+
+            renderTools();
+
+            const funnelViz = document.getElementById('hiring-funnel-viz');
+            if(funnelViz) {
+                let iconsHtml = '';
+                for(let i = 0; i < 250; i++) {
+                    const color = i < 5 ? 'text-blue-500' : 'text-gray-300';
+                    iconsHtml += `<span class="text-xs ${color}">●</span>`;
+                }
+                funnelViz.innerHTML = iconsHtml;
+            }
+
+            const wrapLabel = (str, maxWidth = 16) => {
+                if (!str || str.length <= maxWidth) return str;
+                const words = str.split(' ');
+                let lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).length > maxWidth) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                });
+                lines.push(currentLine.trim());
+                return lines.filter(line => line.length > 0);
+            };
+
+            const universalTooltipCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                if (!item) return '';
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            };
+            
+            const ctxCost = document.getElementById('costComparisonChart')?.getContext('2d');
+            if (ctxCost) {
+                const labels = ['ResumeOptimizer.click', 'Kickresume', 'Rezi', 'Teal (4 wks)', 'Jobscan', 'ResumeWorded'];
+                const data = [0, 8, 29, 36, 49.95, 49];
+                
+                new Chart(ctxCost, {
+                    type: 'bar',
+                    data: {
+                        labels: labels.map(l => wrapLabel(l, 20)),
+                        datasets: [{
+                            label: 'Approx. Monthly Cost ($USD)',
+                            data: data,
+                            backgroundColor: 'rgba(37, 99, 235, 0.7)',
+                            borderColor: 'rgba(37, 99, 235, 1)',
+                            borderWidth: 1,
+                            borderRadius: 5,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Cost in $USD',
+                                },
+                                ticks: {
+                                    callback: (value) => '$' + value
+                                }
+                            }
+                        },
+                        plugins: {
+                            ...universalTooltipCallback.plugins,
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Smooth scrolling for nav links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
