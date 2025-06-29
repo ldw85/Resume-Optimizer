@@ -47,6 +47,7 @@ import BlogIndexZh from '../landing_pages/zh/blog/blogIndex.html?raw';
 import CanAResumeBe2PagesEn from '../landing_pages/en/blog/can-a-resume-be-2-pages-your-ultimate-guide-to-optimal-length.html?raw';
 import HowToImproveResumeQualityEn from '../landing_pages/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025.html?raw';
 import IsProfessionallyWrittenAtsFriendlyResumeWorthTheInvestmentEn from '../landing_pages/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment.html?raw';
+import WhyYourResumeGetsIgnoredEn from '../landing_pages/en/blog/why-your-resume-gets-ignored-and-the-free-ai-trick-to-fix-it-instantly.html?raw';
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -120,6 +121,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/en/blog/can-a-resume-be-2-pages-your-ultimate-guide-to-optimal-length" element={<div dangerouslySetInnerHTML={{ __html: CanAResumeBe2PagesEn }} />} />
             <Route path="/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025" element={<div dangerouslySetInnerHTML={{ __html: HowToImproveResumeQualityEn }} />} />
             <Route path="/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment" element={<div dangerouslySetInnerHTML={{ __html: IsProfessionallyWrittenAtsFriendlyResumeWorthTheInvestmentEn }} />} />
+            <Route path="/en/blog/why-your-resume-gets-ignored-and-the-free-ai-trick-to-fix-it-instantly" element={<div dangerouslySetInnerHTML={{ __html: WhyYourResumeGetsIgnoredEn }} />} />
             {/* Optimizer page */}
             <Route path="/optimizer" element={<OptimizerPage />} />
             {/* Optional: Add a catch-all route for 404 */}

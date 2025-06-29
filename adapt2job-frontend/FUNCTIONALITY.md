@@ -1,42 +1,64 @@
-# Adapt2Job Frontend Functionality
+AI简历优化神器——ResumeOptimizer.click 全面测评与使用指南
+在当今竞争激烈的就业市场，如何让你的简历脱颖而出、顺利通过企业的ATS（Applicant Tracking System，申请人追踪系统）筛选，是每一位求职者都关心的问题。今天要为大家深度解析一款完全免费的AI简历优化工具——ResumeOptimizer.click，它凭借强大的AI模型、极致的便捷体验和对隐私的高度重视，成为众多求职者的首选。
 
-This document outlines the key functionalities and features of the Adapt2Job frontend application.
+一、产品亮点概览
+1. 免费且无广告，专注简历优化
+ResumeOptimizer.click 完全免费，无需注册即可体验全部核心功能，省去繁琐流程，专注于简历本身的提升。
 
-## Core Features
+2. 顶级AI模型驱动，优化效果显著
+平台集成了 Gemini 2.5 和 DeepSeek R1 等先进大模型，能够智能分析简历内容与目标职位的匹配度，精准识别并补全关键岗位词，极大提升简历通过ATS筛选的概率。
 
-### 1. Resume Optimization
-- **Input:** Users can input their resume content (通过粘贴或文件上传，支持多种格式) and a job description (通过粘贴或职位链接). 登录后，用户可以保存常用简历，无需每次上传或粘贴。
-- **Analysis:** The application analyzes the resume against the job description using a large language model (LLM).
-- **Output:** Provides modification ideas, content explanations, and a modified resume tailored to the job description.
+3. 支持多种输入方式，极致便捷
+上传简历文件（支持Word、PDF等格式）
+直接粘贴简历内容
+粘贴职位链接（自动抓取JD内容）
+粘贴职位描述文本
+无论你手头有现成简历文件，还是只复制了内容片段，都能一键导入，极大提升操作效率。
 
-### 2. Multi-language Support
-- The application supports multiple languages (English, Chinese, Japanese, Spanish, German) for the user interface and analysis.
-- Language can be selected via a dropdown in the header or by a `lang` URL parameter.
+4. 智能关键词匹配与内容优化
+AI会自动分析目标职位的核心要求，智能对比你的简历内容，给出详细的优化建议，包括：
 
-### 3. User Authentication (Clerk)
-- Users can sign in and sign up using Clerk.
-- Signed-in users have access to a user button for managing their account.
+关键技能和岗位词的补全
+内容表达的精炼与增强
+结构和格式的标准化
+优化前后内容的直观对比，帮助你理解每一处提升的思路
+5. 多格式输出与下载，满足各种投递需求
+优化后的简历可一键导出为标准 PDF 或 Word（.docx） 文件，格式专业、兼容性强，适合各大招聘网站和企业系统直接上传。
 
-### 4. Document Download
-- 一键优化后，用户可以将修改后的简历下载为 PDF 或 DOCX 文件。
-- PDF generation is done client-side using `jspdf` and `html2canvas`.
-- DOCX generation is handled by the backend API, converting HTML content to a DOCX file. This now includes preprocessing of HTML to better retain horizontal rules and uses 'Calibri' as the default font for improved visual consistency.
+6. 常用简历管理，批量海投更高效
+平台支持保存多份常用简历模板，针对不同岗位快速切换和优化，大幅提升批量投递的效率。
 
-### 5. Job Description Fetching
-- Users can provide a job link, and the application will attempt to fetch the job description content using the Tavily API.
+7. 隐私安全，数据不留存
+所有简历内容仅用于本地优化处理，平台不保存用户简历和个人信息，充分保障你的隐私安全。
 
-### 6. User Feedback
-- Signed-in users can submit text-based feedback comments.
-- Feedback is stored in a Supabase database and associated with the user's Clerk ID.
-- A toggleable feedback form is available at the bottom of the Optimizer page.
-- Feedback is for internal collection and review only.
+二、核心功能详解
+1. 一键上传/粘贴，极速导入简历与职位信息
+无论你是有现成简历文件，还是只复制了内容片段，ResumeOptimizer.click 都能轻松导入。你还可以直接粘贴职位链接，平台会自动抓取职位描述，省去手动整理的麻烦。
 
-## UI/UX Enhancements
+2. 智能分析与优化建议
+平台会自动调用AI模型，对你的简历与目标职位进行深度匹配分析，输出以下内容：
 
-### Consistent Button Styling
-- All primary action buttons, including "Sign In", "Sign Up", "User Button", "Download PDF", and "Download DOCX", now share a consistent size and styling with the "Home" button for improved visual coherence and user experience.
+关键词匹配度分析：哪些岗位关键词已覆盖，哪些还需补充
+内容优化建议：如何用更有力的表达突出你的成就和能力
+格式与结构建议：确保简历符合ATS解析标准，避免因格式问题被系统淘汰
+3. 优化前后对比，提升一目了然
+每一次优化，平台都会展示优化前后的内容变化，让你清楚看到每一处提升的理由和效果，帮助你持续提升简历质量。
 
-### Landing Page Content Updates
-- The blog post 'how-to-tailor-resumes-for-jobs.html' has been updated with enriched, refined, and fully translated English content, replacing previous Chinese sections and inline CSS with external styling.
-- A new blog listing page (`index.html`) has been created in `adapt2job-frontend/landing_pages/en/blog/` to display a list of blog posts, starting with a link to 'how-to-tailor-resumes-for-jobs.html'.
-- **Blog Integration:** A "Blog" menu item has been added to the English Navbar, linking to the new blog index page. New routes for `/en/blog` and `/en/how-to-tailor-resumes-for-jobs` have been added to `main.jsx` to serve the blog content. The sitemap (`public/sitemap.xml`) has been updated to include these new blog URLs.
+4. 多格式导出与历史管理
+优化完成后，支持一键下载PDF和Word格式的简历文件，方便直接上传各大招聘网站。你还可以保存多份常用简历模板，随时调用，极大提升多岗位投递的效率。
+
+三、使用流程演示
+进入网站：https://resumeoptimizer.click
+导入简历：选择上传文件或粘贴简历内容
+导入职位信息：粘贴职位链接或职位描述
+点击“一键优化”：AI自动分析并输出优化建议
+查看优化前后对比：理解每一处提升
+下载优化简历：选择PDF或Word格式导出
+保存常用简历：便于后续快速优化和批量投递
+四、适用场景与优势总结
+适合所有求职者：无论你是应届生、转行者还是高管，都能获得针对性优化建议
+批量海投利器：多简历管理+极速优化，助你高效应对大规模投递
+隐私无忧：数据本地处理，简历内容绝不外泄
+操作极简：无需注册、无需学习成本，人人都能用
+五、结语
+ResumeOptimizer.click 以AI为引擎，极大降低了简历优化的门槛，让每一位求职者都能轻松拥有一份通过率更高、内容更专业的简历。无论你是初入职场还是追求更高职位，都值得体验这款高效、智能、免费的简历优化工具。现在就访问 https://resumeoptimizer.click，让你的简历成为通往理想工作的加速器！

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, Suspense } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useSearchParams and useNavigate
+import { useSearchParams, useNavigate } from 'react-router-dom'; // Import useSearchParams and useNavigate
 import './App.css';
 // import AnalysisOutput from './components/AnalysisOutput'; // 将被懒加载
 import JobInput from './components/JobInput';
@@ -91,16 +91,28 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
   console.log('OptimizerPage: languageOptions', languageOptions);
   console.log('OptimizerPage: selectedLanguageOption', selectedLanguageOption);
 
-  useEffect(() => {
-    let targetLanguage;
+  const [searchParams] = useSearchParams(); // Get URL search parameters
 
-    // Check sessionStorage first
+  useEffect(() => {
+    let targetLanguage = 'en'; // Default language to 'en'
+
+    // 1. Check sessionStorage first
     const savedLanguage = sessionStorage.getItem('i18nextLng');
     if (savedLanguage) {
       targetLanguage = savedLanguage;
-    } else {
-      // Fallback to i18n.language or browser language
-      targetLanguage = i18n.language || navigator.language;
+    }
+
+    // 2. Check URL for 'lang' parameter
+    const urlLang = searchParams.get('lang');
+    if (urlLang) {
+      // If URL has lang, and it's different from saved, use URL lang and save it
+      if (urlLang !== targetLanguage) {
+        targetLanguage = urlLang;
+        sessionStorage.setItem('i18nextLng', urlLang);
+      }
+    } else if (!savedLanguage) {
+      // If no URL lang and no saved language, default to 'en'
+      targetLanguage = 'en';
     }
 
     // Ensure language code format is correct, e.g., 'en-US' -> 'en'
@@ -120,9 +132,9 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
     setLanguage(shortLang); // Update local language state
     console.log('OptimizerPage useEffect: language state updated to', shortLang);
     console.log('OptimizerPage useEffect: i18n.language after potential change', i18n.language);
-    console.log('OptimizerPage useEffect: language state variable', language); // Add this line
-    console.log('OptimizerPage useEffect: triggered'); // Add this line
-  }, [i18n, language]); // Depend on i18n and language
+    console.log('OptimizerPage useEffect: language state variable', language);
+    console.log('OptimizerPage useEffect: triggered');
+  }, [i18n, searchParams]); // Depend on i18n and searchParams
 
   // Effect to save user info on initial sign-in/registration
   useEffect(() => {
