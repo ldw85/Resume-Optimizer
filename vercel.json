@@ -61,6 +61,10 @@
     {
       "source": "/(.*)",
       "destination": "/adapt2job-frontend/index.html"
+    },
+    {
+      "source": "/how-it-works.gif",
+      "destination": "/adapt2job-frontend/how-it-works.gif"
     }
   ],
   "headers": [
