@@ -51,7 +51,12 @@ ResumeOptimizer is a full-stack application designed to help users optimize thei
         ```
     *   Create a `.env` file in the `adapt2job-frontend` directory. You will need to configure your Clerk keys and the backend API URL. Refer to `.env.example` in the frontend directory for guidance.
 
+
 ### Running the Application
+
+#### 网站操作演示
+
+![网站操作演示](adapt2job-frontend/public/how-it-works.gif)
 
 1.  **Start the Backend:**
     *   Navigate to the backend directory: `cd ../adapt2job-backend`
