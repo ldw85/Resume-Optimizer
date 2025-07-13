@@ -112,7 +112,51 @@
     });
     ```
 
-### 2.5 下载优化后的简历 (DOCX)
+
+### 2.5 下载优化后的简历 (PDF)
+
+*   **接口:** `/api/download/pdf`
+*   **方法:** POST
+*   **功能描述:** 根据提供的 HTML 内容生成并下载 PDF 文件。
+*   **请求参数:**
+    *   `htmlContent`: 简历的 HTML 内容 (string, body)
+*   **响应参数:**
+    *   PDF 文件 (application/pdf)
+*   **示例:**
+
+    ```javascript
+    // 前端代码示例
+    fetch('/api/download/pdf', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            htmlContent: '<div>...</div>'
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.blob();
+    })
+    .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'modified-resume.pdf';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+    })
+    .catch(error => {
+        console.error('Download failed:', error);
+    });
+    ```
+
+### 2.6 下载优化后的简历 (DOCX)
 
 *   **接口:** `/api/download/docx`
 *   **方法:** POST

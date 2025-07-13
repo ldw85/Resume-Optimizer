@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const resume_1 = __importDefault(require("./routes/resume"));
 const llm_1 = __importDefault(require("./routes/llm"));
 const download_1 = __importDefault(require("./routes/download")); // Import the new download route
+const pdf_1 = __importDefault(require("./routes/pdf")); // 新增 PDF 路由
 const feedback_1 = __importDefault(require("./routes/feedback")); // Import the new feedback route
 const userResumes_1 = require("./routes/userResumes"); // Import the user resumes router
 const userRoutes_1 = __importDefault(require("./routes/userRoutes")); // Import the new user routes
@@ -25,6 +26,7 @@ app.use(body_parser_1.default.json());
 app.use('/api/resume', resume_1.default);
 app.use('/api', llm_1.default);
 app.use('/api/download', download_1.default); // Register the new download route
+app.use('/api/download', pdf_1.default); // 注册 PDF 路由
 app.use('/api', feedback_1.default); // Register the new feedback route
 app.use('/api/resumes', userResumes_1.userResumesRouter); // Register the new resumes route
 app.use('/api/user', userRoutes_1.default); // Register the new user routes

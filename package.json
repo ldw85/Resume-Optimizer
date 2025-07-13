@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "puppeteer": "^24.12.1",
+    "react-router-dom": "^7.6.3"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^5.4.7",
+    "@types/react-router-dom": "^5.3.3"
+  }
+}

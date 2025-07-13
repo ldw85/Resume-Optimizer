@@ -18,6 +18,12 @@ const AnalysisOutput: React.FC<AnalysisOutputProps> = ({ analysisResult }) => {
   const [contentExplanation, setContentExplanation] = useState('');
   const { t } = useTranslation();
 
+  const sanitizeHtmlForPdf = (html: string) => {
+    // Replace oklch() with a fallback color. This is a simple regex and might not cover all edge cases.
+    // A more robust solution would involve a proper CSS parser, but this should handle most cases.
+    return html.replace(/oklch\([^)]+\)/g, '#888888'); // Fallback to a gray color
+  };
+
   useEffect(() => {
     if (analysisResult) {
       if (analysisResult.modificationIdeas) {
@@ -66,26 +72,38 @@ const AnalysisOutput: React.FC<AnalysisOutputProps> = ({ analysisResult }) => {
           <div> {/* Add a div to group buttons for right alignment */}
             <button
               className="small-button mr-4"
-              onClick={async () => { // 声明为 async 函数
-                const element = document.getElementById('modifiedResumeContent');
-                if (element) {
-                  try {
-                    const { default: html2canvas } = await import('html2canvas');
-                    const { default: jsPDF } = await import('jspdf');
-
-                    const canvas = await html2canvas(element as HTMLElement); // html2canvas 返回 Promise
-                    const pdf = new jsPDF();
-                    const imgData = canvas.toDataURL('image/png');
-                    const imgProps = pdf.getImageProperties(imgData);
-                    const pdfWidth = pdf.internal.pageSize.getWidth();
-                    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-                    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                    pdf.save('modified-resume.pdf');
-                  } catch (error) {
-                    console.error("Error loading libraries or generating PDF:", error);
-                    // 可以在此处添加用户友好的错误提示，例如使用 react-hot-toast
-                    alert(t('生成PDF失败，请稍后再试。'));
+              onClick={async () => {
+                const modifiedResumeHtml = analysisResult?.modifiedResume;
+                if (!modifiedResumeHtml) {
+                  alert(t('没有简历内容可供下载。'));
+                  return;
+                }
+                try {
+                  const response = await fetch(`${BACKEND_URL}/api/download/pdf`, {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ htmlContent: modifiedResumeHtml }),
+                  });
+                  if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'modified-resume.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    window.URL.revokeObjectURL(url);
+                  } else {
+                    const errorText = await response.text();
+                    console.error('Error downloading PDF:', response.status, errorText);
+                    alert(t('下载PDF失败，请稍后再试。'));
                   }
+                } catch (error) {
+                  console.error('Error in PDF download fetch:', error);
+                  alert(t('下载PDF失败，请检查网络连接。'));
                 }
               }}
             >
@@ -134,7 +152,7 @@ const AnalysisOutput: React.FC<AnalysisOutputProps> = ({ analysisResult }) => {
             </button>
           </div>
         </h3>
-        <div id="modifiedResumeContent" className="text-gray-800 text-left" dangerouslySetInnerHTML={{ __html: analysisResult.modifiedResume || '' }} />
+        <div id="modifiedResumeContent" className="text-gray-800 text-left" dangerouslySetInnerHTML={{ __html: sanitizeHtmlForPdf(analysisResult.modifiedResume || '') }} />
       </div>
     </section>
   );

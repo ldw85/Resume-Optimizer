@@ -29,12 +29,17 @@ export default function Footer() {
                             </ul>
                         </div>
                         <div className="">
-                            <h4 className="text-lg font-semibold mb-4">Other Languages</h4>
+                            <h4 className="text-lg font-semibold mb-4">Blog & Resources</h4>
                             <ul className="space-y-2">
-                                <li><a href="/es" className="text-gray-400 hover:text-white">Español</a></li>
-                                <li><a href="/zh" className="text-gray-400 hover:text-white">中文</a></li>
-                                <li><a href="/ja" className="text-gray-400 hover:text-white">日本語</a></li>
-                                <li><a href="/de" className="text-gray-400 hover:text-white">Deutsch</a></li>
+                                <li><a href="/en/blog/blogIndex.html" className="text-gray-400 hover:text-white">All Blog Articles</a></li>
+                                <li><a href="/en/blog/how-to-tailor-resumes-for-jobs" className="text-gray-400 hover:text-white">How to Tailor Resumes for Jobs</a></li>
+                                <li><a href="/en/blog/how-to-create-a-great-resume" className="text-gray-400 hover:text-white">How to Create a Great Resume</a></li>
+                                <li><a href="/en/blog/professional-resume-writing-services" className="text-gray-400 hover:text-white">Professional Resume Writing Services</a></li>
+                                <li><a href="/en/blog/can-a-resume-be-2-pages-your-ultimate-guide-to-optimal-length" className="text-gray-400 hover:text-white">Can a Resume Be 2 Pages?</a></li>
+                                <li><a href="/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025" className="text-gray-400 hover:text-white">How to Improve Resume Quality</a></li>
+                                <li><a href="/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment" className="text-gray-400 hover:text-white">ATS-Friendly Resume Worth It?</a></li>
+                                <li><a href="/en/blog/interactive-report-ai-resume-optimization-tools" className="text-gray-400 hover:text-white">2025 Guide to AI Resume Optimizers</a></li>
+                                <li><a href="https://www.indeed.com/career-advice/resumes-cover-letters" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">Indeed Resume Advice</a></li>
                             </ul>
                         </div>
                     </div>

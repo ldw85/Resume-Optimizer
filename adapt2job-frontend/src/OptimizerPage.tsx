@@ -398,9 +398,35 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
                 <UserButton />
               </div>
             </SignedIn>
+            {/* Feedback Button in Header */}
+            <button
+              onClick={() => {
+                if (!isSignedIn) {
+                  toast.error(t('feedback.loginPrompt'));
+                } else {
+                  setShowFeedbackForm(!showFeedbackForm);
+                }
+              }}
+              className="ml-4 px-4 py-2 bg-gray-200 text-gray-800 text-sm font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+              {t('feedback.provideFeedback')}
+            </button>
           </div>
         </div>
       </header>
+
+      {/* Feedback Form Modal/Overlay */}
+      {showFeedbackForm && isSignedIn && user?.id && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+            <FeedbackForm
+              userId={user.id}
+              onFeedbackSubmitted={() => setShowFeedbackForm(false)}
+              onClose={() => setShowFeedbackForm(false)}
+            />
+          </div>
+        </div>
+      )}
 
       <main className="space-y-8">
         <section className="card">
@@ -451,24 +477,6 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
           )}
           <HowItWorks />
         </Suspense>
-
-        {/* Feedback Section */}
-        {isSignedIn && user?.id && (
-          <section className="mt-8 text-center">
-            <button
-              onClick={() => setShowFeedbackForm(!showFeedbackForm)}
-              className="py-2 px-4 bg-gray-200 text-gray-800 font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            >
-              {showFeedbackForm ? t('feedback.hideForm') : t('feedback.provideFeedback')}
-            </button>
-            {showFeedbackForm && (
-              <FeedbackForm
-                userId={user.id}
-                onFeedbackSubmitted={() => setShowFeedbackForm(false)}
-              />
-            )}
-          </section>
-        )}
       </main>
 
       {/* <footer className="mt-10 pt-4 border-t border-gray-200">

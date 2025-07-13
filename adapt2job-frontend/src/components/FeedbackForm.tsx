@@ -6,9 +6,10 @@ import { submitFeedback } from '../services/feedbackService';
 interface FeedbackFormProps {
   userId: string;
   onFeedbackSubmitted: () => void;
+  onClose?: () => void; // 新增可选关闭回调
 }
 
-const FeedbackForm: React.FC<FeedbackFormProps> = ({ userId, onFeedbackSubmitted }) => {
+const FeedbackForm: React.FC<FeedbackFormProps> = ({ userId, onFeedbackSubmitted, onClose }) => {
   const { t } = useTranslation();
   const [comment, setComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,13 +52,23 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ userId, onFeedbackSubmitted
             disabled={isSubmitting}
           ></textarea>
         </div>
-        <button
-          type="submit"
-          className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? t('feedback.submitting') : t('feedback.submitButton')}
-        </button>
+        <div className="flex justify-end gap-3">
+          <button
+            type="submit"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? t('feedback.submitting') : t('feedback.submitButton')}
+          </button>
+          <button
+            type="button"
+            onClick={onClose}
+            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            disabled={isSubmitting}
+          >
+            {t('feedback.closeButton', 'Close')}
+          </button>
+        </div>
       </form>
     </div>
   );
