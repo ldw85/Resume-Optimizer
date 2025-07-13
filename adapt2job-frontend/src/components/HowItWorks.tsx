@@ -29,14 +29,7 @@ const HowItWorks: React.FC = () => {
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-md">
-      <div className="flex justify-center mb-6">
-        <img
-          src="/how-it-works.gif"
-          alt="How ResumeOptimizer Works"
-          className="w-full max-w-xl rounded-lg shadow-md border border-gray-100"
-          style={{objectFit: 'cover'}}
-        />
-      </div>
+      
       <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">{t('ResumeOptimizer 如何工作')}</h2>
       <p className="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
         {t('ResumeOptimizer 是一款免费在线工具，旨在帮助求职者更有效地优化他们的简历，使其与目标职位要求相匹配。\n' +
@@ -57,7 +50,15 @@ const HowItWorks: React.FC = () => {
                                 </p>
                             </div>
                         ))}
-                    </div>
+        </div>
+        <div className="flex justify-center mb-6">
+        <img
+          src="/how-it-works.gif"
+          alt="How ResumeOptimizer Works"
+          className="w-full max-w-xl rounded-lg shadow-md border border-gray-100"
+          style={{objectFit: 'cover'}}
+        />
+      </div>
       {/* Privacy Note */}
       <p className="text-gray-600 mt-8 text-center text-sm">
         {t('ResumeOptimizer 承诺不保留任何用户信息，保障您的隐私安全。')}

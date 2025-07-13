@@ -13,7 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generatePdfFromHtml = generatePdfFromHtml;
-const puppeteer_1 = __importDefault(require("puppeteer"));
+const puppeteer_core_1 = __importDefault(require("puppeteer-core"));
+const chrome_aws_lambda_1 = __importDefault(require("chrome-aws-lambda"));
 /**
  * 将 HTML 字符串渲染为 PDF Buffer
  * @param htmlContent HTML 字符串
@@ -21,10 +22,24 @@ const puppeteer_1 = __importDefault(require("puppeteer"));
  */
 function generatePdfFromHtml(htmlContent) {
     return __awaiter(this, void 0, void 0, function* () {
-        // puppeteer 启动无头浏览器
-        const browser = yield puppeteer_1.default.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        });
+        let browser;
+        if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+            // Vercel/Serverless 环境
+            browser = yield puppeteer_core_1.default.launch({
+                args: chrome_aws_lambda_1.default.args,
+                defaultViewport: chrome_aws_lambda_1.default.defaultViewport,
+                executablePath: yield chrome_aws_lambda_1.default.executablePath,
+                headless: chrome_aws_lambda_1.default.headless,
+            });
+        }
+        else {
+            // 本地开发环境
+            const localPuppeteer = require('puppeteer');
+            browser = yield localPuppeteer.launch({
+                headless: true,
+                args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            });
+        }
         const page = yield browser.newPage();
         yield page.setContent(htmlContent, { waitUntil: 'networkidle0' });
         // 生成 PDF

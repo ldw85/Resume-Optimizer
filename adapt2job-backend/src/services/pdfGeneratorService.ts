@@ -1,4 +1,5 @@
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
+import chromium from 'chrome-aws-lambda';
 
 /**
  * 将 HTML 字符串渲染为 PDF Buffer
@@ -6,10 +7,23 @@ import puppeteer from 'puppeteer';
  * @returns PDF Buffer
  */
 export async function generatePdfFromHtml(htmlContent: string): Promise<Buffer> {
-  // puppeteer 启动无头浏览器
-  const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+  let browser;
+  if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+    // Vercel/Serverless 环境
+    browser = await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
+      headless: chromium.headless,
+    });
+  } else {
+    // 本地开发环境
+    const localPuppeteer = require('puppeteer');
+    browser = await localPuppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+  }
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
   // 生成 PDF
