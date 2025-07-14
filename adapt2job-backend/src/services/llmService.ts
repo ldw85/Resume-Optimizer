@@ -83,8 +83,9 @@ const callGeminiAPI = async (apiKey: string, resumeText: string, jobDescriptionT
             // Remove control characters before parsing
             // eslint-disable-next-line no-control-regex
             const cleanedJsonString = jsonString.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
+            //console.log('Parsed JSON data:', cleanedJsonString);
             const jsonData: AnalysisResponse = JSON.parse(cleanedJsonString);
-            //console.log('Parsed JSON data:', jsonData);
+            
             return jsonData;
           } catch (parseError: unknown) {
             console.error('JSON parse error:', parseError);

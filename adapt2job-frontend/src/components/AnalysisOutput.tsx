@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// @ts-ignore
+import html2pdf from 'html2pdf.js';
 // import jsPDF from 'jspdf'; // 将被动态导入
 // import html2canvas from 'html2canvas'; // 将被动态导入
 import { useTranslation } from 'react-i18next';
@@ -78,33 +80,21 @@ const AnalysisOutput: React.FC<AnalysisOutputProps> = ({ analysisResult }) => {
                   alert(t('没有简历内容可供下载。'));
                   return;
                 }
-                try {
-                  const response = await fetch(`${BACKEND_URL}/api/download/pdf`, {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ htmlContent: modifiedResumeHtml }),
-                  });
-                  if (response.ok) {
-                    const blob = await response.blob();
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'modified-resume.pdf';
-                    document.body.appendChild(a);
-                    a.click();
-                    a.remove();
-                    window.URL.revokeObjectURL(url);
-                  } else {
-                    const errorText = await response.text();
-                    console.error('Error downloading PDF:', response.status, errorText);
-                    alert(t('下载PDF失败，请稍后再试。'));
-                  }
-                } catch (error) {
-                  console.error('Error in PDF download fetch:', error);
-                  alert(t('下载PDF失败，请检查网络连接。'));
-                }
+                // 创建一个临时div用于渲染HTML
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = sanitizeHtmlForPdf(modifiedResumeHtml);
+                document.body.appendChild(tempDiv);
+                // 使用 html2pdf.js 生成PDF
+                await html2pdf()
+                  .set({
+                    margin: 0.5,
+                    filename: 'modified-resume.pdf',
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+                  })
+                  .from(tempDiv)
+                  .save();
+                document.body.removeChild(tempDiv);
               }}
             >
               {t('下载PDF')}

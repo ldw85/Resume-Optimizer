@@ -8,13 +8,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generatePdfFromHtml = generatePdfFromHtml;
-const puppeteer_core_1 = __importDefault(require("puppeteer-core"));
-const chrome_aws_lambda_1 = __importDefault(require("chrome-aws-lambda"));
+const pdf_lib_1 = require("pdf-lib");
 /**
  * 将 HTML 字符串渲染为 PDF Buffer
  * @param htmlContent HTML 字符串
@@ -22,34 +18,52 @@ const chrome_aws_lambda_1 = __importDefault(require("chrome-aws-lambda"));
  */
 function generatePdfFromHtml(htmlContent) {
     return __awaiter(this, void 0, void 0, function* () {
-        let browser;
-        if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
-            // Vercel/Serverless 环境
-            browser = yield puppeteer_core_1.default.launch({
-                args: chrome_aws_lambda_1.default.args,
-                defaultViewport: chrome_aws_lambda_1.default.defaultViewport,
-                executablePath: yield chrome_aws_lambda_1.default.executablePath,
-                headless: chrome_aws_lambda_1.default.headless,
+        // 使用 pdf-lib 生成 PDF，简单去除 HTML 标签，仅保留文本
+        const pdfDoc = yield pdf_lib_1.PDFDocument.create();
+        const page = pdfDoc.addPage([595.28, 841.89]); // A4尺寸
+        const font = yield pdfDoc.embedFont(pdf_lib_1.StandardFonts.Helvetica);
+        // 简单去除 HTML 标签，仅保留文本（可根据实际情况优化）
+        const text = htmlContent.replace(/<[^>]+>/g, '');
+        // 样式设置
+        const fontSize = 12;
+        const margin = 40;
+        const maxWidth = page.getWidth() - margin * 2;
+        // 自动换行
+        const lines = [];
+        text.split('\n').forEach((paragraph) => {
+            let line = '';
+            paragraph.split(' ').forEach((word) => {
+                const testLine = line ? line + ' ' + word : word;
+                const width = font.widthOfTextAtSize(testLine, fontSize);
+                if (width > maxWidth) {
+                    lines.push(line);
+                    line = word;
+                }
+                else {
+                    line = testLine;
+                }
             });
-        }
-        else {
-            // 本地开发环境
-            const localPuppeteer = require('puppeteer');
-            browser = yield localPuppeteer.launch({
-                headless: true,
-                args: ['--no-sandbox', '--disable-setuid-sandbox'],
-            });
-        }
-        const page = yield browser.newPage();
-        yield page.setContent(htmlContent, { waitUntil: 'networkidle0' });
-        // 生成 PDF
-        const pdfBuffer = yield page.pdf({
-            format: 'A4',
-            printBackground: true,
-            margin: { top: '40px', bottom: '40px', left: '40px', right: '40px' },
+            if (line)
+                lines.push(line);
+            lines.push(''); // 段落间空行
         });
-        yield browser.close();
-        return Buffer.from(pdfBuffer);
+        // 写入内容
+        let y = page.getHeight() - margin;
+        for (const line of lines) {
+            if (y < margin)
+                break;
+            page.drawText(line, {
+                x: margin,
+                y,
+                size: fontSize,
+                font,
+                color: (0, pdf_lib_1.rgb)(0, 0, 0),
+                maxWidth,
+            });
+            y -= fontSize + 4;
+        }
+        const pdfBytes = yield pdfDoc.save();
+        return Buffer.from(pdfBytes);
     });
 }
 //# sourceMappingURL=pdfGeneratorService.js.map

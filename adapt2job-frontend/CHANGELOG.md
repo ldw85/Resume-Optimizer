@@ -176,7 +176,7 @@
 ## [1.0.10] - 2025-06-07
 
 ### Added
-- Created a new blog post "How to Create a Great Resume: Your Definitive Guide to Career Advancement" (`how-to-create-a-great-resume.html`) in `adapt2job-frontend/landing_pages/en/blog/`, based on competitor analysis, exceeding 2000 words, and incorporating internal links to `https://resumeoptimizer.click`.
+- Created a new blog post "How to Create a Great Resume: Your Definitive Guide to Career Advancement" (`how-to-create-a-great-resume.html`) in `adapt2job-frontend/landing_pages/en/blog/`, based on competitor analysis, exceeding 2000 words, and incorporating internal links to `https://www.resumeoptimizer.click`.
 - Linked the new blog post from `adapt2job-frontend/landing_pages/en/blog/blogIndex.html`.
 
 ## [1.0.11] - 2025-06-08

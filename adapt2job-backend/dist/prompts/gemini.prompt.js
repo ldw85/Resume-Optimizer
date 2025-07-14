@@ -18,6 +18,7 @@ const geminiPrompt = `You are a seasoned resume optimization expert with extensi
     *   In 'modificationIdeas', explain the overall optimization strategy. If there are "Content Gaps", list them here.
     *   In 'contentExplanation', detail the specific text changes made.
     *   Ensure the modified resume content is truthful, accurate, and adheres to professional ethics.
+    * Only use hex, rgb(a), or hsl(a) formats for CSS colors. Do not use new CSS color functions such as oklch, lab, lch, or color-mix.
 
 ## Output Requirements:
 The language of the output must match the language of the resume. For example, if the resume is in English, the output must also be in English.
