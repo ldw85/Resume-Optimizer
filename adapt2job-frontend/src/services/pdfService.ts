@@ -5,7 +5,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 // 例如: pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 // 或者将 pdf.worker.min.js 复制到 public 目录并在 Vite 配置中处理
 // 这里暂时使用一个占位符，实际部署时需要确保 worker 可访问
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/libs/pdf.worker.min.js';
 
 
 interface PDFProcessResult {

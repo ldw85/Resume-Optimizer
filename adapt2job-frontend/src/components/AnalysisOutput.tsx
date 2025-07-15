@@ -81,20 +81,31 @@ const AnalysisOutput: React.FC<AnalysisOutputProps> = ({ analysisResult }) => {
                   return;
                 }
                 // 创建一个临时div用于渲染HTML
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = sanitizeHtmlForPdf(modifiedResumeHtml);
-                document.body.appendChild(tempDiv);
+                const elementToExport = document.createElement('div');
+                // `onclone` 回调是更可靠的处理方式，因此这里不再需要 sanitizeHtmlForPdf
+                elementToExport.innerHTML = modifiedResumeHtml;
                 // 使用 html2pdf.js 生成PDF
                 await html2pdf()
                   .set({
                     margin: 0.5,
                     filename: 'modified-resume.pdf',
-                    html2canvas: { scale: 2 },
-                    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+                    html2canvas: {
+                      scale: 2,
+                      onclone: (doc: Document) => {
+                        // onclone 回调会在克隆的文档渲染前执行
+                        // 让我们能修改 html2canvas 不支持的样式
+                        // 错误信息指向 `parseBackgroundColor`, 所以我们主要处理这个属性
+                        doc.body.querySelectorAll('*').forEach((node: Element) => {
+                          if (window.getComputedStyle(node).getPropertyValue('background-color').includes('oklch')) {
+                            (node as HTMLElement).style.setProperty('background-color', '#f9fafb', 'important'); // 对应 tailwind gray-50 的安全备用色
+                          }
+                        });
+                      }
+                    },
+                    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
                   })
-                  .from(tempDiv)
+                  .from(elementToExport)
                   .save();
-                document.body.removeChild(tempDiv);
               }}
             >
               {t('下载PDF')}
