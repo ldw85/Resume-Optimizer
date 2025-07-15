@@ -1,4 +1,5 @@
 .vercel
 deployment-url.txt
 error.txt
-.env
+adapt2job-frontend/.env
+.env.local
