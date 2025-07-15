@@ -51,6 +51,10 @@
       "destination": "/adapt2job-frontend/image/$1"
     },
     {
+      "source": "/libs/(.*)",
+      "destination": "/adapt2job-frontend/libs/$1"
+    },
+    {
       "source": "/blog/(.*)",
       "destination": "/adapt2job-frontend/blog/$1"
     },
