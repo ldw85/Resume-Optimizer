@@ -1,34 +1,13 @@
 import express, { Request, Response, Router, RequestHandler } from 'express';
 import multer from 'multer';
-import { createWorker } from 'tesseract.js';
-import fs from 'fs/promises';
-import path from 'path';
 import { parseFile } from '../services/fileParser';
 
 const router: Router = express.Router();
 
-// 确保上传目录存在
-const uploadDir = path.join(__dirname, '../../uploads');
-// 确保上传目录存在
-// 使用 async/await 确保目录创建完成
-(async () => {
-  try {
-    await fs.access(uploadDir);
-  } catch (error) {
-    await fs.mkdir(uploadDir, { recursive: true });
-  }
-})();
+// 使用内存存储来处理文件上传，避免在 Vercel 等无文件系统权限的环境中出错
+const storage = multer.memoryStorage();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  },
-});
-
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
 const parseResumeHandler: RequestHandler = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -39,18 +18,6 @@ const parseResumeHandler: RequestHandler = async (req: Request, res: Response): 
 
     const text = await parseFile(req.file);
     res.status(200).send({ text });
-
-    // 删除临时文件
-    if (req.file && req.file.path) {
-      try {
-        await fs.unlink(req.file.path);
-        console.log(`Deleted temporary file: ${req.file.path}`);
-      } catch (unlinkError) {
-        console.warn(`Failed to delete temporary file: ${req.file.path}`, unlinkError);
-      }
-    }
-
-    return;
   } catch (error: any) {
     console.error('Error parsing resume:', error);
     res.status(500).send({ message: error.message });
@@ -81,9 +48,6 @@ const parseResumeImagesHandler: RequestHandler = async (req, res) => {
         // 使用现有的parseFile服务处理图片
         const pageText = await parseFile(file);
         combinedText += pageText.trim() + '\n';
-
-        // 处理完成后删除临时文件
-        await fs.unlink(file.path);
       } catch (error) {
         console.error(`Error processing file ${file.originalname}:`, error);
       }
