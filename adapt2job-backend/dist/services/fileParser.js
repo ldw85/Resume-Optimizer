@@ -15,12 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseFile = void 0;
 const pdf_parse_1 = __importDefault(require("pdf-parse"));
 const mammoth_1 = __importDefault(require("mammoth"));
-const tesseract_js_1 = require("tesseract.js");
-// OCR语言配置
-const OCR_LANGUAGES = ['eng', 'chi_sim']; // 支持英语和简体中文
+const tesseractService_1 = require("./tesseractService");
 const parseFile = (file) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Parsing file:', file.mimetype);
     try {
+        if (!file.buffer) {
+            throw new Error('File buffer is not available. Ensure multer is configured for memory storage.');
+        }
         if (file.mimetype === 'application/pdf') {
             // @ts-ignore // 忽略TypeScript错误，因为pdf-parse可能在运行时处理Buffer
             const data = yield (0, pdf_parse_1.default)(file.buffer);
@@ -28,33 +29,17 @@ const parseFile = (file) => __awaiter(void 0, void 0, void 0, function* () {
         }
         else if (file.mimetype ===
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-            if (!file.path) {
-                throw new Error('File path is not available for docx processing');
-            }
-            const result = yield mammoth_1.default.extractRawText({ path: file.path });
+            const result = yield mammoth_1.default.extractRawText({ buffer: file.buffer });
             return result.value;
         }
         else if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-            const worker = yield (0, tesseract_js_1.createWorker)();
-            yield worker.reinitialize(OCR_LANGUAGES.join('+')); // 使用reinitialize加载和初始化语言
-            let result;
-            if (file.buffer) {
-                // 如果有buffer，直接使用buffer
-                result = yield worker.recognize(file.buffer);
-            }
-            else if (file.path) {
-                // 如果有path，使用文件路径
-                result = yield worker.recognize(file.path);
-            }
-            else {
-                throw new Error('Neither buffer nor path is available for image processing');
-            }
-            const { data: { text } } = result;
-            yield worker.terminate();
+            // 从共享服务中获取已初始化的worker
+            const worker = yield (0, tesseractService_1.getOcrWorker)();
+            const { data: { text } } = yield worker.recognize(file.buffer);
             return text;
         }
         else {
-            throw new Error('Unsupported file type');
+            throw new Error(`Unsupported file type: ${file.mimetype}`);
         }
     }
     catch (error) {

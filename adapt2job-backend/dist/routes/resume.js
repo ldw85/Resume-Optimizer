@@ -14,31 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const multer_1 = __importDefault(require("multer"));
-const promises_1 = __importDefault(require("fs/promises"));
-const path_1 = __importDefault(require("path"));
 const fileParser_1 = require("../services/fileParser");
+const tesseractService_1 = require("../services/tesseractService");
 const router = express_1.default.Router();
-// 确保上传目录存在
-const uploadDir = path_1.default.join(__dirname, '../../uploads');
-// 确保上传目录存在
-// 使用 async/await 确保目录创建完成
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        yield promises_1.default.access(uploadDir);
-    }
-    catch (error) {
-        yield promises_1.default.mkdir(uploadDir, { recursive: true });
-    }
-}))();
-const storage = multer_1.default.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, uploadDir);
-    },
-    filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`);
-    },
-});
-const upload = (0, multer_1.default)({ storage: storage });
+// 使用内存存储来处理文件上传，避免在 Vercel 等无文件系统权限的环境中出错
+const storage = multer_1.default.memoryStorage();
+const upload = (0, multer_1.default)({ storage });
 const parseResumeHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!req.file) {
@@ -47,17 +28,6 @@ const parseResumeHandler = (req, res) => __awaiter(void 0, void 0, void 0, funct
         }
         const text = yield (0, fileParser_1.parseFile)(req.file);
         res.status(200).send({ text });
-        // 删除临时文件
-        if (req.file && req.file.path) {
-            try {
-                yield promises_1.default.unlink(req.file.path);
-                console.log(`Deleted temporary file: ${req.file.path}`);
-            }
-            catch (unlinkError) {
-                console.warn(`Failed to delete temporary file: ${req.file.path}`, unlinkError);
-            }
-        }
-        return;
     }
     catch (error) {
         console.error('Error parsing resume:', error);
@@ -72,20 +42,20 @@ const parseResumeImagesHandler = (req, res) => __awaiter(void 0, void 0, void 0,
         if (!req.files || !Array.isArray(req.files)) {
             return res.status(400).json({ error: 'No files uploaded' });
         }
+        // 获取共享的OCR worker
+        const worker = yield (0, tesseractService_1.getOcrWorker)();
         let combinedText = '';
         // 处理每个图片文件
         for (const file of req.files) {
             // 检查文件类型
-            if (file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
+            if (!file.mimetype.startsWith('image/')) {
                 console.warn(`Skipping non-image file: ${file.originalname} (${file.mimetype})`);
                 continue;
             }
             try {
-                // 使用现有的parseFile服务处理图片
-                const pageText = yield (0, fileParser_1.parseFile)(file);
-                combinedText += pageText.trim() + '\n';
-                // 处理完成后删除临时文件
-                yield promises_1.default.unlink(file.path);
+                // 直接使用worker进行识别
+                const { data: { text } } = yield worker.recognize(file.buffer);
+                combinedText += text.trim() + '\n';
             }
             catch (error) {
                 console.error(`Error processing file ${file.originalname}:`, error);

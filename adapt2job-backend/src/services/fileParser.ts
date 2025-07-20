@@ -1,9 +1,6 @@
 import pdfParse from 'pdf-parse';
 import mammoth from 'mammoth';
-import { createWorker } from 'tesseract.js';
-
-// OCR语言配置
-const OCR_LANGUAGES = ['eng', 'chi_sim']; // 支持英语和简体中文
+import { getOcrWorker } from './tesseractService';
 
 export const parseFile = async (file: Express.Multer.File): Promise<string> => {
   console.log('Parsing file:', file.mimetype);
@@ -23,11 +20,9 @@ export const parseFile = async (file: Express.Multer.File): Promise<string> => {
       const result = await mammoth.extractRawText({ buffer: file.buffer });
       return result.value;
     } else if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-      const worker = await createWorker();
-      await worker.reinitialize(OCR_LANGUAGES.join('+')); // 使用reinitialize加载和初始化语言
-
+      // 从共享服务中获取已初始化的worker
+      const worker = await getOcrWorker();
       const { data: { text } } = await worker.recognize(file.buffer);
-      await worker.terminate();
       return text;
     } else {
       throw new Error(`Unsupported file type: ${file.mimetype}`);

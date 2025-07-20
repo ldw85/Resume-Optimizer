@@ -1,6 +1,7 @@
 import express, { Request, Response, Router, RequestHandler } from 'express';
 import multer from 'multer';
 import { parseFile } from '../services/fileParser';
+import { getOcrWorker } from '../services/tesseractService';
 
 const router: Router = express.Router();
 
@@ -34,21 +35,23 @@ const parseResumeImagesHandler: RequestHandler = async (req, res) => {
       return res.status(400).json({ error: 'No files uploaded' });
     }
 
+    // 获取共享的OCR worker
+    const worker = await getOcrWorker();
     let combinedText = '';
 
     // 处理每个图片文件
     for (const file of (req.files as Express.Multer.File[])) {
       // 检查文件类型
-      if (file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
+      if (!file.mimetype.startsWith('image/')) {
         console.warn(`Skipping non-image file: ${file.originalname} (${file.mimetype})`);
         continue;
       }
 
       try {
-        // 使用现有的parseFile服务处理图片
-        const pageText = await parseFile(file);
-        combinedText += pageText.trim() + '\n';
-      } catch (error) {
+        // 直接使用worker进行识别
+        const { data: { text } } = await worker.recognize(file.buffer);
+        combinedText += text.trim() + '\n';
+      } catch (error: any) {
         console.error(`Error processing file ${file.originalname}:`, error);
       }
     }
