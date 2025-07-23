@@ -1,6 +1,6 @@
 # Resume Optimizer
 
-ResumeOptimizer is a full-stack application designed to help users optimize their resumes for job applications. It leverages AI (Gemini, DeepSeek) for resume analysis and content generation, and integrates with Tavily for web content fetching. The application supports multiple languages and provides a seamless user experience for improving job application success.
+Resume Optimizer is a full-stack application designed to help users optimize their resumes for job applications. It leverages AI (Gemini, DeepSeek) for resume analysis and content generation, and integrates with Tavily for web content fetching. The application supports multiple languages and provides a seamless user experience for improving job application success.
 
 ## Features
 
