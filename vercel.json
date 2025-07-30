@@ -20,7 +20,7 @@
     },
     {
       "source": "/sitemap.xml",
-      "destination": "/adapt2job-frontend/sitemap.xml"
+      "destination": "/adapt2job-frontend/sitemap/sitemap.xml"
     },
     {
       "source": "/robots.txt",
