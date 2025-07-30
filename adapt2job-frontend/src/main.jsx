@@ -48,6 +48,7 @@ import CanAResumeBe2PagesEn from '../landing_pages/en/blog/can-a-resume-be-2-pag
 import HowToImproveResumeQualityEn from '../landing_pages/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025.html?raw';
 import IsProfessionallyWrittenAtsFriendlyResumeWorthTheInvestmentEn from '../landing_pages/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment.html?raw';
 import WhyYourResumeGetsIgnoredEn from '../landing_pages/en/blog/why-your-resume-gets-ignored-and-the-free-ai-trick-to-fix-it-instantly.html?raw';
+import MasterAiResumeOptimizationEn from '../landing_pages/en/blog/Master-AI-Resume-Optimization-Beat-ATS-Land-Interviews-Faster.html?raw';
 import InteractiveReportWrapper from './components/InteractiveReportWrapper';
 import HeroReportWrapper from './components/HeroReportWrapper';
 // Import your Publishable Key
@@ -57,16 +58,6 @@ if (!PUBLISHABLE_KEY) {
   throw new Error('Missing Clerk Publishable Key')
 }
 
-
-// i18n 初始化逻辑保持不变
-i18n.on('initialized', () => {
-    const description_zh = i18n.t('ResumeOptimizer 是一款免费在线简历优化工具，帮助您根据职位要求快速优化简历，提升求职成功率。');
-    const description_en = i18n.t('ResumeOptimizer is a free online tool designed to help job seekers optimize their resumes more effectively to match target job requirements.');
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-        metaDescription.setAttribute('content', `${description_zh} - ${description_en}`);
-    }
-});
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -125,6 +116,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025" element={<div dangerouslySetInnerHTML={{ __html: HowToImproveResumeQualityEn }} />} />
             <Route path="/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment" element={<div dangerouslySetInnerHTML={{ __html: IsProfessionallyWrittenAtsFriendlyResumeWorthTheInvestmentEn }} />} />
             <Route path="/en/blog/why-your-resume-gets-ignored-and-the-free-ai-trick-to-fix-it-instantly" element={<div dangerouslySetInnerHTML={{ __html: WhyYourResumeGetsIgnoredEn }} />} />
+            <Route path="/en/blog/Master-AI-Resume-Optimization-Beat-ATS-Land-Interviews-Faster" element={<div dangerouslySetInnerHTML={{ __html: MasterAiResumeOptimizationEn }} />} />
             <Route path="/en/blog/interactive-report-ai-resume-optimization-tools" element={<div dangerouslySetInnerHTML={{ __html: InteractiveReportWrapper }} />} />
             <Route path="/en/blog/the-2025-guide-to-ai-resume-optimizers" element={<div dangerouslySetInnerHTML={{ __html: HeroReportWrapper }} />} />
             <Route path="/blog/The-2025-Guide-to-AI-Resume-Optimizers.html" element={<HeroReportWrapper />} />
