@@ -19,7 +19,7 @@
       "destination": "adapt2job-backend/api/index.ts"
     },
     {
-      "source": "/sitemap.xml",
+      "source": "/sitemap/sitemap.xml",
       "destination": "/adapt2job-frontend/sitemap/sitemap.xml"
     },
     {
