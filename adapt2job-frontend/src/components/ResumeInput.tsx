@@ -87,40 +87,31 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
 
   // Fetch saved resumes when component mounts
   useEffect(() => {
-    const fetchResumesOnMount = async () => {
-      // Only fetch if not yet attempted and user is logged in (check for Clerk session)
-      if (!hasAttemptedSavedResumesFetch && window.Clerk?.session) {
-        setHasAttemptedSavedResumesFetch(true); // Mark as attempted
+    const fetchResumes = async () => {
+      // This function should only run if the user is logged in and we haven't tried yet.
+      if (window.Clerk?.session && !hasAttemptedSavedResumesFetch) {
+        setHasAttemptedSavedResumesFetch(true);
+
         try {
           const resumes = await getSavedResumes();
-          // setSavedResumes(resumes); // Removed as unused
-          // Decide whether to display saved resume or upload area based ONLY on whether resumes were found
           if (resumes.length > 0) {
             const latestResume = resumes[0];
             setSelectedSavedResume(latestResume);
             onContentChange(latestResume.content);
-            setShowUploadArea(false); // Hide upload area if resumes are found
-          } else {
-            setShowUploadArea(true); // Show upload area if no resumes
-            setSelectedSavedResume(null);
-            if (activeMethod !== 'paste' || value === '') {
-              onContentChange(''); // Clear content if no saved resumes and not in paste mode
-            }
+            setShowUploadArea(false);
           }
-        } catch (error) {
-          console.error('Failed to fetch saved resumes on mount:', error);
-          setShowUploadArea(true);
-          // setSavedResumes([]); // Removed as unused
-          setSelectedSavedResume(null);
-          if (activeMethod !== 'paste' || value === '') {
-            onContentChange('');
-          }
+        } catch (err) {
+          // If fetching fails, log the error but do not block the user.
+          // The UI will default to the upload area, which is the desired behavior.
+          console.error("Failed to fetch saved resumes, continuing without them.", err);
         }
       }
     };
 
-    fetchResumesOnMount();
-  }, [hasAttemptedSavedResumesFetch, onContentChange, activeMethod, value]); // Dependencies for mount effect - removed isSaveResumeEnabled
+    fetchResumes();
+    // This effect should run only once when the component mounts.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
   const handleMethodChange = (method: 'upload' | 'paste') => {
@@ -165,6 +156,13 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
       u8arr[n] = bstr.charCodeAt(n);
     }
     return new File([u8arr], filename, { type: mime });
+  };
+
+  const handleUploadAreaClick = () => {
+    // Programmatically click the hidden file input
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
   };
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -362,6 +360,10 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
 
             {activeMethod === 'upload' && (
               <div
+                onClick={handleUploadAreaClick}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleUploadAreaClick(); }}
+                role="button"
+                tabIndex={0}
                 className={`border-2 border-dashed rounded-md p-8 text-center cursor-pointer transition-colors relative ${
                   error ? 'border-red-500 text-red-600' : 'border-gray-300 text-gray-500 hover:border-gray-400'
                 }`}
@@ -393,15 +395,7 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
                 <input
                   type="file"
                   ref={fileInputRef}
-                  style={{
-                    opacity: 0,
-                    position: 'absolute',
-                    left: 0,
-                    top: 0,
-                    width: '100%',
-                    height: '100%',
-                    cursor: 'pointer',
-                  }}
+                  style={{ display: 'none' }}
                   accept=".pdf,.docx,.jpg,.jpeg,.png"
                   onChange={handleFileChange}
                 />

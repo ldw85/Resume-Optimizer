@@ -380,14 +380,14 @@ const OptimizerPage: React.FC = () => { // Use const and specify type
                 }),
               }}
             />
-            </div> {/* Closing tag for w-32 ml-4 div */}
-            {/* Back Button */}
-            <button
-              onClick={() => navigate('/')} // Navigate to home page
+            </div>
+            {/* Home Link */}
+            <a
+              href="/"
               className="px-4 py-2 bg-white text-black text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" // Removed mr-4, added text-sm
             >
               {t('返回首页')} {/* Localize the button text */}
-            </button>
+            </a>
             
             <SignedOut>
                 <SignInButton />

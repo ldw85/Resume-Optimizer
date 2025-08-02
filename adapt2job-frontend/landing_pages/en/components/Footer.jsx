@@ -39,6 +39,7 @@ export default function Footer() {
                                 <li><a href="/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025" className="text-gray-400 hover:text-white">How to Improve Resume Quality</a></li>
                                 <li><a href="/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment" className="text-gray-400 hover:text-white">ATS-Friendly Resume Worth It?</a></li>
                                 <li><a href="/en/blog/interactive-report-ai-resume-optimization-tools" className="text-gray-400 hover:text-white">2025 Guide to AI Resume Optimizers</a></li>
+                                <li><a href="/en/blog/Master-AI-Resume-Optimization-Beat-ATS-Land-Interviews-Faster" className="text-gray-400 hover:text-white">Master AI Resume Optimization</a></li>
                                 <li><a href="https://www.indeed.com/career-advice/resumes-cover-letters" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">Indeed Resume Advice</a></li>
                             </ul>
                         </div>

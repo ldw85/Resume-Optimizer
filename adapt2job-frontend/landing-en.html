@@ -65,7 +65,24 @@
 <body>
     <div id="root" data-name="app">
       <!-- Placeholder for the dynamic Navbar, which will be hydrated by React -->
-      <div id="navbar-root"></div>
+      <div id="navbar-root">
+        <nav data-name="navbar" class="bg-white shadow-sm w-full z-50 fixed top-0 left-0">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+              <div class="flex items-center">
+                <a href="/" class="text-2xl font-bold text-indigo-600 cursor-pointer">
+                  <i class="fas fa-file-alt mr-2"></i>
+                  AI Resume Optimization
+                </a>
+              </div>
+              <div class="flex items-center space-x-4">
+                <a href="/en/blog/blogIndex.html" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
+                <a href="/optimizer" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer">Optimize Now</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
 
       <!-- Hero -->
       <div data-name="hero" class="pt-24" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
@@ -214,6 +231,5 @@
         <p>Please enable JavaScript in your browser to use our resume optimization tool.</p>
       </div>
     </noscript>
-   <script type="module" src="/src/navbar-hydrator.jsx"></script> 
 </body>
 </html>
