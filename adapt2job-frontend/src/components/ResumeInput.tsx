@@ -160,8 +160,12 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
 
   const handleUploadAreaClick = () => {
     // Programmatically click the hidden file input
+    console.log('[调试] handleUploadAreaClick 被触发');
     if (fileInputRef.current) {
+      console.log('[调试] fileInputRef.current 存在:', fileInputRef.current);
       fileInputRef.current.click();
+    } else {
+      console.error('[调试] fileInputRef.current 为 null，input 未渲染或未绑定');
     }
   };
 
@@ -352,7 +356,6 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
                   value={value}
                   onChange={onChange} // Keep original onChange for immediate UI update
                   className="w-full h-[250px] border border-gray-300 rounded-md p-3 resize-none"
-                  ref={ref}
                   aria-label={t('简历内容输入框')}
                 />
               </div>
@@ -369,6 +372,8 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
                 }`}
                 aria-label={t('点击或拖拽文件上传')}
               >
+                {/* 调试：渲染 input 前后输出 ref 状态 */}
+                {(() => { console.log('[调试] input 渲染前 fileInputRef.current:', fileInputRef.current); return null; })()}
                 {isLoading ? (
                   <div className="flex flex-col items-center">
                     <FaSpinner className="mx-auto text-2xl mb-2 animate-spin" />
@@ -393,12 +398,23 @@ const ResumeInput = React.forwardRef<any, ResumeInputProps>(({ value, onChange, 
                   </div>
                 )}
                 <input
-                  type="file"
-                  ref={fileInputRef}
-                  style={{ display: 'none' }}
-                  accept=".pdf,.docx,.jpg,.jpeg,.png"
-                  onChange={handleFileChange}
-                />
+  type="file"
+  ref={fileInputRef}
+  style={{
+    opacity: 0,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+    pointerEvents: 'none', // 关键：阻止 input 响应鼠标事件
+  }}
+  accept=".pdf,.docx,.jpg,.jpeg,.png"
+  onChange={handleFileChange}
+  onClick={() => { console.log('[调试] input 被点击'); }}
+  onFocus={() => { console.log('[调试] input 获得焦点'); }}
+/>
+                {(() => { console.log('[调试] input 渲染后 fileInputRef.current:', fileInputRef.current); return null; })()}
               </div>
             )}
           </>

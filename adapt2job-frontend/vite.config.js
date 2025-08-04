@@ -16,38 +16,43 @@ export default defineConfig({
       name: 'mpa-dev-server-robust',
       configureServer(server) {
         // This middleware intercepts all requests to the dev server.
+        const langHtmlMap = {
+          '/': 'landing-en.html',
+          '/de': 'landing-de.html',
+          '/es': 'landing-es.html',
+          '/ja': 'landing-ja.html',
+          '/zh': 'landing-zh.html',
+        };
+
         server.middlewares.use((req, res, next) => {
-          // If the request is for the root path ('/'), we handle it manually.
-          if (req.url === '/') {
+          const urlPath = (req.url?.split('?')[0] || '/').replace(/\/$/, '') || '/';
+
+          if (langHtmlMap[urlPath]) {
+            const htmlFile = langHtmlMap[urlPath];
             try {
-              // 1. Read the content of landing-en.html.
               const htmlContent = readFileSync(
-                resolve(__dirname, 'landing-en.html'),
+                resolve(__dirname, htmlFile),
                 'utf-8'
               );
 
-              // 2. Use Vite's HTML transformation engine.
-              // This injects HMR and other development-time features.
               server.transformIndexHtml(req.url, htmlContent, req.originalUrl)
                 .then(result => {
                   const finalHtml = typeof result === 'string' ? result : result.html;
                   res.statusCode = 200;
                   res.setHeader('Content-Type', 'text/html');
                   res.end(finalHtml);
+                  return; // End the request here.
                 })
                 .catch(error => {
                   server.ssrFixStacktrace(error);
                   next(error);
                 });
             } catch (error) {
-              next(error);
+              return next(error);
             }
-            // End the request here, don't call next() for the root path.
             return;
           }
 
-          // For all other requests (e.g., /optimizer, /src/main.jsx, etc.),
-          // pass them to Vite's default handling.
           next();
         });
       },
@@ -64,10 +69,14 @@ export default defineConfig({
     rollupOptions: {
       // 3. 这是为【生产构建】配置的，用于生成多页面应用
       input: {
-        // 'index' 键: Vite 会读取 'landing-en.html' 并生成 'dist/index.html'
-        index: resolve(__dirname, 'landing-en.html'),
-        // 'optimizer' 键: Vite 会读取 'index.html' (React 应用的壳) 并生成 'dist/optimizer.html'
-        optimizer: resolve(__dirname, 'index.html'),
+        // 主应用 (SPA) - 会生成 dist/index.html
+        main: resolve(__dirname, 'index.html'),
+        // 英文着陆页 - 会生成 dist/landing-en.html
+        'landing-en': resolve(__dirname, 'landing-en.html'), // Keep for clarity if needed, or remove as it's handled by '/'
+        'landing-de': resolve(__dirname, 'landing-de.html'),
+        'landing-es': resolve(__dirname, 'landing-es.html'),
+        'landing-ja': resolve(__dirname, 'landing-ja.html'),
+        'landing-zh': resolve(__dirname, 'landing-zh.html'),
       },
     },
   },

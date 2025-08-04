@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Resume Optimizer</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="icon" href="/resume-icon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Blog</h1>
+            <p class="text-lg text-gray-600">Erhalten Sie Einblicke und Ratschläge, die Ihnen helfen, Ihren nächsten Job zu finden.</p>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Blog Post Card New -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <a href="/de/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025">
+                    <img src="/image/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.png" alt="10 ChatGPT-Prompts auf Expertenniveau, um Ihren Lebenslauf 2025 hervorzuheben" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-2">10 ChatGPT-Prompts auf Expertenniveau, um Ihren Lebenslauf 2025 hervorzuheben</h2>
+                        <p class="text-gray-600 text-sm">Hören Sie auf, grundlegende ChatGPT-Befehle zu verwenden. Lernen Sie 10 Prompts auf Expertenniveau, um Ihren Lebenslauf für ATS zu optimieren, Erfolge zu quantifizieren und 2025 mehr Vorstellungsgespräche zu bekommen.</p>
+                        <span class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-medium">Weiterlesen &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-200">
+            <p class="text-gray-600">&copy; <span id="currentYear"></span> ResumeOptimizer.click - Alle Rechte vorbehalten</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

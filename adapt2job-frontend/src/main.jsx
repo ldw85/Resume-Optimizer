@@ -39,18 +39,28 @@ import ContactUsDe from '../landing_pages/de/contact-us.jsx';
 import PrivacyPolicyDe from '../landing_pages/de/privacy-policy.jsx';
 import TermsOfServiceDe from '../landing_pages/de/terms-of-service.jsx';
 import BlogIndexEn from '../landing_pages/en/blog/blogIndex.html?raw';
+import BlogIndexDe from '../landing_pages/de/blog/blogIndex.html?raw'; // 假设文件存在于此路径
+import BlogIndexEs from '../landing_pages/es/blog/blogIndex.html?raw';
+import BlogIndexJa from '../landing_pages/ja/blog/blogIndex.html?raw';
+import BlogIndexZh from '../landing_pages/zh/blog/blogIndex.html?raw';
 import HowToTailorResumesForJobsEn from '../landing_pages/en/blog/how-to-tailor-resumes-for-jobs.html?raw';
 import HowToCreateAGreatResumeEn from '../landing_pages/en/blog/how-to-create-a-great-resume.html?raw';
 import ProfessionalResumeWritingServicesEn from '../landing_pages/en/blog/professional-resume-writing-services.html?raw';
 import ProfessionalResumeWritingServicesZh from '../landing_pages/zh/blog/professional-resume-writing-services.html?raw';
-import BlogIndexZh from '../landing_pages/zh/blog/blogIndex.html?raw';
 import CanAResumeBe2PagesEn from '../landing_pages/en/blog/can-a-resume-be-2-pages-your-ultimate-guide-to-optimal-length.html?raw';
 import HowToImproveResumeQualityEn from '../landing_pages/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025.html?raw';
 import IsProfessionallyWrittenAtsFriendlyResumeWorthTheInvestmentEn from '../landing_pages/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment.html?raw';
 import WhyYourResumeGetsIgnoredEn from '../landing_pages/en/blog/why-your-resume-gets-ignored-and-the-free-ai-trick-to-fix-it-instantly.html?raw';
 import MasterAiResumeOptimizationEn from '../landing_pages/en/blog/Master-AI-Resume-Optimization-Beat-ATS-Land-Interviews-Faster.html?raw';
+import ExpertChatGptPromptsEn from '../landing_pages/en/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.html?raw';
+import ExpertChatGptPromptsDe from '../landing_pages/de/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.html?raw';
+import ExpertChatGptPromptsEs from '../landing_pages/es/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.html?raw';
+import ExpertChatGptPromptsJa from '../landing_pages/ja/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.html?raw';
+import ExpertChatGptPromptsZh from '../landing_pages/zh/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.html?raw';
 import InteractiveReportWrapper from './components/InteractiveReportWrapper';
 import HeroReportWrapper from './components/HeroReportWrapper';
+import ultimateGuideToAIResumeOptimization from '../landing_pages/en/blog/The-Ultimate-Guide-to-AI-Resume-Optimization-Tools-Benefits-Strategies-for-2025-CareerBoost-AI.html?raw';
+
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -103,23 +113,36 @@ createRoot(document.getElementById('root')).render(
             <Route path="/de/contact-us" element={<ContactUsDe />} />
             <Route path="/de/privacy-policy" element={<PrivacyPolicyDe />} />
             <Route path="/de/terms-of-service" element={<TermsOfServiceDe />} />
+            {/* 为德语博客添加路由 */}
+            <Route path="/de/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexDe }} />} />
+            <Route path="/de/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025" element={<div dangerouslySetInnerHTML={{ __html: ExpertChatGptPromptsDe }} />} />
+            {/* New routes for Spanish blog pages */}
+            <Route path="/es/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexEs }} />} />
+            <Route path="/es/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025" element={<div dangerouslySetInnerHTML={{ __html: ExpertChatGptPromptsEs }} />} />
+            {/* New routes for Japanese blog pages */}
+            <Route path="/ja/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexJa }} />} />
+            <Route path="/ja/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025" element={<div dangerouslySetInnerHTML={{ __html: ExpertChatGptPromptsJa }} />} />
             {/* New routes for English blog pages */}
             <Route path="/en/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexEn }} />} />
             <Route path="/en/blog/how-to-tailor-resumes-for-jobs" element={<div dangerouslySetInnerHTML={{ __html: HowToTailorResumesForJobsEn }} />} />
             <Route path="/en/blog/how-to-create-a-great-resume" element={<div dangerouslySetInnerHTML={{ __html: HowToCreateAGreatResumeEn }} />} />
             <Route path="/en/blog/professional-resume-writing-services" element={<div dangerouslySetInnerHTML={{ __html: ProfessionalResumeWritingServicesEn }} />} />
             <Route path="/en/blog/interactive-report-ai-resume-optimization-tools" element={<InteractiveReportWrapper />} />
-            {/* New routes for Chinese blog pages */}
-            <Route path="/zh/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexZh }} />} />
-            <Route path="/zh/blog/professional-resume-writing-services" element={<div dangerouslySetInnerHTML={{ __html: ProfessionalResumeWritingServicesZh }} />} />
             <Route path="/en/blog/can-a-resume-be-2-pages-your-ultimate-guide-to-optimal-length" element={<div dangerouslySetInnerHTML={{ __html: CanAResumeBe2PagesEn }} />} />
             <Route path="/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025" element={<div dangerouslySetInnerHTML={{ __html: HowToImproveResumeQualityEn }} />} />
             <Route path="/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment" element={<div dangerouslySetInnerHTML={{ __html: IsProfessionallyWrittenAtsFriendlyResumeWorthTheInvestmentEn }} />} />
             <Route path="/en/blog/why-your-resume-gets-ignored-and-the-free-ai-trick-to-fix-it-instantly" element={<div dangerouslySetInnerHTML={{ __html: WhyYourResumeGetsIgnoredEn }} />} />
             <Route path="/en/blog/Master-AI-Resume-Optimization-Beat-ATS-Land-Interviews-Faster" element={<div dangerouslySetInnerHTML={{ __html: MasterAiResumeOptimizationEn }} />} />
+            <Route path="/en/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025" element={<div dangerouslySetInnerHTML={{ __html: ExpertChatGptPromptsEn }} />} />
+            {/* New routes for Chinese blog pages */}
+            <Route path="/zh/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexZh }} />} />
+            <Route path="/zh/blog/professional-resume-writing-services" element={<div dangerouslySetInnerHTML={{ __html: ProfessionalResumeWritingServicesZh }} />} />
+            <Route path="/zh/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025" element={<div dangerouslySetInnerHTML={{ __html: ExpertChatGptPromptsZh }} />} />
             <Route path="/en/blog/interactive-report-ai-resume-optimization-tools" element={<div dangerouslySetInnerHTML={{ __html: InteractiveReportWrapper }} />} />
             <Route path="/en/blog/the-2025-guide-to-ai-resume-optimizers" element={<div dangerouslySetInnerHTML={{ __html: HeroReportWrapper }} />} />
             <Route path="/blog/The-2025-Guide-to-AI-Resume-Optimizers.html" element={<HeroReportWrapper />} />
+            <Route path="/en/blog/The-Ultimate-Guide-to-AI-Resume-Optimization-Tools-Benefits-Strategies-for-2025-CareerBoost-AI" element={<div dangerouslySetInnerHTML={{ __html: ultimateGuideToAIResumeOptimization }} />} />
+
             {/* Optimizer page */}
             <Route path="/optimizer" element={<OptimizerPage />} />
             {/* Optional: Add a catch-all route for 404 */}

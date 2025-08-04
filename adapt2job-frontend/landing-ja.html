@@ -62,22 +62,23 @@
     <div id="root" data-name="app">
       <!-- Full static shell for SEO. React will hydrate this into an interactive app. -->
       
-      <!-- Navbar -->
-      <nav data-name="navbar" class="bg-white shadow-sm w-full z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between h-16">
-            <div class="flex items-center">
-              <a href="/optimizer" class="text-2xl font-bold text-indigo-600 cursor-pointer">
-                <i class="fas fa-file-alt mr-2"></i>AI履歴書最適化
-              </a>
-            </div>
-            <div class="flex items-center space-x-4">
-              <a href="/ja/blog/blogIndex.html" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">ブログ</a>
-              <a href="/optimizer" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer">無料トライアル</a>
+      <div id="navbar-root">
+        <nav data-name="navbar" class="bg-white shadow-sm w-full z-50 fixed top-0 left-0">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+              <div class="flex items-center">
+                <a href="/ja" class="text-2xl font-bold text-indigo-600 cursor-pointer">
+                  <i class="fas fa-file-alt mr-2"></i>AI履歴書最適化
+                </a>
+              </div>
+              <div class="flex items-center space-x-4">
+                <a href="/ja/blog" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">ブログ</a>
+                <a href="/optimizer?lang=ja" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer">無料トライアル</a>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
 
       <!-- Hero -->
       <div data-name="hero" class="pt-24" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
@@ -91,7 +92,7 @@
               求人要件をインテリジェントに照合し、履歴書の内容とレイアウトを最適化し、<br class="hidden sm:block">あなたの履歴書を目立たせます
             </p>
             <div class="mt-10">
-              <a href="/optimizer" class="inline-block text-xl px-8 py-4 rounded-lg text-white font-medium cursor-pointer" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
+              <a href="/optimizer?lang=ja" class="inline-block text-xl px-8 py-4 rounded-lg text-white font-medium cursor-pointer" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
                 今すぐ履歴書を最適化<i class="fas fa-arrow-right ml-2"></i>
               </a>
               <p class="mt-3 text-indigo-200 text-sm"><i class="fas fa-clock mr-1"></i>迅速な最適化にはわずか1分しかかかりません</p>
@@ -168,7 +169,7 @@
               <h2 class="text-3xl font-extrabold text-white sm:text-4xl">履歴書を強化する準備はできましたか？</h2>
               <p class="mt-4 text-lg text-indigo-100">今すぐAI履歴書最適化を試して、あなたの履歴書を目立たせましょう</p>
               <div class="mt-10">
-                <a href="/optimizer" class="bg-white text-indigo-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-50 transition-colors cursor-pointer">無料で始める<i class="fas fa-arrow-right ml-2"></i></a>
+                <a href="/optimizer?lang=ja" class="bg-white text-indigo-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-50 transition-colors cursor-pointer">無料で始める<i class="fas fa-arrow-right ml-2"></i></a>
               </div>
             </div>
           </div>
@@ -201,7 +202,7 @@
             <div>
               <h4 class="text-lg font-semibold mb-4">ブログとリソース</h4>
               <ul class="space-y-2">
-                <li><a href="/ja/blog/blogIndex.html" class="text-gray-400 hover:text-white">すべてのブログ記事</a></li>
+                <li><a href="/ja/blog" class="text-gray-400 hover:text-white">すべてのブログ記事</a></li>
               </ul>
             </div>
           </div>
@@ -218,6 +219,5 @@
         <p>履歴書最適化ツールを使用するには、ブラウザでJavaScriptを有効にしてください。</p>
       </div>
     </noscript>
-    <script type="module" src="/src/navbar-hydrator.jsx"></script> 
 </body>
 </html>

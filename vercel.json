@@ -18,6 +18,10 @@
       "source": "/api/(.*)",
       "destination": "adapt2job-backend/api/index.ts"
     },
+    { "source": "/de", "destination": "/adapt2job-frontend/landing-de.html" },
+    { "source": "/es", "destination": "/adapt2job-frontend/landing-es.html" },
+    { "source": "/ja", "destination": "/adapt2job-frontend/landing-ja.html" },
+    { "source": "/zh", "destination": "/adapt2job-frontend/landing-zh.html" },
     {
       "source": "/sitemap/sitemap.xml",
       "destination": "/adapt2job-frontend/sitemap/sitemap.xml"

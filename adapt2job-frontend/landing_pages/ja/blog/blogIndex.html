@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ | Resume Optimizer</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="icon" href="/resume-icon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">ブログ</h1>
+            <p class="text-lg text-gray-600">次の仕事を見つけるのに役立つ洞察とアドバイスを得ましょう。</p>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Blog Post Card New -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <a href="/ja/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025">
+                    <img src="/image/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.png" alt="2025年にあなたの履歴書を際立たせるための専門家レベルのChatGPTプロンプト10選" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-2">2025年にあなたの履歴書を際立たせるための専門家レベルのChatGPTプロンプト10選</h2>
+                        <p class="text-gray-600 text-sm">基本的なChatGPTコマンドの使用はやめましょう。ATS向けに履歴書を最適化し、実績を数値化し、2025年により多くの面接を獲得するための専門家レベルのプロンプト10選を学びます。</p>
+                        <span class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-medium">続きを読む &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-200">
+            <p class="text-gray-600">&copy; <span id="currentYear"></span> ResumeOptimizer.click - 全著作権所有</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
