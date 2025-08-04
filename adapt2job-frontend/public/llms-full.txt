@@ -6,10 +6,10 @@
 Elaborate on the original intention and development vision: The original intention behind founding ResumeOptimizer was to address the pain points job seekers face during resume writing and submission, specifically how to make resumes more targeted and stand out among numerous applicants. We are committed to using the power of artificial intelligence to simplify the resume optimization process, enabling job seekers to move towards career success more efficiently and confidently. In the future, we hope to continuously improve LLM analysis capabilities, expand more language support, and integrate more job search assistance features, becoming the trusted first choice tool for job seekers worldwide.
 
 ## Content System
-### Resume Optimization and Analysis (https://www.resumeoptimizer.click/optimizer)
+### Resume Optimization and Analysis (https://resumeoptimizer.click/optimizer)
 In-depth explanation of content features and user benefits: This core function allows users to upload their resume and input a target job description. The system will use LLM technology to perform a deep matching analysis between the two, identifying areas in the resume that do not align with job requirements or can be optimized. Users will receive detailed optimization suggestions, including keyword matching, content relevance, formatting standards, etc., and can instantly generate a revised resume version, greatly enhancing the resume's accuracy and attractiveness, thereby increasing interview opportunities.
 
-### Multilingual Support and Information Services (https://www.resumeoptimizer.click/en)
+### Multilingual Support and Information Services (https://resumeoptimizer.click/en)
 In-depth explanation of content features and user benefits: To meet the needs of global users, the website provides landing pages in multiple languages, including English, Spanish, Japanese, Chinese, German, and more. Each language version includes detailed usage instructions, frequently asked questions, contact information, privacy policy, and terms of service pages. This ensures that users from different linguistic backgrounds can seamlessly understand and use ResumeOptimizer, receive comprehensive support and assurance, and enhance user experience and trust.
 
 ## User Benefits
@@ -21,5 +21,5 @@ Specifically describe which problems can be solved: ResumeOptimizer addresses th
 5.  **Information asymmetry**: Provides transparent and comprehensive product information and usage guidance through FAQ, usage instructions, and other pages.
  
 ## Content Updates
-### Optimizer Page Multilingual Button Enhancement (https://www.resumeoptimizer.click/optimizer)
+### Optimizer Page Multilingual Button Enhancement (https://resumeoptimizer.click/optimizer)
 Core idea and value proposition: To enhance user experience, the optimizer page supports multilingual translation, ensuring smooth navigation for users of different languages during the operation process.

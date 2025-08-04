@@ -115,4 +115,4 @@ This project is licensed under the MIT License.
 ## Deployed Application
 
 You can access the live application here:
-[https://www.resumeoptimizer.click](https://www.resumeoptimizer.click)
+[https://resumeoptimizer.click](https://resumeoptimizer.click)

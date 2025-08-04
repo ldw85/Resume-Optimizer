@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /src/
 Disallow: /node_modules/
 
 # AI爬虫特殊处理
@@ -15,4 +14,4 @@ Allow: /
 
 
 # 全局指令
-Sitemap: https://www.resumeoptimizer.click/sitemap.xml
+Sitemap: https://resumeoptimizer.click/sitemap/sitemap.xml

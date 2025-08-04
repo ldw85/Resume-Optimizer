@@ -110,4 +110,4 @@ Adapt2Job/
 ## 已部署的应用
 
 您可以在此处访问在线应用：
-[https://www.resumeoptimizer.click](https://www.resumeoptimizer.click)
+[https://resumeoptimizer.click](https://resumeoptimizer.click)
