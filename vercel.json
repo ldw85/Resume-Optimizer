@@ -63,8 +63,8 @@
       "destination": "/adapt2job-frontend/blog/$1"
     },
     {
-      "source": "/how-it-works.gif",
-      "destination": "/adapt2job-frontend/how-it-works.gif"
+      "source": "/how-it-works.mp4",
+      "destination": "/adapt2job-frontend/how-it-works.mp4"
     },
      {
     "source": "/",
@@ -77,7 +77,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*\\.(?:html|css|js|png|jpg|jpeg|gif|svg|xml|json|txt))$",
+      "source": "/(.*\\.(?:html|css|js|png|jpg|jpeg|mp4|svg|xml|json|txt))$",
       "headers": [
         {
           "key": "Cache-Control",
