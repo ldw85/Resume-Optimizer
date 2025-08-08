@@ -52,12 +52,10 @@ const HowItWorks: React.FC = () => {
                         ))}
         </div>
         <div className="flex justify-center mb-6">
-        <img
-          src="/how-it-works.gif"
-          alt="How ResumeOptimizer Works"
-          className="w-full max-w-xl rounded-lg shadow-md border border-gray-100"
-          style={{objectFit: 'cover'}}
-        />
+        <video src="/how-it-works.mp4" controls poster="/image/how-to-create-a-great-resume.png" className="w-full max-w-4xl rounded-lg shadow-md border border-gray-100" style={{ objectFit: 'cover' }}>
+
+            Your browser does not support the video tag.
+          </video>
       </div>
       {/* Privacy Note */}
       <p className="text-gray-600 mt-8 text-center text-sm">

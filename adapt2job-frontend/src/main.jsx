@@ -60,6 +60,7 @@ import ExpertChatGptPromptsZh from '../landing_pages/zh/blog/10-expert-level-cha
 import InteractiveReportWrapper from './components/InteractiveReportWrapper';
 import HeroReportWrapper from './components/HeroReportWrapper';
 import ultimateGuideToAIResumeOptimization from '../landing_pages/en/blog/The-Ultimate-Guide-to-AI-Resume-Optimization-Tools-Benefits-Strategies-for-2025-CareerBoost-AI.html?raw';
+import HowToOptimizeYourResumeUsingAIEn from '../landing_pages/en/blog/How-to-Optimize-Your-Resume-Using-AI-A-Step-by-Step-Guide.html?raw';
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
@@ -142,6 +143,9 @@ createRoot(document.getElementById('root')).render(
             <Route path="/en/blog/the-2025-guide-to-ai-resume-optimizers" element={<div dangerouslySetInnerHTML={{ __html: HeroReportWrapper }} />} />
             <Route path="/blog/The-2025-Guide-to-AI-Resume-Optimizers.html" element={<HeroReportWrapper />} />
             <Route path="/en/blog/The-Ultimate-Guide-to-AI-Resume-Optimization-Tools-Benefits-Strategies-for-2025-CareerBoost-AI" element={<div dangerouslySetInnerHTML={{ __html: ultimateGuideToAIResumeOptimization }} />} />
+
+            {/* 新增：How to Optimize Your Resume Using AI 博客路由 */}
+            <Route path="/en/blog/How-to-Optimize-Your-Resume-Using-AI-A-Step-by-Step-Guide" element={<div dangerouslySetInnerHTML={{ __html: HowToOptimizeYourResumeUsingAIEn }} />} />
 
             {/* Optimizer page */}
             <Route path="/optimizer" element={<OptimizerPage />} />
