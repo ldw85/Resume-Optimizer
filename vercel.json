@@ -71,6 +71,10 @@
       "destination": "/adapt2job-frontend/landing-en.html"
     },
     {
+      "source": "/(.*\\.(?:html|css|js|png|jpg|jpeg|mp4|svg|xml|json|txt))",
+      "destination": "/adapt2job-frontend/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/adapt2job-frontend/index.html"
     }
