@@ -61,6 +61,8 @@ import InteractiveReportWrapper from './components/InteractiveReportWrapper';
 import HeroReportWrapper from './components/HeroReportWrapper';
 import ultimateGuideToAIResumeOptimization from '../landing_pages/en/blog/The-Ultimate-Guide-to-AI-Resume-Optimization-Tools-Benefits-Strategies-for-2025-CareerBoost-AI.html?raw';
 import HowToOptimizeYourResumeUsingAIEn from '../landing_pages/en/blog/How-to-Optimize-Your-Resume-Using-AI-A-Step-by-Step-Guide.html?raw';
+import AiResumeOptimizationToolVsExpertEn from '../landing_pages/en/blog/ai-resume-optimization-tool-vs-expert.html?raw';
+import the10BestAiResumeToolsEn from '../landing_pages/en/blog/the-10-best-ai-resume-optimization-tools-in-2025-reviewed-compared.html?raw';
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
@@ -135,6 +137,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/en/blog/why-your-resume-gets-ignored-and-the-free-ai-trick-to-fix-it-instantly" element={<div dangerouslySetInnerHTML={{ __html: WhyYourResumeGetsIgnoredEn }} />} />
             <Route path="/en/blog/Master-AI-Resume-Optimization-Beat-ATS-Land-Interviews-Faster" element={<div dangerouslySetInnerHTML={{ __html: MasterAiResumeOptimizationEn }} />} />
             <Route path="/en/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025" element={<div dangerouslySetInnerHTML={{ __html: ExpertChatGptPromptsEn }} />} />
+            <Route path="/en/blog/the-10-best-ai-resume-optimization-tools-in-2025-reviewed-compared" element={<div dangerouslySetInnerHTML={{ __html: the10BestAiResumeToolsEn }} />} />
             {/* New routes for Chinese blog pages */}
             <Route path="/zh/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexZh }} />} />
             <Route path="/zh/blog/professional-resume-writing-services" element={<div dangerouslySetInnerHTML={{ __html: ProfessionalResumeWritingServicesZh }} />} />
@@ -146,6 +149,9 @@ createRoot(document.getElementById('root')).render(
 
             {/* 新增：How to Optimize Your Resume Using AI 博客路由 */}
             <Route path="/en/blog/How-to-Optimize-Your-Resume-Using-AI-A-Step-by-Step-Guide" element={<div dangerouslySetInnerHTML={{ __html: HowToOptimizeYourResumeUsingAIEn }} />} />
+
+            {/* 新增：AI Resume Optimization: Tool vs. Expert 博客路由 */}
+            <Route path="/en/blog/ai-resume-optimization-tool-vs-expert" element={<div dangerouslySetInnerHTML={{ __html: AiResumeOptimizationToolVsExpertEn }} />} />
 
             {/* Optimizer page */}
             <Route path="/optimizer" element={<OptimizerPage />} />
