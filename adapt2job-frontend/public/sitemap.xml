@@ -72,6 +72,11 @@
 
   <!-- English Blog Posts -->
   <url>
+    <loc>https://resumeoptimizer.click/en/blog/the-10-best-ai-resume-optimization-tools-in-2025-reviewed-and-compared</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://resumeoptimizer.click/en/blog/ai-resume-optimization-tool-vs-expert</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -143,6 +148,42 @@
   </url>
   <url>
     <loc>https://resumeoptimizer.click/en/blog/the-2025-guide-to-ai-resume-optimizers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/AI-Resume-Optimization-Services-When-to-Hire-an-Expert-vs-Using-a-Tool</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/Jobscan-vs-Other-AI-Tools-Which-Resume-Optimizer-is-Right-for-You</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/How-to-Use-ChatGPT-for-Perfect-Resume-Keyword-Optimization</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/Optimizing-Your-LinkedIn-Profile-and-Resume-with-ChatGPT</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/Complete-Guide-to-ChatGPT-Resume-Optimization-From-Keywords-to-Cover-Letters</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/Top-7-Free-Resume-Analyzer-Tools-to-Score-Your-CV-in-Seconds</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/DIY-Resume-SEO-How-to-Manually-Optimize-for-Applicant-Tracking-Systems-ATS</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
