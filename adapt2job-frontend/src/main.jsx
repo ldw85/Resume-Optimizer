@@ -70,6 +70,16 @@ import OptimizingLinkedInWithChatGptEn from '../landing_pages/en/blog/Optimizing
 import CompleteGuideChatGptResumeOptimizationEn from '../landing_pages/en/blog/Complete-Guide-to-ChatGPT-Resume-Optimization:-From-Keywords-to-Cover-Letters.html?raw';
 import Top7FreeResumeAnalyzersEn from '../landing_pages/en/blog/Top-7-Free-Resume-Analyzer-Tools-to-Score-Your-CV-in-Seconds.html?raw';
 import DiyResumeSeoForAtsEn from '../landing_pages/en/blog/DIY-Resume-SEO:-How-to-Manually-Optimize-for-Applicant-Tracking-Systems-(ATS).html?raw';
+import ChoosingTheBestResumeBuilderEn from '../landing_pages/en/blog/Choosing-the-Best-Resume-Builder:-Free-Tools-vs.-Paid-Services.html?raw';
+import HowToWriteAResumeCoverLetterEn from '../landing_pages/en/blog/Crafting-a-Winning-Combo:-How-to-Write-a-Resume-Cover-Letter.html?raw';
+import HowToUpdateAndRewriteYourResumeEn from '../landing_pages/en/blog/Download-Free-Resume-Templates-&-Examples-for-Every-Industry.html?raw';
+import FreeResumeTemplatesAndExamplesEn from '../landing_pages/en/blog/Mastering-ATS:-How-to-Optimize-Your-Resume-for-Applicant-Tracking-Systems.html?raw';
+import UpdateAndRewriteResumeStrategiesEn from '../landing_pages/en/blog/Effective-Strategies-How-to-Update-and-Rewrite-Your-Resume.html?raw';
+import FindLocalResumeServicesEn from '../landing_pages/en/blog/Find-the-Best-Resume-Writing-Services-Near-You.html?raw';
+import UltimateDiyResumeGuideEn from '../landing_pages/en/blog/The-Ultimate-DIY-Guide-How-to-Write-a-Professional-Resume-That-Gets-Hired.html?raw';
+import WhyHireCertifiedWritersEn from '../landing_pages/en/blog/Why-Hire-Certified-Professional-Resume-Writers-for-Your-Job-Search.html?raw';
+
+
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
@@ -152,6 +162,16 @@ createRoot(document.getElementById('root')).render(
             <Route path="/en/blog/Complete-Guide-to-ChatGPT-Resume-Optimization-From-Keywords-to-Cover-Letters" element={<div dangerouslySetInnerHTML={{ __html: CompleteGuideChatGptResumeOptimizationEn }} />} />
             <Route path="/en/blog/Top-7-Free-Resume-Analyzer-Tools-to-Score-Your-CV-in-Seconds" element={<div dangerouslySetInnerHTML={{ __html: Top7FreeResumeAnalyzersEn }} />} />
             <Route path="/en/blog/DIY-Resume-SEO-How-to-Manually-Optimize-for-Applicant-Tracking-Systems-ATS" element={<div dangerouslySetInnerHTML={{ __html: DiyResumeSeoForAtsEn }} />} />
+            <Route path="/en/blog/choosing-the-best-resume-builder" element={<div dangerouslySetInnerHTML={{ __html: ChoosingTheBestResumeBuilderEn }} />} />
+            <Route path="/en/blog/how-to-write-a-resume-cover-letter" element={<div dangerouslySetInnerHTML={{ __html: HowToWriteAResumeCoverLetterEn }} />} />
+            <Route path="/en/blog/how-to-update-and-rewrite-your-resume" element={<div dangerouslySetInnerHTML={{ __html: HowToUpdateAndRewriteYourResumeEn }} />} />
+            <Route path="/en/blog/free-resume-templates-and-examples" element={<div dangerouslySetInnerHTML={{ __html: FreeResumeTemplatesAndExamplesEn }} />} />
+            <Route path="/en/blog/effective-strategies-how-to-update-and-rewrite-your-resume" element={<div dangerouslySetInnerHTML={{ __html: UpdateAndRewriteResumeStrategiesEn }} />} />
+            <Route path="/en/blog/find-the-best-resume-writing-services-near-you" element={<div dangerouslySetInnerHTML={{ __html: FindLocalResumeServicesEn }} />} />
+            <Route path="/en/blog/ultimate-diy-guide-to-writing-a-professional-resume" element={<div dangerouslySetInnerHTML={{ __html: UltimateDiyResumeGuideEn }} />} />
+            <Route path="/en/blog/why-hire-certified-professional-resume-writers" element={<div dangerouslySetInnerHTML={{ __html: WhyHireCertifiedWritersEn }} />} />
+
+
 
             {/* New routes for Chinese blog pages */}
             <Route path="/zh/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexZh }} />} />
