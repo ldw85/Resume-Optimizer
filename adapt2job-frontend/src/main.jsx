@@ -47,6 +47,7 @@ import HowToTailorResumesForJobsEn from '../landing_pages/en/blog/how-to-tailor-
 import HowToCreateAGreatResumeEn from '../landing_pages/en/blog/how-to-create-a-great-resume.html?raw';
 import ProfessionalResumeWritingServicesEn from '../landing_pages/en/blog/professional-resume-writing-services.html?raw';
 import ProfessionalResumeWritingServicesZh from '../landing_pages/zh/blog/professional-resume-writing-services.html?raw';
+import WhyYourResumeGetsIgnoredEs from '../landing_pages/es/blog/why-your-resume-gets-ignored-and-the-free-ai-trick-to-fix-it-instantly.html?raw';
 import CanAResumeBe2PagesEn from '../landing_pages/en/blog/can-a-resume-be-2-pages-your-ultimate-guide-to-optimal-length.html?raw';
 import HowToImproveResumeQualityEn from '../landing_pages/en/blog/how-to-improve-resume-quality-land-more-interviews-in-2025.html?raw';
 import IsProfessionallyWrittenAtsFriendlyResumeWorthTheInvestmentEn from '../landing_pages/en/blog/is-a-professionally-written-ats-friendly-resume-worth-the-investment.html?raw';
@@ -74,10 +75,23 @@ import ChoosingTheBestResumeBuilderEn from '../landing_pages/en/blog/Choosing-th
 import HowToWriteAResumeCoverLetterEn from '../landing_pages/en/blog/Crafting-a-Winning-Combo:-How-to-Write-a-Resume-Cover-Letter.html?raw';
 import HowToUpdateAndRewriteYourResumeEn from '../landing_pages/en/blog/Download-Free-Resume-Templates-&-Examples-for-Every-Industry.html?raw';
 import FreeResumeTemplatesAndExamplesEn from '../landing_pages/en/blog/Mastering-ATS:-How-to-Optimize-Your-Resume-for-Applicant-Tracking-Systems.html?raw';
-import UpdateAndRewriteResumeStrategiesEn from '../landing_pages/en/blog/Effective-Strategies-How-to-Update-and-Rewrite-Your-Resume.html?raw';
+import UpdateAndRewriteResumeStrategiesEn from '../landing_pages/en/blog/Effective-Strategies: How-to-Update-and-Rewrite-Your-Resume.html?raw';
 import FindLocalResumeServicesEn from '../landing_pages/en/blog/Find-the-Best-Resume-Writing-Services-Near-You.html?raw';
-import UltimateDiyResumeGuideEn from '../landing_pages/en/blog/The-Ultimate-DIY-Guide-How-to-Write-a-Professional-Resume-That-Gets-Hired.html?raw';
+import UltimateDiyResumeGuideEn from '../landing_pages/en/blog/The-Ultimate-DIY-Guide:-How-to-Write-a-Professional-Resume-That-Gets-Hired.html?raw';
 import WhyHireCertifiedWritersEn from '../landing_pages/en/blog/Why-Hire-Certified-Professional-Resume-Writers-for-Your-Job-Search.html?raw';
+import AiResumeOptimizationServicesEs from '../landing_pages/es/blog/AI-Resume-Optimization-Services-When-to-Hire-an-Expert-vs-Using-a-Tool.html?raw';
+import ChoosingTheBestResumeBuilderEs from '../landing_pages/es/blog/Choosing-the-Best-Resume-Builder-Free-Tools-vs-Paid-Services.html?raw';
+import CompleteGuideToChatGPTResumeOptimizationEs from '../landing_pages/es/blog/Complete-Guide-to-ChatGPT-Resume-Optimization-From-Keywords-to-Cover-Letters.html?raw';
+import CraftingAWinningComboEs from '../landing_pages/es/blog/Crafting-a-Winning-Combo-How-to-Write-a-Resume-Cover-Letter.html?raw';
+import DiyResumeSeoForAtsEs from '../landing_pages/es/blog/DIY-Resume-SEO-How-to-Manually-Optimize-for-Applicant-Tracking-Systems-ATS.html?raw';
+import DownloadFreeResumeTemplatesEs from '../landing_pages/es/blog/Download-Free-Resume-Templates-&-Examples-for-Every-Industry.html?raw';
+import EffectiveStrategiesEs from '../landing_pages/es/blog/Effective-Strategies-How-to-Update-and-Rewrite-Your-Resume.html?raw';
+import FindTheBestResumeWritingServicesNearYouEs from '../landing_pages/es/blog/Find-the-Best-Resume-Writing-Services-Near-You.html?raw';
+import HowToOptimizeYourResumeUsingAiEs from '../landing_pages/es/blog/How-to-Optimize-Your-Resume-Using-AI-A-Step-by-Step-Guide.html?raw';
+import HowToUseChatGptForPerfectResumeKeywordOptimizationEs from '../landing_pages/es/blog/How-to-Use-ChatGPT-for-Perfect-Resume-Keyword-Optimization.html?raw';
+import JobscanVsOtherAiToolsEs from '../landing_pages/es/blog/Jobscan-vs.-Other-AI-Tools:-Which-Resume-Optimizer-is-Right-for-You.html?raw';
+import MasterAiResumeOptimizationBeatAtsLandInterviewsFasterEs from '../landing_pages/es/blog/Master-AI-Resume-Optimization-Beat-ATS-Land-Interviews-Faster.html?raw';
+
 
 
 
@@ -139,6 +153,19 @@ createRoot(document.getElementById('root')).render(
             {/* New routes for Spanish blog pages */}
             <Route path="/es/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexEs }} />} />
             <Route path="/es/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025" element={<div dangerouslySetInnerHTML={{ __html: ExpertChatGptPromptsEs }} />} />
+            <Route path="/es/blog/why-your-resume-gets-ignored-and-the-free-ai-trick-to-fix-it-instantly" element={<div dangerouslySetInnerHTML={{ __html: WhyYourResumeGetsIgnoredEs }} />} />
+            <Route path="/es/blog/AI-Resume-Optimization-Services-When-to-Hire-an-Expert-vs-Using-a-Tool" element={<div dangerouslySetInnerHTML={{ __html: AiResumeOptimizationServicesEs }} />} />
+            <Route path="/es/blog/Choosing-the-Best-Resume-Builder-Free-Tools-vs-Paid-Services" element={<div dangerouslySetInnerHTML={{ __html: ChoosingTheBestResumeBuilderEs }} />} />
+            <Route path="/es/blog/Complete-Guide-to-ChatGPT-Resume-Optimization-From-Keywords-to-Cover-Letters" element={<div dangerouslySetInnerHTML={{ __html: CompleteGuideToChatGPTResumeOptimizationEs }} />} />
+            <Route path="/es/blog/Crafting-a-Winning-Combo-How-to-Write-a-Resume-Cover-Letter" element={<div dangerouslySetInnerHTML={{ __html: CraftingAWinningComboEs }} />} />
+            <Route path="/es/blog/DIY-Resume-SEO-How-to-Manually-Optimize-for-Applicant-Tracking-Systems-ATS" element={<div dangerouslySetInnerHTML={{ __html: DiyResumeSeoForAtsEs }} />} />
+            <Route path="/es/blog/Download-Free-Resume-Templates-&-Examples-for-Every-Industry" element={<div dangerouslySetInnerHTML={{ __html: DownloadFreeResumeTemplatesEs }} />} />
+            <Route path="/es/blog/Effective-Strategies-How-to-Update-and-Rewrite-Your-Resume" element={<div dangerouslySetInnerHTML={{ __html: EffectiveStrategiesEs }} />} />
+            <Route path="/es/blog/Find-the-Best-Resume-Writing-Services-Near-You:-Find-the-Best-Resume-Writing-Services-Near-You" element={<div dangerouslySetInnerHTML={{ __html: FindTheBestResumeWritingServicesNearYouEs }} />} />
+            <Route path="/es/blog/How-to-Optimize-Your-Resume-Using-AI-A-Step-by-Step-Guide" element={<div dangerouslySetInnerHTML={{ __html: HowToOptimizeYourResumeUsingAiEs }} />} />
+            <Route path="/es/blog/How-to-Use-ChatGPT-for-Perfect-Resume-Keyword-Optimization" element={<div dangerouslySetInnerHTML={{ __html: HowToUseChatGptForPerfectResumeKeywordOptimizationEs }} />} />
+            <Route path="/es/blog/Jobscan-vs.-Other-AI-Tools:-Which-Resume-Optimizer-is-Right-for-You" element={<div dangerouslySetInnerHTML={{ __html: JobscanVsOtherAiToolsEs }} />} />
+            <Route path="/es/blog/Master-AI-Resume-Optimization-Beat-ATS-Land-Interviews-Faster" element={<div dangerouslySetInnerHTML={{ __html: MasterAiResumeOptimizationBeatAtsLandInterviewsFasterEs }} />} />
             {/* New routes for Japanese blog pages */}
             <Route path="/ja/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexJa }} />} />
             <Route path="/ja/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025" element={<div dangerouslySetInnerHTML={{ __html: ExpertChatGptPromptsJa }} />} />
