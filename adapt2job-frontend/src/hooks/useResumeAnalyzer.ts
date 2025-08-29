@@ -11,7 +11,7 @@ const useResumeAnalyzer = (language: string) => {
     setError(null);
 
     try {
-      const llmType = language === 'zh' ? 'deepseek' : 'gemini'; 
+      const llmType = 'gemini'; 
 
       const analysisResult: AnalysisResponse = await analyzeResumeWithLLM(llmType, resumeText, jobDescriptionText);
       return analysisResult;
