@@ -55,6 +55,15 @@ import WhyYourResumeGetsIgnoredEn from '../landing_pages/en/blog/why-your-resume
 import MasterAiResumeOptimizationEn from '../landing_pages/en/blog/Master-AI-Resume-Optimization-Beat-ATS-Land-Interviews-Faster.html?raw';
 import ExpertChatGptPromptsEn from '../landing_pages/en/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.html?raw';
 import ExpertChatGptPromptsDe from '../landing_pages/de/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.html?raw';
+import TwentyFiveEssentialAtsResumeOptimizationTipsDe from '../landing_pages/de/blog/25-Essential-ATS-Resume-Optimization-Tips-&-Best-Practices-for-Job-Seekers.html?raw';
+import AiResumeOptimizationServicesDe from '../landing_pages/de/blog/AI-Resume-Optimization-Services:-When-to-Hire-an-Expert-vs.-Using-a-Tool.html?raw';
+import AtsResumeOptimizationIn2025De from '../landing_pages/de/blog/ATS-Resume-Optimization-in-2025-and-Beyond:-Staying-Ahead-of-Applicant-Tracking-Systems.html?raw';
+import ChoosingTheBestResumeBuilderDe from '../landing_pages/de/blog/Choosing-the-Best-Resume-Builder:-Free-Tools-vs.-Paid-Services.html?raw';
+import CompleteGuideChatGptResumeOptimizationDe from '../landing_pages/de/blog/Complete-Guide-to-ChatGPT-Resume-Optimization:-From-Keywords-to-Cover-Letters.html?raw';
+import CraftingAWinningComboDe from '../landing_pages/de/blog/Crafting-a-Winning-Combo:-How-to-Write-a-Resume-Cover-Letter.html?raw';
+import DownloadFreeResumeTemplatesDe from '../landing_pages/de/blog/Download-Free-Resume-Templates-&-Examples-for-Every-Industry.html?raw';
+import ChatGptResumeKeywordOptimizationDe from '../landing_pages/de/blog/How-to-Use-ChatGPT-for-Perfect-Resume-Keyword-Optimization.html?raw';
+import Top7FreeResumeAnalyzersDe from '../landing_pages/de/blog/Top-7-Free-Resume-Analyzer-Tools-to-Score-Your-CV-in-Seconds.html?raw';
 import ExpertChatGptPromptsEs from '../landing_pages/es/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.html?raw';
 import ExpertChatGptPromptsJa from '../landing_pages/ja/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.html?raw';
 import ExpertChatGptPromptsZh from '../landing_pages/zh/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025.html?raw';
@@ -91,6 +100,11 @@ import HowToOptimizeYourResumeUsingAiEs from '../landing_pages/es/blog/How-to-Op
 import HowToUseChatGptForPerfectResumeKeywordOptimizationEs from '../landing_pages/es/blog/How-to-Use-ChatGPT-for-Perfect-Resume-Keyword-Optimization.html?raw';
 import JobscanVsOtherAiToolsEs from '../landing_pages/es/blog/Jobscan-vs.-Other-AI-Tools:-Which-Resume-Optimizer-is-Right-for-You.html?raw';
 import MasterAiResumeOptimizationBeatAtsLandInterviewsFasterEs from '../landing_pages/es/blog/Master-AI-Resume-Optimization-Beat-ATS-Land-Interviews-Faster.html?raw';
+import BestAtsResumeOptimizationToolsEn from '../landing_pages/en/blog/Best-ATS-Resume-Optimization-Tools-(Free-&-Paid)-to-Get-Your-CV-Noticed.html?raw';
+import TwentyFiveEssentialAtsResumeOptimizationTipsEn from '../landing_pages/en/blog/25-Essential-ATS-Resume-Optimization-Tips-&-Best-Practices-for-Job-Seekers.html?raw';
+import HowToTailorYourResumeForAtsEn from '../landing_pages/en/blog/How-to-Tailor-Your-Resume-for-ATS:-Optimizing-Keywords-&-Skills-for-Success.html?raw';
+import AtsResumeOptimizationIn2025En from '../landing_pages/en/blog/ATS-Resume-Optimization-in-2025-and-Beyond:-Staying-Ahead-of-Applicant-Tracking-Systems.html?raw';
+
 
 
 
@@ -150,6 +164,15 @@ createRoot(document.getElementById('root')).render(
             {/* 为德语博客添加路由 */}
             <Route path="/de/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexDe }} />} />
             <Route path="/de/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025" element={<div dangerouslySetInnerHTML={{ __html: ExpertChatGptPromptsDe }} />} />
+            <Route path="/de/blog/25-Essential-ATS-Resume-Optimization-Tips-&-Best-Practices-for-Job-Seekers" element={<div dangerouslySetInnerHTML={{ __html: TwentyFiveEssentialAtsResumeOptimizationTipsDe }} />} />
+            <Route path="/de/blog/AI-Resume-Optimization-Services:-When-to-Hire-an-Expert-vs.-Using-a-Tool" element={<div dangerouslySetInnerHTML={{ __html: AiResumeOptimizationServicesDe }} />} />
+            <Route path="/de/blog/ATS-Resume-Optimization-in-2025-and-Beyond:-Staying-Ahead-of-Applicant-Tracking-Systems" element={<div dangerouslySetInnerHTML={{ __html: AtsResumeOptimizationIn2025De }} />} />
+            <Route path="/de/blog/Choosing-the-Best-Resume-Builder:-Free-Tools-vs.-Paid-Services" element={<div dangerouslySetInnerHTML={{ __html: ChoosingTheBestResumeBuilderDe }} />} />
+            <Route path="/de/blog/Complete-Guide-to-ChatGPT-Resume-Optimization:-From-Keywords-to-Cover-Letters" element={<div dangerouslySetInnerHTML={{ __html: CompleteGuideChatGptResumeOptimizationDe }} />} />
+            <Route path="/de/blog/Crafting-a-Winning-Combo:-How-to-Write-a-Resume-Cover-Letter" element={<div dangerouslySetInnerHTML={{ __html: CraftingAWinningComboDe }} />} />
+            <Route path="/de/blog/Download-Free-Resume-Templates-&-Examples-for-Every-Industry" element={<div dangerouslySetInnerHTML={{ __html: DownloadFreeResumeTemplatesDe }} />} />
+            <Route path="/de/blog/How-to-Use-ChatGPT-for-Perfect-Resume-Keyword-Optimization" element={<div dangerouslySetInnerHTML={{ __html: ChatGptResumeKeywordOptimizationDe }} />} />
+            <Route path="/de/blog/Top-7-Free-Resume-Analyzer-Tools-to-Score-Your-CV-in-Seconds" element={<div dangerouslySetInnerHTML={{ __html: Top7FreeResumeAnalyzersDe }} />} />
             {/* New routes for Spanish blog pages */}
             <Route path="/es/blog" element={<div dangerouslySetInnerHTML={{ __html: BlogIndexEs }} />} />
             <Route path="/es/blog/10-expert-level-chatgpt-prompts-to-make-your-resume-stand-out-in-2025" element={<div dangerouslySetInnerHTML={{ __html: ExpertChatGptPromptsEs }} />} />
@@ -197,6 +220,10 @@ createRoot(document.getElementById('root')).render(
             <Route path="/en/blog/find-the-best-resume-writing-services-near-you" element={<div dangerouslySetInnerHTML={{ __html: FindLocalResumeServicesEn }} />} />
             <Route path="/en/blog/ultimate-diy-guide-to-writing-a-professional-resume" element={<div dangerouslySetInnerHTML={{ __html: UltimateDiyResumeGuideEn }} />} />
             <Route path="/en/blog/why-hire-certified-professional-resume-writers" element={<div dangerouslySetInnerHTML={{ __html: WhyHireCertifiedWritersEn }} />} />
+            <Route path="/en/blog/Best-ATS-Resume-Optimization-Tools-(Free-&-Paid)-to-Get-Your-CV-Noticed" element={<div dangerouslySetInnerHTML={{ __html: BestAtsResumeOptimizationToolsEn }} />} />
+            <Route path="/en/blog/25-Essential-ATS-Resume-Optimization-Tips-&-Best-Practices-for-Job-Seekers" element={<div dangerouslySetInnerHTML={{ __html: TwentyFiveEssentialAtsResumeOptimizationTipsEn }} />} />
+            <Route path="/en/blog/How-to-Tailor-Your-Resume-for-ATS:-Optimizing-Keywords-&-Skills-for-Success" element={<div dangerouslySetInnerHTML={{ __html: HowToTailorYourResumeForAtsEn }} />} />
+            <Route path="/en/blog/ATS-Resume-Optimization-in-2025-and-Beyond:-Staying-Ahead-of-Applicant-Tracking-Systems" element={<div dangerouslySetInnerHTML={{ __html: AtsResumeOptimizationIn2025En }} />} />
 
 
 
