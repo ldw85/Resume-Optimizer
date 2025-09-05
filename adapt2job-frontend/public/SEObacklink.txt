@@ -3,4 +3,4 @@ Pitch your product in one sentence:AI Resume Optimizer: Instantly generate ATS-f
 
 Website:https://resumeoptimizer.click/
 Describe your product in one or two paragraphs starting with its name :Resume Optimizer is a application designed to help users optimize their resumes for job applications. It leverages AI (Gemini, DeepSeek) for resume analysis and content generation. The application supports multiple languages and provides a seamless user experience for improving job application success.
-Video URL:
+Video URL:https://www.resumeoptimizer.click/how-it-works.mp4
