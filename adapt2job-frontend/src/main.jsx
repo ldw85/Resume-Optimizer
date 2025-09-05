@@ -105,6 +105,19 @@ import TwentyFiveEssentialAtsResumeOptimizationTipsEn from '../landing_pages/en/
 import HowToTailorYourResumeForAtsEn from '../landing_pages/en/blog/How-to-Tailor-Your-Resume-for-ATS:-Optimizing-Keywords-&-Skills-for-Success.html?raw';
 import AtsResumeOptimizationIn2025En from '../landing_pages/en/blog/ATS-Resume-Optimization-in-2025-and-Beyond:-Staying-Ahead-of-Applicant-Tracking-Systems.html?raw';
 
+import beyondTwoPagesEn from '../landing_pages/en/blog/Beyond-Two-Pages-Is-a-3-Page-Resume-Ever-Justified.html?raw';
+import choosingOptimalResumeFormatEn from '../landing_pages/en/blog/Choosing-the-Optimal-Resume-Format-Design-Layout-and-Readability-Tips.html?raw';
+import howToCreateProfessionalResumeEn from '../landing_pages/en/blog/How-to-Create-a-Professional-Resume-That-Gets-Noticed.html?raw';
+import howToTailorSkillsSectionEn from '../landing_pages/en/blog/How-to-Tailor-Your-Skills-Section-on-a-Resume-for-Maximum-Impact.html?raw';
+import isA1PageResumeRightForYouEn from '../landing_pages/en/blog/Is-a-1-Page-Resume-Right-for-You-Pros-Cons-and-When-to-Use-It.html?raw';
+import tailoredResumeExamplesEn from '../landing_pages/en/blog/Tailored-Resume-Examples-See-How-to-Match-Your-Skills-to-Any-Job.html?raw';
+import ultimateGuideOptimalLengthEn from '../landing_pages/en/blog/The-Ultimate-Guide-to-Optimal-Resume-Length-When-to-Go-Short-Long-or-Just-Right.html?raw';
+import ultimateGuideTailoringResumeEn from '../landing_pages/en/blog/The-Ultimate-Guide-to-Tailoring-Your-Resume-to-a-Job-Description.html?raw';
+import ultimateGuideWritingPerfectResumeEn from '../landing_pages/en/blog/The-Ultimate-Guide-to-Writing-a-Perfect-Resume-Land-Your-Dream-Job.html?raw';
+import whatMakesEffectiveResumeEn from '../landing_pages/en/blog/What-Makes-an-Effective-Resume-Key-Strategies-for-Impact.html?raw';
+import whenToUse2PageResumeEn from '../landing_pages/en/blog/When-to-Use-a-2-Page-Resume-Maximizing-Impact-Without-Overdoing-It.html?raw';
+import writingCvVsResumeEn from '../landing_pages/en/blog/Writing-a-Professional-CV-vs-Resume-A-Comprehensive-Guide.html?raw';
+
 
 
 
@@ -224,6 +237,18 @@ createRoot(document.getElementById('root')).render(
             <Route path="/en/blog/25-Essential-ATS-Resume-Optimization-Tips-&-Best-Practices-for-Job-Seekers" element={<div dangerouslySetInnerHTML={{ __html: TwentyFiveEssentialAtsResumeOptimizationTipsEn }} />} />
             <Route path="/en/blog/How-to-Tailor-Your-Resume-for-ATS:-Optimizing-Keywords-&-Skills-for-Success" element={<div dangerouslySetInnerHTML={{ __html: HowToTailorYourResumeForAtsEn }} />} />
             <Route path="/en/blog/ATS-Resume-Optimization-in-2025-and-Beyond:-Staying-Ahead-of-Applicant-Tracking-Systems" element={<div dangerouslySetInnerHTML={{ __html: AtsResumeOptimizationIn2025En }} />} />
+            <Route path="/en/blog/beyond-two-pages-is-a-3-page-resume-ever-justified" element={<div dangerouslySetInnerHTML={{ __html: beyondTwoPagesEn }} />} />
+            <Route path="/en/blog/choosing-the-optimal-resume-format-design-layout-and-readability-tips" element={<div dangerouslySetInnerHTML={{ __html: choosingOptimalResumeFormatEn }} />} />
+            <Route path="/en/blog/how-to-create-a-professional-resume-that-gets-noticed" element={<div dangerouslySetInnerHTML={{ __html: howToCreateProfessionalResumeEn }} />} />
+            <Route path="/en/blog/how-to-tailor-your-skills-section-on-a-resume-for-maximum-impact" element={<div dangerouslySetInnerHTML={{ __html: howToTailorSkillsSectionEn }} />} />
+            <Route path="/en/blog/is-a-1-page-resume-right-for-you-pros-cons-and-when-to-use-it" element={<div dangerouslySetInnerHTML={{ __html: isA1PageResumeRightForYouEn }} />} />
+            <Route path="/en/blog/tailored-resume-examples-see-how-to-match-your-skills-to-any-job" element={<div dangerouslySetInnerHTML={{ __html: tailoredResumeExamplesEn }} />} />
+            <Route path="/en/blog/the-ultimate-guide-to-optimal-resume-length-when-to-go-short-long-or-just-right" element={<div dangerouslySetInnerHTML={{ __html: ultimateGuideOptimalLengthEn }} />} />
+            <Route path="/en/blog/the-ultimate-guide-to-tailoring-your-resume-to-a-job-description" element={<div dangerouslySetInnerHTML={{ __html: ultimateGuideTailoringResumeEn }} />} />
+            <Route path="/en/blog/the-ultimate-guide-to-writing-a-perfect-resume-land-your-dream-job" element={<div dangerouslySetInnerHTML={{ __html: ultimateGuideWritingPerfectResumeEn }} />} />
+            <Route path="/en/blog/what-makes-an-effective-resume-key-strategies-for-impact" element={<div dangerouslySetInnerHTML={{ __html: whatMakesEffectiveResumeEn }} />} />
+            <Route path="/en/blog/when-to-use-a-2-page-resume-maximizing-impact-without-overdoing-it" element={<div dangerouslySetInnerHTML={{ __html: whenToUse2PageResumeEn }} />} />
+            <Route path="/en/blog/writing-a-professional-cv-vs-resume-a-comprehensive-guide" element={<div dangerouslySetInnerHTML={{ __html: writingCvVsResumeEn }} />} />
 
 
 
