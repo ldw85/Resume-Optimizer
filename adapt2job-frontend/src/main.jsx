@@ -118,6 +118,22 @@ import whatMakesEffectiveResumeEn from '../landing_pages/en/blog/What-Makes-an-E
 import whenToUse2PageResumeEn from '../landing_pages/en/blog/When-to-Use-a-2-Page-Resume-Maximizing-Impact-Without-Overdoing-It.html?raw';
 import writingCvVsResumeEn from '../landing_pages/en/blog/Writing-a-Professional-CV-vs-Resume-A-Comprehensive-Guide.html?raw';
 
+// New imports requested by user
+import TenEssentialResumeOptimizationTipsEn from '../landing_pages/en/blog/10-Essential-Resume-Optimization-Tips-to-Improve-Your-Resume-Quality.html?raw';
+import BoostYourResumePowerfulSynonymsEn from '../landing_pages/en/blog/Boost-Your-Resume-Powerful-Synonyms-for-Optimize-and-Other-Action-Verbs.html?raw';
+import ChoosingTheRightResumeTypeEn from '../landing_pages/en/blog/Choosing-the-Right-Resume-Type-A-Guide-to-Formats-and-Styles.html?raw';
+import CraftingTheBestResumeForExperiencedEn from '../landing_pages/en/blog/Crafting-the-Best-Resume-for-Experienced-Professionals-Examples--Strategies.html?raw';
+import ExploringAdvancedResumeFormatsEn from '../landing_pages/en/blog/Exploring-Advanced-Resume-Formats-X-Y-Z-5S-and-More.html?raw';
+import HowToKeywordOptimizeYourResumeEn from '../landing_pages/en/blog/How-to-Keyword-Optimize-Your-Resume-to-Beat-ATS-(Applicant-Tracking-Systems).html?raw';
+import SampleResumeForTailoringJobEn from '../landing_pages/en/blog/Sample-Resume-for-a-Tailoring-Job-Key-Skills-and-Experience.html?raw';
+import UltimateCollectionOfResumeExamplesEn from '../landing_pages/en/blog/The-Ultimate-Collection-of-Resume-Examples-for-Every-Industry-and-Career-Level.html?raw';
+import UltimateGuideToResumeOptimizationEn from '../landing_pages/en/blog/The-Ultimate-Guide-to-Resume-Optimization-Maximize-Your-Job-Search-Success.html?raw';
+import UltimateGuideToWritingResumeThatGetsYouHiredEn from '../landing_pages/en/blog/The-Ultimate-Guide-to-Writing-a-Resume-That-Gets-You-Hired.html?raw';
+import Top5ResumeTipsEn from '../landing_pages/en/blog/Top-5-Resume-Tips-to-Boost-Your-Job-Application-Success.html?raw';
+import TopITResumeExamplesEn from '../landing_pages/en/blog/Top-IT-Resume-Examples-Stand-Out-in-the-Tech-Industry.html?raw';
+import UnlockingBestFreeAIResumeToolsEn from '../landing_pages/en/blog/Unlocking-the-Best-Free-AI-Resume-Optimization-Tools-of-2025.html?raw';
+import WhenToUseA2PageResumeEn from '../landing_pages/en/blog/When-to-Use-a-2-Page-Resume-Examples--Best-Practices.html?raw';
+
 
 
 
@@ -249,6 +265,22 @@ createRoot(document.getElementById('root')).render(
             <Route path="/en/blog/what-makes-an-effective-resume-key-strategies-for-impact" element={<div dangerouslySetInnerHTML={{ __html: whatMakesEffectiveResumeEn }} />} />
             <Route path="/en/blog/when-to-use-a-2-page-resume-maximizing-impact-without-overdoing-it" element={<div dangerouslySetInnerHTML={{ __html: whenToUse2PageResumeEn }} />} />
             <Route path="/en/blog/writing-a-professional-cv-vs-resume-a-comprehensive-guide" element={<div dangerouslySetInnerHTML={{ __html: writingCvVsResumeEn }} />} />
+
+            {/* New English blog routes added per user request */}
+            <Route path="/en/blog/10-Essential-Resume-Optimization-Tips-to-Improve-Your-Resume-Quality" element={<div dangerouslySetInnerHTML={{ __html: TenEssentialResumeOptimizationTipsEn }} />} />
+            <Route path="/en/blog/Boost-Your-Resume-Powerful-Synonyms-for-Optimize-and-Other-Action-Verbs" element={<div dangerouslySetInnerHTML={{ __html: BoostYourResumePowerfulSynonymsEn }} />} />
+            <Route path="/en/blog/Choosing-the-Right-Resume-Type-A-Guide-to-Formats-and-Styles" element={<div dangerouslySetInnerHTML={{ __html: ChoosingTheRightResumeTypeEn }} />} />
+            <Route path="/en/blog/Crafting-the-Best-Resume-for-Experienced-Professionals-Examples--Strategies" element={<div dangerouslySetInnerHTML={{ __html: CraftingTheBestResumeForExperiencedEn }} />} />
+            <Route path="/en/blog/Exploring-Advanced-Resume-Formats-X-Y-Z-5S-and-More" element={<div dangerouslySetInnerHTML={{ __html: ExploringAdvancedResumeFormatsEn }} />} />
+            <Route path="/en/blog/How-to-Keyword-Optimize-Your-Resume-to-Beat-ATS-(Applicant-Tracking-Systems)" element={<div dangerouslySetInnerHTML={{ __html: HowToKeywordOptimizeYourResumeEn }} />} />
+            <Route path="/en/blog/Sample-Resume-for-a-Tailoring-Job-Key-Skills-and-Experience" element={<div dangerouslySetInnerHTML={{ __html: SampleResumeForTailoringJobEn }} />} />
+            <Route path="/en/blog/The-Ultimate-Collection-of-Resume-Examples-for-Every-Industry-and-Career-Level" element={<div dangerouslySetInnerHTML={{ __html: UltimateCollectionOfResumeExamplesEn }} />} />
+            <Route path="/en/blog/The-Ultimate-Guide-to-Resume-Optimization-Maximize-Your-Job-Search-Success" element={<div dangerouslySetInnerHTML={{ __html: UltimateGuideToResumeOptimizationEn }} />} />
+            <Route path="/en/blog/The-Ultimate-Guide-to-Writing-a-Resume-That-Gets-You-Hired" element={<div dangerouslySetInnerHTML={{ __html: UltimateGuideToWritingResumeThatGetsYouHiredEn }} />} />
+            <Route path="/en/blog/Top-5-Resume-Tips-to-Boost-Your-Job-Application-Success" element={<div dangerouslySetInnerHTML={{ __html: Top5ResumeTipsEn }} />} />
+            <Route path="/en/blog/Top-IT-Resume-Examples-Stand-Out-in-the-Tech-Industry" element={<div dangerouslySetInnerHTML={{ __html: TopITResumeExamplesEn }} />} />
+            <Route path="/en/blog/Unlocking-the-Best-Free-AI-Resume-Optimization-Tools-of-2025" element={<div dangerouslySetInnerHTML={{ __html: UnlockingBestFreeAIResumeToolsEn }} />} />
+            <Route path="/en/blog/When-to-Use-a-2-Page-Resume-Examples--Best-Practices" element={<div dangerouslySetInnerHTML={{ __html: WhenToUseA2PageResumeEn }} />} />
 
 
 
