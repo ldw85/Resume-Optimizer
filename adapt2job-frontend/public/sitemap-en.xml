@@ -312,4 +312,40 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- New blog pages added -->
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/Boost-Your-Resume-with-Strong-Action-Verbs-and-Sentence-Examples</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/Exploring-Advanced-Resume-Formats-X-Y-Z-5S-and-More</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/How-to-Include-Recommendations-on-Your-Resume-(With-Examples)</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/Powerful-Resume-Summary-Examples-to-Grab-Attention-(Including-Retail)</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/Showcasing-Professional-Development-on-Your-Resume-A-Guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/The-Ultimate-Guide-to-Optimizing-Every-Section-of-Your-Resume</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://resumeoptimizer.click/en/blog/Top-IT-Resume-Examples-Stand-Out-in-the-Tech-Industry</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
