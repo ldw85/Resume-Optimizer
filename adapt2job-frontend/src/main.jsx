@@ -133,7 +133,6 @@ import Top5ResumeTipsEn from '../landing_pages/en/blog/Top-5-Resume-Tips-to-Boos
 import TopITResumeExamplesEn from '../landing_pages/en/blog/Top-IT-Resume-Examples-Stand-Out-in-the-Tech-Industry.html?raw';
 import UnlockingBestFreeAIResumeToolsEn from '../landing_pages/en/blog/Unlocking-the-Best-Free-AI-Resume-Optimization-Tools-of-2025.html?raw';
 import WhenToUseA2PageResumeEn from '../landing_pages/en/blog/When-to-Use-a-2-Page-Resume-Examples--Best-Practices.html?raw';
-import TopITResumeExamplesStandOutintheTechIndustryEn from '../landing_pages/en/blog/Top-IT-Resume-Examples-Stand-Out-in-the-Tech-Industry.html?raw';
 import BoostYourResumeWithStrongActionVerbsAndSentenceExamplesEn from '../landing_pages/en/blog/Boost-Your-Resume-with-Strong-Action-Verbs-and-Sentence-Examples.html?raw';
 import HowToIncludeRecommendationsOnYourResumeWithExamplesEn from '../landing_pages/en/blog/How-to-Include-Recommendations-on-Your-Resume-(With-Examples).html?raw';
 import PowerfulResumeSummaryExamplesToGrabAttentionIncludingRetailEn from '../landing_pages/en/blog/Powerful-Resume-Summary-Examples-to-Grab-Attention-(Including-Retail).html?raw';
@@ -289,18 +288,12 @@ createRoot(document.getElementById('root')).render(
             <Route path="/en/blog/Top-IT-Resume-Examples-Stand-Out-in-the-Tech-Industry" element={<div dangerouslySetInnerHTML={{ __html: TopITResumeExamplesEn }} />} />
             <Route path="/en/blog/Unlocking-the-Best-Free-AI-Resume-Optimization-Tools-of-2025" element={<div dangerouslySetInnerHTML={{ __html: UnlockingBestFreeAIResumeToolsEn }} />} />
             <Route path="/en/blog/When-to-Use-a-2-Page-Resume-Examples--Best-Practices" element={<div dangerouslySetInnerHTML={{ __html: WhenToUseA2PageResumeEn }} />} />
-            <Route path="/en/blog/Top-IT-Resume-Examples-Stand-Out-in-the-Tech-Industry" element={<div dangerouslySetInnerHTML={{ __html: TopITResumeExamplesStandOutintheTechIndustryEn }} />} />
+            
             <Route path="/en/blog/Boost-Your-Resume-with-Strong-Action-Verbs-and-Sentence-Examples" element={<div dangerouslySetInnerHTML={{ __html: BoostYourResumeWithStrongActionVerbsAndSentenceExamplesEn }} />} />
             <Route path="/en/blog/How-to-Include-Recommendations-on-Your-Resume-(With-Examples)" element={<div dangerouslySetInnerHTML={{ __html: HowToIncludeRecommendationsOnYourResumeWithExamplesEn }} />} />
             <Route path="/en/blog/Powerful-Resume-Summary-Examples-to-Grab-Attention-(Including-Retail)" element={<div dangerouslySetInnerHTML={{ __html: PowerfulResumeSummaryExamplesToGrabAttentionIncludingRetailEn }} />} />
             <Route path="/en/blog/Showcasing-Professional-Development-on-Your-Resume-A-Guide" element={<div dangerouslySetInnerHTML={{ __html: ShowcasingProfessionalDevelopmentOnYourResumeAGuideEn }} />} />
             <Route path="/en/blog/The-Ultimate-Guide-to-Optimizing-Every-Section-of-Your-Resume" element={<div dangerouslySetInnerHTML={{ __html: TheUltimateGuideToOptimizingEverySectionOfYourResumeEn }} />} />
-
-
-
-
-import TopITResumeExamplesStandOutintheTechIndustryEn from '../landing_pages/en/blog/Top-IT-Resume-Examples-Stand-Out-in-the-Tech-Industry.html?raw';
-
 
 
             {/* New routes for Chinese blog pages */}
